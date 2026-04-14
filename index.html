@@ -1,0 +1,1952 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Leistungsprozesse BWL</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#07080b;
+--s1:#0d0f15;
+--s2:#131720;
+--s3:#1a1f2e;
+--s4:#222840;
+--border:#1e2535;
+--border2:#2a3350;
+--teal:#4dd9c0;
+--violet:#9b87f5;
+--orange:#f59e4d;
+--green:#4ade80;
+--pink:#f472b6;
+--sky:#38bdf8;
+--red:#f87171;
+--warn:#fbbf24;
+--text:#eef2f9;
+--dim:#8899bb;
+--muted:#3d4f6e;
+--r:14px;
+--r2:20px;
+--tint-teal:rgba(77,217,192,0.08);
+--tint-teal-b:rgba(77,217,192,0.22);
+--tint-violet:rgba(155,135,245,0.08);
+--tint-violet-b:rgba(155,135,245,0.22);
+--tint-warn:rgba(251,191,36,0.07);
+--tint-warn-b:rgba(251,191,36,0.22);
+--tint-sky:rgba(56,189,248,0.07);
+--tint-sky-b:rgba(56,189,248,0.22);
+--tint-orange:rgba(245,158,77,0.07);
+--tint-orange-b:rgba(245,158,77,0.22);
+--tint-green:rgba(74,222,128,0.10);
+--tint-green-b:rgba(74,222,128,0.25);
+--tint-red:rgba(248,113,113,0.09);
+--tint-red-b:rgba(248,113,113,0.25);
+}
+
+html.light{
+--bg:#f0f2f5;
+--s1:#ffffff;
+--s2:#e8ecf2;
+--s3:#dde2eb;
+--s4:#d0d6e2;
+--border:#c8cdd9;
+--border2:#b8bfce;
+--teal:#0d9488;
+--violet:#7c3aed;
+--orange:#d97706;
+--green:#16a34a;
+--pink:#db2777;
+--sky:#0284c7;
+--red:#dc2626;
+--warn:#d97706;
+--text:#0f172a;
+--dim:#334155;
+--muted:#94a3b8;
+--tint-teal:rgba(13,148,136,0.09);
+--tint-teal-b:rgba(13,148,136,0.28);
+--tint-violet:rgba(124,58,237,0.09);
+--tint-violet-b:rgba(124,58,237,0.28);
+--tint-warn:rgba(217,119,6,0.09);
+--tint-warn-b:rgba(217,119,6,0.30);
+--tint-sky:rgba(2,132,199,0.09);
+--tint-sky-b:rgba(2,132,199,0.28);
+--tint-orange:rgba(217,119,6,0.09);
+--tint-orange-b:rgba(217,119,6,0.28);
+--tint-green:rgba(22,163,74,0.10);
+--tint-green-b:rgba(22,163,74,0.28);
+--tint-red:rgba(220,38,38,0.09);
+--tint-red-b:rgba(220,38,38,0.28);
+}
+
+html.light #topbar    { background:#ffffff; }
+html.light #bnav      { background:#ffffff; }
+html.light .lv-topbar { background:#ffffff; }
+html.light .lv-footer { background:#f0f2f5; }
+html.light .hero-card { background:linear-gradient(135deg,#e4e9f4,#d8dff0); }
+html.light .kurs-header { background:#e8ecf2; }
+html.light .btn.p     { color:#ffffff; }
+
+.theme-btn{
+width:34px; height:34px; border-radius:10px;
+border:1px solid var(--border);
+background:var(--s2); cursor:pointer;
+display:flex; align-items:center; justify-content:center;
+font-size:1rem; flex-shrink:0;
+}
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+-webkit-tap-highlight-color:transparent;
+transition:background-color 0.2s ease, border-color 0.2s ease, color 0.15s ease;
+}
+.fc{ transition:transform 0.5s cubic-bezier(.4,0,.2,1); }
+html{font-size:20px}
+html,body{
+height:100%;
+height:100dvh;
+overflow:hidden;
+font-family:'DM Sans',sans-serif;
+background:var(--bg);
+color:var(--text);
+display:flex;
+flex-direction:column;
+}
+body::before{content:'';position:fixed;inset:0;background:var(--bg);z-index:-1}
+
+#topbar{
+display:flex;align-items:center;justify-content:space-between;
+padding:13px 18px;border-bottom:1px solid var(--border);
+background:var(--bg);
+position:relative;z-index:100;flex-shrink:0;
+padding-top:max(13px, env(safe-area-inset-top));
+padding-left:max(18px, env(safe-area-inset-left));
+padding-right:max(18px, env(safe-area-inset-right));
+}
+.logo{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:900;color:var(--teal);letter-spacing:-0.02em}
+.logo small{display:block;font-family:'DM Sans',sans-serif;font-size:0.6rem;color:var(--muted);font-weight:400;margin-top:1px}
+.pills{display:flex;gap:7px}
+.pill{background:var(--s2);border:1px solid var(--border);border-radius:999px;
+padding:4px 11px;font-size:0.7rem;font-family:'JetBrains Mono',monospace;font-weight:500}
+.pill.xp{color:var(--warn)}
+.pill.streak{color:var(--orange)}
+
+#bnav{
+display:flex;background:var(--bg);border-top:1px solid var(--border);
+flex-shrink:0;z-index:100;
+padding-bottom:env(safe-area-inset-bottom);
+}
+.nb{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+padding:9px 4px 7px;cursor:pointer;border:none;background:none;
+color:var(--muted);font-family:'DM Sans',sans-serif;font-size:0.58rem;font-weight:600;
+letter-spacing:0.03em;gap:3px;border-top:2px solid transparent;transition:color 0.2s}
+.nb .ni{font-size:1.15rem;line-height:1}
+.nb.active{color:var(--teal);border-top-color:var(--teal)}
+
+#content{
+flex:1;
+overflow-y:auto;
+overflow-x:hidden;
+-webkit-overflow-scrolling:touch;
+background:var(--bg);
+overscroll-behavior:contain;
+}
+.screen{display:none;min-height:100%;animation:fadeUp 0.2s ease;background:var(--bg)}
+.screen.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.pad{padding:18px}
+.sec-label{font-size:0.62rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+color:var(--muted);margin-bottom:10px;font-family:'JetBrains Mono',monospace}
+.card{background:var(--s1);border:1px solid var(--border);border-radius:var(--r2);padding:16px}
+.card+.card{margin-top:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;
+padding:11px 20px;border-radius:11px;border:1px solid var(--border);
+background:var(--s2);color:var(--text);cursor:pointer;
+font-size:0.82rem;font-weight:600;font-family:'DM Sans',sans-serif;
+transition:all 0.15s;white-space:nowrap;-webkit-appearance:none}
+.btn:active{transform:scale(0.97)}
+.btn.p{background:var(--teal);color:#07080b;border-color:var(--teal)}
+.btn.v{background:rgba(155,135,245,0.15);color:var(--violet);border-color:rgba(155,135,245,0.3)}
+.btn.g{background:rgba(74,222,128,0.1);color:var(--green);border-color:rgba(74,222,128,0.25)}
+.btn.r{background:rgba(248,113,113,0.09);color:var(--red);border-color:rgba(248,113,113,0.25)}
+.btn.o{background:rgba(245,158,77,0.1);color:var(--orange);border-color:rgba(245,158,77,0.25)}
+.formula{background:var(--bg);border:1px solid var(--border2);border-radius:9px;
+padding:10px 14px;margin:8px 0;font-family:'JetBrains Mono',monospace;
+font-size:0.8rem;color:var(--teal);overflow-x:auto;line-height:1.9;white-space:pre-wrap}
+code{font-family:'JetBrains Mono',monospace;background:var(--s3);padding:1px 6px;
+border-radius:4px;font-size:0.85em;color:var(--teal)}
+
+.hero-card{
+background:linear-gradient(135deg,var(--s2),var(--s3));
+border:1px solid var(--border2);border-radius:var(--r2);padding:20px;margin-bottom:14px;
+position:relative;overflow:hidden;
+}
+.hero-card::after{content:'';position:absolute;top:-60px;right:-60px;
+width:200px;height:200px;
+background:radial-gradient(circle,rgba(77,217,192,0.07) 0%,transparent 65%);border-radius:50%}
+.hero-greeting{font-size:0.68rem;color:var(--dim);margin-bottom:3px}
+.hero-h{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:900;line-height:1.15;margin-bottom:14px}
+.hero-h span{color:var(--teal)}
+.pbar-wrap{background:var(--bg);border-radius:999px;height:7px;overflow:hidden;margin-bottom:5px}
+.pbar{height:100%;border-radius:999px;transition:width 0.7s cubic-bezier(.4,0,.2,1)}
+.pbar.main{background:linear-gradient(90deg,var(--teal),var(--violet))}
+.pbar.teal{background:var(--teal)}
+.pbar.violet{background:var(--violet)}
+.pbar.orange{background:var(--orange)}
+.pbar.green{background:var(--green)}
+.pbar.sky{background:var(--sky)}
+.pct-label{font-size:0.68rem;color:var(--dim);font-family:'JetBrains Mono',monospace}
+
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px}
+@media (min-width:600px) and (orientation:landscape){
+.stats-grid{grid-template-columns:repeat(4,1fr)}
+}
+.stat-box{background:var(--s1);border:1px solid var(--border);border-radius:var(--r);padding:13px}
+.stat-v{font-size:1.55rem;font-weight:700;font-family:'JetBrains Mono',monospace;line-height:1}
+.stat-l{font-size:0.62rem;color:var(--muted);margin-top:4px;font-weight:400}
+
+.topic-rows{display:flex;flex-direction:column;gap:9px}
+@media (min-width:600px) and (orientation:landscape){
+.topic-rows{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+}
+.trow{display:flex;align-items:center;gap:9px}
+.tdot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.tname{font-size:0.76rem;flex:1;color:var(--dim);font-weight:500}
+.tbar-w{width:70px;background:var(--s3);border-radius:999px;height:4px;overflow:hidden}
+.tbar{height:100%;border-radius:999px;transition:width 0.6s}
+.tpct{font-size:0.67rem;color:var(--muted);font-family:'JetBrains Mono',monospace;min-width:28px;text-align:right}
+
+@media (min-width:600px) and (orientation:landscape){
+.hero-h{font-size:1.15rem}
+.pad{padding:14px}
+}
+
+.act-list{display:flex;flex-direction:column;gap:5px}
+.act-row{display:flex;align-items:center;gap:8px;font-size:0.76rem;color:var(--dim);
+padding:7px 10px;background:var(--s1);border-radius:9px;border:1px solid var(--border)}
+.adot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+
+.kurs-header{
+background:var(--s2);
+padding:20px 18px 16px;border-bottom:1px solid var(--border);
+}
+.kurs-header h2{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:900;margin-bottom:3px}
+.kurs-header p{font-size:0.76rem;color:var(--dim);font-weight:300;margin-bottom:10px}
+
+.mod-list{padding:14px;padding-bottom:30px}
+@media (min-width:600px) and (orientation:landscape){
+.mod-list{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+align-items:start;
+}
+.mod-list .mod-card{margin-bottom:0}
+}
+.mod-card{background:var(--s1);border:1px solid var(--border);border-radius:var(--r2);
+margin-bottom:10px;overflow:hidden}
+.mod-head{display:flex;align-items:center;gap:12px;padding:14px;cursor:pointer}
+.mod-num{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;
+justify-content:center;font-size:0.85rem;font-weight:700;flex-shrink:0;font-family:'JetBrains Mono',monospace}
+.mod-info{flex:1}
+.mod-title{font-size:0.88rem;font-weight:600;margin-bottom:2px}
+.mod-meta{font-size:0.67rem;color:var(--muted);font-weight:400}
+.mod-status{font-size:1rem;flex-shrink:0}
+.mod-lessons{border-top:1px solid var(--border);display:none}
+.mod-lessons.open{display:block}
+.les-item{display:flex;align-items:center;gap:10px;padding:11px 14px;
+border-bottom:1px solid var(--border);cursor:pointer;transition:background 0.12s}
+.les-item:last-child{border:none}
+.les-item:active{background:var(--s2)}
+.les-icon{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;
+justify-content:center;font-size:0.85rem;flex-shrink:0}
+.les-title{flex:1;font-size:0.8rem;font-weight:500;color:var(--dim)}
+.les-title.done{color:var(--muted);text-decoration:line-through}
+.les-badge{font-size:0.65rem;padding:2px 7px;border-radius:999px;font-weight:600;flex-shrink:0}
+.les-badge.new{background:rgba(77,217,192,0.12);color:var(--teal)}
+.les-badge.done-b{background:rgba(74,222,128,0.1);color:var(--green)}
+.les-badge.locked{background:var(--s3);color:var(--muted)}
+
+#lv{
+position:fixed;inset:0;background:var(--bg);z-index:200;
+display:none;flex-direction:column;
+padding-top:env(safe-area-inset-top);
+padding-bottom:env(safe-area-inset-bottom);
+padding-left:env(safe-area-inset-left);
+padding-right:env(safe-area-inset-right);
+}
+#lv.open{display:flex}
+
+.lv-topbar{
+display:flex;align-items:center;gap:10px;padding:13px 16px;
+border-bottom:1px solid var(--border);background:var(--bg);flex-shrink:0;
+}
+.lv-back{font-size:1.2rem;cursor:pointer;color:var(--dim);padding:4px 8px;border-radius:8px;
+background:var(--s2);border:1px solid var(--border)}
+.lv-info{flex:1}
+.lv-info h3{font-size:0.84rem;font-weight:600;line-height:1.2}
+.lv-info span{font-size:0.62rem;color:var(--muted)}
+.lv-prog-text{font-size:0.68rem;font-family:'JetBrains Mono',monospace;color:var(--violet);flex-shrink:0}
+.lv-pbar-wrap{height:3px;background:var(--s3);flex-shrink:0}
+.lv-pbar{height:100%;background:linear-gradient(90deg,var(--teal),var(--violet));transition:width 0.4s}
+
+.lv-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+.lv-step{padding:20px 18px 120px;max-width:600px;margin:0 auto;animation:fadeUp 0.25s}
+@media (orientation:landscape){
+.lv-step{padding:16px 18px 100px;max-width:700px}
+}
+
+.st-title{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:900;line-height:1.2;
+color:var(--text);margin-bottom:10px}
+.st-subtitle{font-size:0.82rem;color:var(--dim);font-weight:300;line-height:1.6;margin-bottom:18px}
+
+.callout{border-radius:var(--r);padding:14px 16px;margin:14px 0}
+.callout.def{background:var(--tint-teal);border:1px solid var(--tint-teal-b)}
+.callout.satz{background:var(--tint-violet);border:1px solid var(--tint-violet-b)}
+.callout.warn{background:var(--tint-warn);border:1px solid var(--tint-warn-b)}
+.callout.info{background:var(--tint-sky);border:1px solid var(--tint-sky-b)}
+.callout.example{background:var(--tint-orange);border:1px solid var(--tint-orange-b)}
+.callout-label{font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+font-family:'JetBrains Mono',monospace;margin-bottom:6px}
+.callout.def .callout-label{color:var(--teal)}
+.callout.satz .callout-label{color:var(--violet)}
+.callout.warn .callout-label{color:var(--warn)}
+.callout.info .callout-label{color:var(--sky)}
+.callout.example .callout-label{color:var(--orange)}
+.callout p{font-size:0.84rem;line-height:1.7;color:var(--text)}
+.callout p+p{margin-top:6px}
+.callout ul{padding-left:16px;margin-top:6px}
+.callout ul li{font-size:0.83rem;color:var(--dim);margin-bottom:5px;line-height:1.5}
+
+.prose{font-size:0.87rem;color:var(--dim);line-height:1.75;margin:10px 0}
+.prose strong{color:var(--text);font-weight:600}
+.prose em{font-style:italic;color:var(--dim)}
+
+.tt-wrap{overflow-x:auto;margin:12px 0;border-radius:var(--r);border:1px solid var(--border2)}
+table.tt{width:100%;border-collapse:collapse;font-family:'JetBrains Mono',monospace;font-size:0.78rem}
+table.tt th{background:var(--s3);color:var(--teal);padding:9px 12px;text-align:center;
+font-size:0.72rem;border-bottom:1px solid var(--border2)}
+table.tt td{padding:8px 12px;text-align:center;border-bottom:1px solid var(--border);color:var(--dim)}
+table.tt tr:last-child td{border-bottom:none}
+table.tt td.hi{color:var(--green);font-weight:700}
+table.tt td.lo{color:var(--red)}
+table.tt td.hl{color:var(--teal);font-weight:700}
+
+.mcq{margin:14px 0}
+.mcq-q{font-size:0.9rem;font-weight:600;margin-bottom:13px;line-height:1.45;
+font-family:'Fraunces',serif;font-style:italic;color:var(--text)}
+.mcq-opts{display:flex;flex-direction:column;gap:8px}
+.mcq-opt{
+text-align:left;padding:12px 15px;border-radius:11px;border:1px solid var(--border);
+background:var(--s2);color:var(--dim);font-size:0.83rem;font-family:'DM Sans',sans-serif;
+font-weight:500;cursor:pointer;transition:all 0.15s;display:flex;align-items:center;gap:10px;
+}
+.mcq-opt:active:not(:disabled){transform:scale(0.985)}
+.mcq-opt .opt-letter{width:22px;height:22px;border-radius:6px;background:var(--s3);
+display:flex;align-items:center;justify-content:center;font-size:0.7rem;
+font-family:'JetBrains Mono',monospace;font-weight:700;flex-shrink:0;color:var(--muted)}
+.mcq-opt.correct{background:var(--tint-green);border-color:var(--green);color:var(--green)}
+.mcq-opt.correct .opt-letter{background:var(--tint-green);color:var(--green)}
+.mcq-opt.wrong{background:var(--tint-red);border-color:var(--red);color:var(--red)}
+.mcq-opt.wrong .opt-letter{background:var(--tint-red);color:var(--red)}
+.mcq-fb{font-size:0.8rem;padding:11px 14px;border-radius:9px;margin-top:8px;display:none;line-height:1.55}
+.mcq-fb.show{display:block}
+.mcq-fb.ok{background:var(--tint-green);color:var(--green);border:1px solid var(--tint-green-b)}
+.mcq-fb.no{background:var(--tint-red);color:var(--red);border:1px solid var(--tint-red-b)}
+
+.fillin{margin:14px 0}
+.fillin-q{font-size:0.87rem;color:var(--dim);line-height:1.6;margin-bottom:10px}
+.fillin-wrap{display:flex;gap:8px}
+.fillin-input{flex:1;background:var(--s2);border:1px solid var(--border2);border-radius:10px;
+padding:11px 14px;font-size:0.85rem;font-family:'JetBrains Mono',monospace;color:var(--text);
+outline:none;transition:border-color 0.15s}
+.fillin-input:focus{border-color:var(--violet)}
+.fillin-input.ok{border-color:var(--green);color:var(--green)}
+.fillin-input.no{border-color:var(--red)}
+.fillin-fb{margin-top:8px;font-size:0.79rem;padding:8px 12px;border-radius:8px;display:none}
+.fillin-fb.show{display:block}
+.fillin-fb.ok{background:var(--tint-green);color:var(--green)}
+.fillin-fb.no{background:var(--tint-red);color:var(--red)}
+
+.reveal-steps{margin:14px 0;display:flex;flex-direction:column;gap:8px}
+.reveal-step{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);
+overflow:hidden;cursor:pointer}
+.rs-header{display:flex;align-items:center;gap:10px;padding:12px 14px}
+.rs-num{width:26px;height:26px;border-radius:7px;background:var(--s3);
+font-family:'JetBrains Mono',monospace;font-size:0.75rem;font-weight:700;
+display:flex;align-items:center;justify-content:center;color:var(--dim);flex-shrink:0}
+.rs-title{font-size:0.82rem;font-weight:600;flex:1;color:var(--dim)}
+.rs-arrow{color:var(--muted);font-size:0.85rem;transition:transform 0.2s}
+.rs-arrow.open{transform:rotate(90deg)}
+.rs-body{display:none;padding:0 14px 12px;font-size:0.82rem;color:var(--dim);line-height:1.6;border-top:1px solid var(--border)}
+.rs-body.open{display:block;animation:fadeUp 0.15s}
+.rs-num.done{background:var(--tint-green);color:var(--green)}
+
+.lesson-complete{text-align:center;padding:30px 20px}
+.lc-emoji{font-size:3rem;margin-bottom:12px}
+.lc-title{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:900;margin-bottom:6px}
+.lc-sub{font-size:0.84rem;color:var(--dim);margin-bottom:20px;font-weight:300}
+.lc-xp{font-size:1.8rem;font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--warn);margin-bottom:4px}
+.lc-xp-label{font-size:0.72rem;color:var(--muted);margin-bottom:20px}
+
+.lv-footer{
+display:flex;gap:10px;padding:12px 18px;
+background:var(--bg);border-top:1px solid var(--border);
+flex-shrink:0;
+}
+.continue-hint{text-align:center;padding:8px;font-size:0.7rem;color:var(--muted);font-style:italic}
+
+/* ── RECALL (Active Recall step) ── */
+.recall-wrap{margin:14px 0}
+.recall-prompt{font-size:0.88rem;font-weight:600;color:var(--text);line-height:1.5;margin-bottom:12px;font-family:'Fraunces',serif;font-style:italic}
+.recall-input-row{display:flex;gap:8px;margin-bottom:8px}
+.recall-input{flex:1;background:var(--s2);border:1.5px solid var(--border2);border-radius:10px;
+padding:11px 14px;font-size:0.85rem;font-family:'DM Sans',sans-serif;color:var(--text);
+outline:none;transition:border-color 0.15s}
+.recall-input:focus{border-color:var(--violet)}
+.recall-hint-btn{padding:10px 14px;border-radius:10px;border:1px solid var(--border2);
+background:var(--s2);color:var(--muted);font-size:0.75rem;cursor:pointer;white-space:nowrap;font-family:'DM Sans',sans-serif}
+.recall-result{display:none;border-radius:var(--r);padding:13px 15px;margin-top:8px;font-size:0.83rem;line-height:1.65}
+.recall-result.show{display:block;animation:fadeUp 0.2s}
+.recall-result.ok{background:var(--tint-green);border:1px solid var(--tint-green-b);color:var(--green)}
+.recall-result.hint{background:var(--tint-sky);border:1px solid var(--tint-sky-b);color:var(--sky)}
+.recall-selfcheck{margin-top:10px;font-size:0.78rem;color:var(--dim)}
+.recall-selfcheck strong{color:var(--text)}
+.recall-btns{display:flex;gap:7px;margin-top:9px}
+.recall-label{font-size:0.58rem;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;
+font-family:'JetBrains Mono',monospace;color:var(--violet);margin-bottom:7px}
+
+/* ── THINK-PAUSE (elaborative pause) ── */
+.think-wrap{background:var(--tint-violet);border:1px solid var(--tint-violet-b);border-radius:var(--r);padding:15px 16px;margin:14px 0}
+.think-q{font-size:0.87rem;color:var(--text);line-height:1.6;margin-bottom:11px;font-style:italic}
+.think-ta{width:100%;background:var(--s2);border:1px solid var(--border2);border-radius:9px;
+padding:10px 13px;font-size:0.83rem;font-family:'DM Sans',sans-serif;color:var(--text);
+resize:none;outline:none;min-height:70px;transition:border-color 0.15s}
+.think-ta:focus{border-color:var(--violet)}
+.think-submit{margin-top:8px;padding:9px 16px;border-radius:9px;border:1px solid var(--tint-violet-b);
+background:rgba(155,135,245,0.12);color:var(--violet);font-size:0.8rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif}
+.think-fb{display:none;margin-top:9px;font-size:0.8rem;color:var(--dim);line-height:1.6;
+background:var(--s2);border-radius:9px;padding:10px 13px;border:1px solid var(--border)}
+.think-fb.show{display:block;animation:fadeUp 0.2s}
+.think-label{font-size:0.58rem;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;
+font-family:'JetBrains Mono',monospace;color:var(--violet);margin-bottom:7px}
+
+/* ── SPACED REVIEW banner ── */
+.sr-banner{background:linear-gradient(135deg,rgba(155,135,245,0.12),rgba(77,217,192,0.08));
+border:1px solid var(--tint-violet-b);border-radius:var(--r);padding:11px 14px;margin-bottom:12px;
+display:flex;align-items:center;gap:8px}
+.sr-badge{font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+font-family:'JetBrains Mono',monospace;color:var(--violet);background:rgba(155,135,245,0.15);
+padding:3px 8px;border-radius:999px;flex-shrink:0}
+.sr-text{font-size:0.75rem;color:var(--dim);line-height:1.4}
+
+/* ── LOCKED next button ── */
+#lvNext.locked{opacity:0.35;cursor:not-allowed;pointer-events:none}
+#lvNext.locked::after{content:' 🔒'}
+
+.fc-filters{display:flex;gap:7px;padding:13px 16px;overflow-x:auto;
+scrollbar-width:none;border-bottom:1px solid var(--border)}
+.fc-filters::-webkit-scrollbar{display:none}
+.fc-chip{flex-shrink:0;padding:5px 12px;border-radius:999px;border:1px solid var(--border);
+background:var(--s1);font-size:0.7rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all 0.12s}
+.fc-chip.active{border-color:var(--teal);color:var(--teal);background:rgba(77,217,192,0.07)}
+#s-karten{display:none;flex-direction:column;align-items:stretch}
+#s-karten.active{display:flex}
+.fc-scene{padding:14px;display:flex;justify-content:center}
+.fc-wrap{perspective:1400px;width:100%;max-width:480px}
+@media (orientation:landscape){
+.fc-wrap{max-width:420px}
+}
+.fc{width:100%;min-height:220px;position:relative;transform-style:preserve-3d;
+transition:transform 0.5s cubic-bezier(.4,0,.2,1);cursor:pointer}
+.fc.flipped{transform:rotateY(180deg)}
+.fc-face{position:absolute;inset:0;backface-visibility:hidden;
+background:var(--s1);border:1px solid var(--border);border-radius:var(--r2);
+padding:22px;display:flex;flex-direction:column;justify-content:center;
+align-items:center;text-align:center;min-height:220px}
+.fc-back{transform:rotateY(180deg);background:var(--s2)}
+.fc-cat{font-size:0.62rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+font-family:'JetBrains Mono',monospace;color:var(--teal);margin-bottom:10px}
+.fc-q{font-family:'Fraunces',serif;font-size:1.1rem;line-height:1.4;color:var(--text);margin-bottom:8px}
+.fc-h{font-size:0.7rem;color:var(--muted);font-style:italic}
+.fc-a{font-size:0.84rem;color:var(--dim);line-height:1.7}
+.fc-tap-hint{text-align:center;font-size:0.68rem;color:var(--muted);padding:0 14px 6px;font-style:italic}
+.fc-nav{
+display:flex;align-items:center;justify-content:center;
+padding:0 14px 8px;gap:16px;
+max-width:480px;margin:0 auto;width:100%;
+}
+.fc-nav .btn{flex:0 0 auto}
+.fc-ctr{font-size:0.78rem;font-family:'JetBrains Mono',monospace;color:var(--muted);min-width:60px;text-align:center}
+.fc-rating{display:none;flex-direction:row;gap:7px;padding:0 14px 14px;
+max-width:480px;margin:0 auto;width:100%}
+.fc-rating.show{display:flex}
+@media (orientation:landscape){
+.fc-nav{max-width:420px}
+.fc-rating{max-width:420px}
+}
+
+.q-setup{padding:18px;display:flex;flex-direction:column;gap:9px}
+.q-setup h3{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:900;margin-bottom:3px}
+.q-setup p{font-size:0.78rem;color:var(--dim);margin-bottom:6px;font-weight:300}
+.q-topic-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:6px}
+.q-tbtn{padding:11px 10px;border-radius:var(--r);border:1px solid var(--border);
+background:var(--s1);font-size:0.76rem;font-weight:600;color:var(--dim);
+cursor:pointer;text-align:left;font-family:'DM Sans',sans-serif;transition:all 0.12s}
+.q-tbtn span{display:block;font-size:0.62rem;color:var(--muted);font-weight:400;margin-top:2px}
+.q-tbtn.sel{border-color:var(--violet);color:var(--violet);background:rgba(155,135,245,0.07)}
+.q-active{padding:14px;display:none}
+.q-active.show{display:block}
+.q-toprow{display:flex;align-items:center;gap:10px;margin-bottom:11px}
+.q-pbar-w{flex:1;background:var(--s3);border-radius:999px;height:4px;overflow:hidden}
+.q-pbar{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--violet),var(--pink));transition:width 0.35s}
+.q-info{font-size:0.68rem;font-family:'JetBrains Mono',monospace;color:var(--muted)}
+.q-score-d{font-size:0.68rem;font-family:'JetBrains Mono',monospace;color:var(--violet);font-weight:700}
+.q-card{background:var(--s1);border:1px solid var(--border);border-radius:var(--r2);
+padding:18px;margin-bottom:10px;animation:fadeUp 0.2s}
+.q-cat{font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;
+color:var(--violet);font-family:'JetBrains Mono',monospace;margin-bottom:7px}
+.q-q{font-family:'Fraunces',serif;font-size:1rem;line-height:1.5;color:var(--text);margin-bottom:14px;font-style:italic}
+.q-opts{display:flex;flex-direction:column;gap:7px}
+.q-opt{padding:11px 14px;border-radius:10px;border:1px solid var(--border);
+background:var(--s2);color:var(--dim);font-size:0.81rem;font-family:'DM Sans',sans-serif;
+font-weight:500;cursor:pointer;text-align:left;transition:all 0.12s;display:flex;align-items:center;gap:9px}
+.q-opt .ol{width:20px;height:20px;border-radius:5px;background:var(--s3);
+font-family:'JetBrains Mono',monospace;font-size:0.68rem;font-weight:700;
+display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--muted)}
+.q-opt.correct{background:var(--tint-green);border-color:var(--green);color:var(--green)}
+.q-opt.correct .ol{background:var(--tint-green);color:var(--green)}
+.q-opt.wrong{background:var(--tint-red);border-color:var(--red);color:var(--red)}
+.q-fb{font-size:0.79rem;padding:10px 13px;border-radius:8px;margin-top:7px;display:none;line-height:1.55}
+.q-fb.show{display:block}
+.q-fb.ok{background:var(--tint-green);color:var(--green);border:1px solid var(--tint-green-b)}
+.q-fb.no{background:var(--tint-red);color:var(--red);border:1px solid var(--tint-red-b)}
+.q-next-wrap{display:flex;justify-content:flex-end;margin-top:7px}
+.q-result{background:var(--s1);border:1px solid var(--border);border-radius:var(--r2);
+padding:26px;text-align:center;display:none;animation:fadeUp 0.3s}
+.q-result.show{display:block}
+.qr-emoji{font-size:2.6rem;margin-bottom:9px}
+.qr-title{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:900;margin-bottom:5px}
+.qr-score{font-size:2.6rem;font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--teal);margin-bottom:5px;line-height:1}
+.qr-sub{font-size:0.8rem;color:var(--dim);margin-bottom:16px;font-weight:300}
+.qr-btns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<div id="topbar">
+  <div class="logo">BWL<br><small>Leistungsprozesse · Uni Trier</small></div>
+  <div class="pills">
+    <span class="pill streak" id="spStreak">🔥 0</span>
+    <span class="pill xp" id="spXP">0 XP</span>
+    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" title="Helles/Dunkles Design">🌙</button>
+  </div>
+</div>
+
+<div id="content">
+
+<!-- DASHBOARD -->
+<div class="screen active" id="s-home">
+  <div class="pad">
+    <div class="hero-card">
+      <div class="hero-greeting">Willkommen zurück 👋</div>
+      <div class="hero-h">Leistungsprozesse<br><span>BWL</span> meistern</div>
+      <div class="pbar-wrap"><div class="pbar main" id="overallBar" style="width:0%"></div></div>
+      <div class="pct-label" id="overallPct">0% Gesamtfortschritt</div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-box"><div class="stat-v" style="color:var(--teal)" id="dCards">0</div><div class="stat-l">Karten gelernt</div></div>
+      <div class="stat-box"><div class="stat-v" style="color:var(--violet)" id="dAcc">—</div><div class="stat-l">Quiz-Genauigkeit</div></div>
+      <div class="stat-box"><div class="stat-v" style="color:var(--warn)" id="dXP">0</div><div class="stat-l">XP verdient</div></div>
+      <div class="stat-box"><div class="stat-v" style="color:var(--green)" id="dLes">0</div><div class="stat-l">Lektionen fertig</div></div>
+    </div>
+    <div class="sec-label">Themenfortschritt</div>
+    <div class="card" style="margin-bottom:14px"><div class="topic-rows" id="topicRows"></div></div>
+    <div class="sec-label">Aktivitäten</div>
+    <div class="act-list" id="actList">
+      <div class="act-row"><div class="adot" style="background:var(--muted)"></div>Starte mit dem Kurs!</div>
+    </div>
+  </div>
+</div>
+
+<!-- KURS -->
+<div class="screen" id="s-kurs">
+  <div class="kurs-header">
+    <h2>Leistungsprozesse BWL</h2>
+    <p>8 Module · 47 Lektionen · von Grund auf aufbauend</p>
+    <div class="pbar-wrap"><div class="pbar" style="background:linear-gradient(90deg,var(--violet),var(--pink))" id="courseBar"></div></div>
+  </div>
+  <div class="mod-list" id="modList"></div>
+</div>
+
+<!-- KARTEIKARTEN -->
+<div class="screen" id="s-karten">
+  <div class="fc-filters" id="fcFilters"></div>
+  <div class="fc-scene">
+    <div class="fc-wrap">
+      <div class="fc" id="fc" onclick="flipCard()">
+        <div class="fc-face fc-front">
+          <div class="fc-cat" id="fcCat">—</div>
+          <div class="fc-q" id="fcQ">Wähle eine Kategorie</div>
+          <div class="fc-h" id="fcH"></div>
+        </div>
+        <div class="fc-face fc-back">
+          <div class="fc-cat" id="fcCatB">Antwort</div>
+          <div class="fc-a" id="fcA"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="fc-tap-hint">Karte antippen zum Umdrehen</p>
+  <div class="fc-nav">
+    <button class="btn" onclick="fcPrev()">←</button>
+    <span class="fc-ctr" id="fcCtr">0/0</span>
+    <button class="btn" onclick="fcNext()">→</button>
+  </div>
+  <div class="fc-rating" id="fcRating">
+    <button class="btn r" style="flex:1" onclick="fcRate(0)">😕 Nochmal</button>
+    <button class="btn o" style="flex:1" onclick="fcRate(1)">🤔 Knapp</button>
+    <button class="btn g" style="flex:1" onclick="fcRate(2)">✅ Gewusst</button>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div class="screen" id="s-quiz">
+  <div class="q-setup" id="qSetup">
+    <h3>Quiz</h3>
+    <p>Teste dein Wissen mit 10 zufälligen Fragen.</p>
+    <div class="q-topic-grid" id="qTopicGrid"></div>
+    <button class="btn p" style="width:100%" onclick="startQuiz()">Quiz starten →</button>
+  </div>
+  <div class="q-active" id="qActive">
+    <div class="q-toprow">
+      <span class="q-score-d" id="qScoreD">0/0</span>
+      <div class="q-pbar-w"><div class="q-pbar" id="qPbar" style="width:0%"></div></div>
+      <span class="q-info" id="qInfo">1/10</span>
+    </div>
+    <div id="qContainer"></div>
+    <div class="q-result" id="qResult">
+      <div class="qr-emoji" id="qrEmoji">🎉</div>
+      <div class="qr-title" id="qrTitle">Fertig!</div>
+      <div class="qr-score" id="qrScore">0/0</div>
+      <div class="qr-sub" id="qrSub"></div>
+      <div class="qr-btns">
+        <button class="btn p" onclick="restartQuiz()">🔄 Nochmal</button>
+        <button class="btn" onclick="showScreen('s-karten')">🃏 Karten</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- #content -->
+
+<div id="bnav">
+  <button class="nb active" onclick="showScreen('s-home')"><span class="ni">📊</span>Home</button>
+  <button class="nb" onclick="showScreen('s-kurs')"><span class="ni">📚</span>Kurs</button>
+  <button class="nb" onclick="showScreen('s-karten')"><span class="ni">🃏</span>Karten</button>
+  <button class="nb" onclick="showScreen('s-quiz')"><span class="ni">⚡</span>Quiz</button>
+</div>
+
+<!-- LESSON VIEWER -->
+<div id="lv">
+  <div class="lv-topbar">
+    <div class="lv-back" onclick="closeLesson()">←</div>
+    <div class="lv-info"><h3 id="lvTitle">—</h3><span id="lvMod">—</span></div>
+    <span class="lv-prog-text" id="lvProg">1/5</span>
+  </div>
+  <div class="lv-pbar-wrap"><div class="lv-pbar" id="lvPbar" style="width:0%"></div></div>
+  <div class="lv-body" id="lvBody"></div>
+  <div class="lv-footer">
+    <button class="btn" id="lvPrev" onclick="lvNav(-1)">←</button>
+    <button class="btn p" id="lvNext" onclick="lvNav(1)" style="flex:1">Weiter →</button>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════
+// TOPICS
+// ═══════════════════════════════════════════════
+const TOPICS=[
+  {id:'produktion1',name:'Produktion I',color:'#4dd9c0'},
+  {id:'produktion2',name:'Produktion II',color:'#9b87f5'},
+  {id:'logistik1',name:'Logistik I',color:'#f59e4d'},
+  {id:'logistik2',name:'Logistik II',color:'#fbbf24'},
+  {id:'nachhaltigkeit_soz',name:'Soziale Nachhaltigkeit',color:'#4ade80'},
+  {id:'nachhaltigkeit_oek',name:'Ökolog. Nachhaltigkeit',color:'#38bdf8'},
+  {id:'digitalisierung',name:'Digitalisierung',color:'#f472b6'},
+  {id:'dienstleistungen',name:'Dienstleistungen',color:'#f87171'},
+  {id:'ziele_strategie',name:'Ziele & Strategien',color:'#a78bfa'},
+  {id:'marketing1',name:'Marketing I',color:'#fb923c'},
+  {id:'marketing2',name:'Marketing II',color:'#34d399'},
+  {id:'innovation1',name:'Innovation I',color:'#60a5fa'},
+  {id:'innovation2',name:'Innovation II',color:'#e879f9'},
+];
+
+// ═══════════════════════════════════════════════
+// MODULES & LESSONS
+// ═══════════════════════════════════════════════
+const MODULES=[
+{id:'m_prod1',title:'Produktion I',color:'#4dd9c0',icon:'🏭',
+ desc:'Grundlagen, Faktoren, Ziele und Arten der Produktion',
+ lessons:[
+  {id:'l_p1_1',title:'Grundlagen der Produktion',icon:'🏭',topic:'produktion1',steps:[
+    {type:'title',icon:'🏭',title:'Grundlagen der Produktion',sub:'Produktion bezeichnet die Erstellung betrieblicher Leistungen durch die Kombination von Produktionsfaktoren.'},
+    {type:'callout',kind:'def',label:'Definition: Produktion',html:'<p>Produktion ist die Erstellung betrieblicher Leistungen durch die Kombination von <strong>Produktionsfaktoren</strong>. Ziel ist es, Güter oder Leistungen wirtschaftlich, qualitativ angemessen und in der benötigten Zeit bereitzustellen.</p>'},
+    {type:'prose',html:'Die Produktion ist ein <strong>zentraler Bestandteil der Wertkette</strong> und gehört zu den primären Aktivitäten eines Unternehmens.'},
+    {type:'callout',kind:'info',label:'Einordnung',html:'<p>Produktionsentscheidungen beeinflussen Kosten, Qualität und Lieferfähigkeit. Deshalb ist Produktion nicht isoliert zu betrachten, sondern als Teil der gesamten Wertkette.</p>'},
+    {type:'mcq',q:'Was ist das Hauptziel der Produktion?',opts:['Nur möglichst viele Produkte herzustellen','Leistungen wirtschaftlich, qualitativ angemessen und termingerecht zu erstellen','Ausschließlich die Marketingabteilung zu unterstützen','Nur Personalkosten zu senken'],correct:1,exp:'Produktion soll Leistungen so erstellen, dass Kosten, Qualität, Zeit und weitere Zielgrößen sinnvoll erfüllt werden.'},
+  ]},
+  {id:'l_p1_2',title:'Produktionsfaktoren',icon:'⚙️',topic:'produktion1',steps:[
+    {type:'title',icon:'⚙️',title:'Produktionsfaktoren',sub:'Die Mittel, die zur Erstellung von Leistungen benötigt werden.'},
+    {type:'callout',kind:'def',label:'Klassische Produktionsfaktoren',html:'<ul><li><strong>Arbeit</strong> – menschliche Arbeitsleistung</li><li><strong>Betriebsmittel</strong> – Maschinen, Anlagen, Gebäude</li><li><strong>Werkstoffe</strong> – Roh-, Hilfs- und Betriebsstoffe</li></ul>'},
+    {type:'prose',html:'Ergänzend spielen <strong>Informationen, Wissen und Organisation</strong> eine wichtige Rolle. In der Produktion werden diese Faktoren so kombiniert, dass aus Inputs <strong>marktfähige Outputs</strong> entstehen.'},
+    {type:'mcq',q:'Welche drei Faktoren zählen zu den klassischen Produktionsfaktoren?',opts:['Marketing, Vertrieb, Service','Arbeit, Betriebsmittel, Werkstoffe','Preis, Qualität, Zeit','Lager, Transport, Einkauf'],correct:1,exp:'Die klassischen Produktionsfaktoren nach VWL-Tradition sind Arbeit, Betriebsmittel (Kapital) und Werkstoffe (Material).'},
+  ]},
+  {id:'l_p1_3',title:'Produktionsziele',icon:'🎯',topic:'produktion1',steps:[
+    {type:'title',icon:'🎯',title:'Produktionsziele',sub:'Ziele steuern die Produktion – oft stehen sie in Konflikt zueinander.'},
+    {type:'callout',kind:'def',label:'Wichtige Produktionsziele',html:'<ul><li>Geringe <strong>Kosten</strong></li><li>Hohe <strong>Qualität</strong></li><li>Kurze <strong>Durchlaufzeiten</strong></li><li>Hohe <strong>Flexibilität</strong></li><li><strong>Termintreue</strong></li></ul>'},
+    {type:'callout',kind:'warn',label:'Zielkonflikte',html:'<p>Zwischen diesen Zielen bestehen oft <strong>Zielkonflikte</strong>. Eine besonders hohe Flexibilität kann z.B. zu höheren Kosten führen.</p>'},
+    {type:'mcq',q:'Welches der folgenden ist typischerweise KEIN Produktionsziel?',opts:['Geringe Kosten','Hohe Flexibilität','Hoher Werbeaufwand','Kurze Durchlaufzeiten'],correct:2,exp:'Hoher Werbeaufwand ist ein Marketingziel, kein klassisches Produktionsziel.'},
+  ]},
+  {id:'l_p1_4',title:'Produktionsarten',icon:'🔧',topic:'produktion1',steps:[
+    {type:'title',icon:'🔧',title:'Produktionsarten',sub:'Einzelfertigung, Serienfertigung, Massenfertigung – welche passt wann?'},
+    {type:'reveal-steps',steps:[
+      {num:'1',title:'Einzelfertigung',body:'Ein Produkt wird <strong>individuell</strong> hergestellt. Beispiel: Maßanzug, Sondermaschine.',done:false},
+      {num:'2',title:'Serienfertigung',body:'Eine <strong>begrenzte Stückzahl</strong> gleicher Produkte wird hergestellt. Beispiel: Fahrzeugserie.',done:false},
+      {num:'3',title:'Massenfertigung',body:'<strong>Große Mengen standardisierter</strong> Produkte werden hergestellt. Beispiel: Schrauben, Getränke.',done:false},
+    ]},
+    {type:'mcq',q:'Welche Produktionsart beschreibt die Herstellung großer Mengen standardisierter Produkte?',opts:['Einzelfertigung','Serienfertigung','Massenfertigung','Projektfertigung'],correct:2,exp:'Massenfertigung ist auf hohe Stückzahlen standardisierter Produkte ausgerichtet.'},
+  ]},
+  {id:'l_p1_5',title:'Fertigungstypen',icon:'🏗️',topic:'produktion1',steps:[
+    {type:'title',icon:'🏗️',title:'Fertigungstypen',sub:'Wie wird organisiert? Werkstatt, Fließband oder Gruppe?'},
+    {type:'callout',kind:'def',label:'Werkstattfertigung',html:'<p>Flexibel, aber oft langsam und teuer. Ähnliche Maschinen/Mitarbeiter sind räumlich zusammengefasst.</p>'},
+    {type:'callout',kind:'def',label:'Fließfertigung',html:'<p>Effizient und standardisiert. Produkt durchläuft feste Stationen. Weniger flexibel.</p>'},
+    {type:'callout',kind:'info',label:'Gruppenfertigung',html:'<p>Versucht Vorteile beider Formen zu verbinden. Gruppen arbeiten vollständig an einem Teilprodukt.</p>'},
+    {type:'mcq',q:'Welche Aussage zur Werkstattfertigung ist richtig?',opts:['Sie ist besonders unflexibel','Sie ist meist sehr flexibel, aber oft weniger effizient','Sie ist nur für digitale Produkte geeignet','Sie kommt nur in Dienstleistungsunternehmen vor'],correct:1,exp:'Werkstattfertigung erlaubt individuelle Bearbeitungsschritte, ist aber häufig mit längeren Wegen und höheren Kosten verbunden.'},
+  ]},
+  {id:'l_p1_6',title:'Produktion in der Wertkette',icon:'🔗',topic:'produktion1',steps:[
+    {type:'title',icon:'🔗',title:'Produktion in der Wertkette',sub:'Produktion ist eingebettet – nicht isoliert.'},
+    {type:'prose',html:'Die Produktion ist eng mit <strong>Beschaffung, Logistik, Marketing und Forschung & Entwicklung</strong> verbunden. Produktionsentscheidungen beeinflussen Kosten, Qualität und Lieferfähigkeit.'},
+    {type:'callout',kind:'satz',label:'Merksatz',html:'<p>Produktion ist kein isolierter Bereich, sondern ein zentrales Glied in der Wertkette. Entscheidungen hier wirken auf alle anderen Bereiche.</p>'},
+    {type:'mcq',q:'Warum ist Produktion als Teil der Wertkette zu betrachten?',opts:['Weil Produktion immer teurer ist als andere Bereiche','Weil Produktionsentscheidungen Kosten, Qualität und Lieferfähigkeit beeinflussen','Weil Produktion nichts mit Marketing zu tun hat','Weil nur Produktion Wert schafft'],correct:1,exp:'Produktionsentscheidungen haben direkte Auswirkungen auf andere Unternehmensbereiche.'},
+    {type:'complete',title:'✅ Modul Produktion I abgeschlossen!',sub:'Grundlagen, Faktoren, Ziele, Arten und Fertigungstypen gemeistert!'},
+  ]},
+ ]},
+{id:'m_prod2',title:'Produktion II',color:'#9b87f5',icon:'🤖',
+ desc:'Planung, Qualität, Lean, Make-or-Buy, Automatisierung',
+ lessons:[
+  {id:'l_p2_1',title:'Produktionsplanung & -steuerung',icon:'📋',topic:'produktion2',steps:[
+    {type:'title',icon:'📋',title:'Produktionsplanung & -steuerung',sub:'Was, wann, wo und wie viel?'},
+    {type:'callout',kind:'def',label:'Produktionsplanung',html:'<p>Legt fest, <strong>was, wann, wo und in welcher Menge</strong> produziert werden soll.</p>'},
+    {type:'callout',kind:'def',label:'Produktionssteuerung',html:'<p>Sorgt dafür, dass die Planung im <strong>laufenden Betrieb</strong> umgesetzt wird. Ziel: reibungsloser und wirtschaftlicher Ablauf.</p>'},
+    {type:'mcq',q:'Was ist der Unterschied zwischen Produktionsplanung und -steuerung?',opts:['Es gibt keinen Unterschied','Planung legt fest was/wann/wo – Steuerung setzt es im Betrieb um','Planung ist günstiger','Steuerung legt Ziele fest, Planung setzt um'],correct:1,exp:'Planung ist die Vorausschau, Steuerung die operative Umsetzung im laufenden Betrieb.'},
+  ]},
+  {id:'l_p2_2',title:'Kapazitätsplanung',icon:'📊',topic:'produktion2',steps:[
+    {type:'title',icon:'📊',title:'Kapazitätsplanung',sub:'Genug, aber nicht zu viel.'},
+    {type:'prose',html:'Kapazitätsplanung befasst sich mit der Frage, ob genügend <strong>Personal, Maschinen und Materialien</strong> vorhanden sind, um die geplante Produktion durchzuführen.'},
+    {type:'callout',kind:'warn',label:'Achtung: Kapazitätsextreme',html:'<p>Zu <strong>geringe</strong> Kapazitäten → Engpässe<br>Zu <strong>hohe</strong> Kapazitäten → unnötige Kosten</p>'},
+    {type:'mcq',q:'Was ist das Ziel der Kapazitätsplanung?',opts:['Nur die Marketingkosten zu senken','Sicherstellen, dass ausreichend, aber nicht übermäßig viele Ressourcen vorhanden sind','Ausschließlich die Produktqualität zu messen','Alle Produktionsschritte an Lieferanten abzugeben'],correct:1,exp:'Kapazitätsplanung sorgt dafür, dass Personal, Maschinen und Materialien passend zur Produktionsmenge verfügbar sind.'},
+  ]},
+  {id:'l_p2_3',title:'Qualitätsmanagement',icon:'⭐',topic:'produktion2',steps:[
+    {type:'title',icon:'⭐',title:'Qualitätsmanagement',sub:'Fehler vermeiden, Erwartungen erfüllen.'},
+    {type:'callout',kind:'def',label:'Qualitätsmanagement',html:'<p>Umfasst alle Maßnahmen zur <strong>Sicherung und Verbesserung</strong> der Qualität von Produkten und Prozessen. Ziel: Fehler vermeiden, Kundenerwartungen erfüllen, Wettbewerbsfähigkeit stärken.</p>'},
+    {type:'mcq',q:'Was ist das Ziel von Qualitätsmanagement?',opts:['Nur Kosten senken','Fehler vermeiden, Kundenerwartungen erfüllen und Wettbewerbsfähigkeit stärken','Nur Mengen erhöhen','Mitarbeitende entlassen'],correct:1,exp:'Qualitätsmanagement sichert und verbessert Qualität in Produkten und Prozessen.'},
+  ]},
+  {id:'l_p2_4',title:'Lean Production',icon:'🌿',topic:'produktion2',steps:[
+    {type:'title',icon:'🌿',title:'Lean Production',sub:'Schlank produzieren – Verschwendung vermeiden.'},
+    {type:'callout',kind:'def',label:'Lean Production',html:'<p>Auf die <strong>Vermeidung von Verschwendung</strong> ausgerichtetes Produktionskonzept.</p>'},
+    {type:'callout',kind:'info',label:'Typische Verschwendungsarten',html:'<ul><li>Wartezeiten</li><li>Überproduktion</li><li>Unnötige Transporte</li><li>Zu hohe Bestände</li><li>Fehler und Nacharbeit</li></ul>'},
+    {type:'mcq',q:'Wofür steht Lean Production?',opts:['Für besonders teure Produktionsverfahren','Für die Maximierung von Lagerbeständen','Für eine schlanke Produktion mit möglichst wenig Verschwendung','Für vollständige Handarbeit'],correct:2,exp:'Lean Production zielt auf Effizienz und die Vermeidung von Verschwendung ab.'},
+  ]},
+  {id:'l_p2_5',title:'Make-or-Buy-Entscheidung',icon:'⚖️',topic:'produktion2',steps:[
+    {type:'title',icon:'⚖️',title:'Make-or-Buy-Entscheidung',sub:'Selbst herstellen oder einkaufen?'},
+    {type:'prose',html:'Bei der Make-or-Buy-Entscheidung wird festgelegt, ob eine Leistung <strong>selbst erstellt</strong> oder von <strong>externen Anbietern</strong> bezogen wird.'},
+    {type:'callout',kind:'def',label:'Entscheidungskriterien',html:'<ul><li>Kosten</li><li>Qualität</li><li>Know-how</li><li>Abhängigkeiten</li><li>Strategische Bedeutung</li></ul>'},
+    {type:'mcq',q:'Worum geht es bei der Make-or-Buy-Entscheidung?',opts:['Um die Wahl zwischen Werbung und Vertrieb','Um die Entscheidung zwischen Eigenfertigung und Fremdbezug','Um die Wahl zwischen zwei Kundengruppen','Um die Entscheidung zwischen Logistik und Marketing'],correct:1,exp:'Make-or-Buy beschreibt die Entscheidung, ob Leistungen intern oder extern erbracht werden.'},
+  ]},
+  {id:'l_p2_6',title:'Automatisierung in der Produktion',icon:'🤖',topic:'produktion2',steps:[
+    {type:'title',icon:'🤖',title:'Automatisierung in der Produktion',sub:'Maschinen und Software übernehmen Aufgaben.'},
+    {type:'callout',kind:'def',label:'Automatisierung',html:'<p>Produktionsschritte werden ganz oder teilweise durch Maschinen, Software oder Robotik übernommen.</p>'},
+    {type:'callout',kind:'info',label:'Vorteile',html:'<ul><li>Höhere Effizienz</li><li>Gleichbleibende Qualität</li><li>Geringere Fehlerquoten</li></ul>'},
+    {type:'callout',kind:'warn',label:'Nachteile',html:'<ul><li>Hohe Investitionskosten</li><li>Geringere Flexibilität</li></ul>'},
+    {type:'mcq',q:'Was ist ein typischer Nachteil der Automatisierung?',opts:['Höhere Fehlerquoten','Geringere Qualität','Hohe Investitionskosten und geringere Flexibilität','Mehr Handarbeit nötig'],correct:2,exp:'Automatisierung erfordert hohe Anfangsinvestitionen und kann die Flexibilität bei Produktänderungen einschränken.'},
+    {type:'complete',title:'✅ Modul Produktion II abgeschlossen!',sub:'Planung, QM, Lean, Make-or-Buy und Automatisierung gemeistert!'},
+  ]},
+ ]},
+{id:'m_log1',title:'Logistik I',color:'#f59e4d',icon:'🚛',
+ desc:'Grundlagen, Teilbereiche, Lagerhaltung und Zielgrößen',
+ lessons:[
+  {id:'l_l1_1',title:'Grundlagen der Logistik',icon:'🚛',topic:'logistik1',steps:[
+    {type:'title',icon:'🚛',title:'Grundlagen der Logistik',sub:'Die richtige Menge, zur richtigen Zeit, am richtigen Ort.'},
+    {type:'callout',kind:'def',label:'Definition: Logistik',html:'<p>Logistik befasst sich mit der <strong>Planung, Steuerung und Kontrolle</strong> von Güter-, Informations- und teilweise Finanzflüssen.</p>'},
+    {type:'callout',kind:'satz',label:'Das logistische Zielpentagon',html:'<p>Die <strong>richtige Menge</strong> eines Gutes zur <strong>richtigen Zeit</strong> am <strong>richtigen Ort</strong> in der <strong>richtigen Qualität</strong> bereitzustellen.</p>'},
+    {type:'mcq',q:'Was ist das grundlegende Ziel der Logistik?',opts:['Möglichst viele Lager zu bauen','Güter in richtiger Menge, Zeit, Qualität und am richtigen Ort bereitzustellen','Nur Marketingprozesse zu unterstützen','Nur Transportkosten zu erhöhen'],correct:1,exp:'Logistik sichert die wirtschaftliche und bedarfsgerechte Versorgung mit Gütern und Informationen.'},
+  ]},
+  {id:'l_l1_2',title:'Teilbereiche der Logistik',icon:'🔀',topic:'logistik1',steps:[
+    {type:'title',icon:'🔀',title:'Teilbereiche der Logistik',sub:'Von der Beschaffung bis zur Distribution.'},
+    {type:'reveal-steps',steps:[
+      {num:'1',title:'Beschaffungslogistik',body:'Versorgt das Unternehmen mit Materialien von Lieferanten.',done:false},
+      {num:'2',title:'Produktionslogistik',body:'Koordiniert Materialflüsse innerhalb der Produktion.',done:false},
+      {num:'3',title:'Distributionslogistik',body:'Bringt fertige Produkte zum Kunden.',done:false},
+    ]},
+    {type:'mcq',q:'Welche drei Teilbereiche gehören klassisch zur Logistik?',opts:['Beschaffung, Produktion, Marketing','Beschaffungslogistik, Produktionslogistik, Distributionslogistik','Innovation, Finanzierung, Besteuerung','Personal, IT, Vertrieb'],correct:1,exp:'Diese drei Bereiche strukturieren die wesentlichen logistischen Aufgaben im Unternehmen.'},
+  ]},
+  {id:'l_l1_3',title:'Lagerhaltung',icon:'🏪',topic:'logistik1',steps:[
+    {type:'title',icon:'🏪',title:'Lagerhaltung',sub:'Pufferfunktion für die Versorgungssicherheit.'},
+    {type:'callout',kind:'info',label:'Zweck von Lagern',html:'<p>Lager dienen dazu, Bestände zwischenzulagern und <strong>Versorgungsunsicherheiten auszugleichen</strong>.</p>'},
+    {type:'callout',kind:'def',label:'Vor- und Nachteile',html:'<p><strong>Vorteile:</strong> Bessere Lieferfähigkeit, höhere Versorgungssicherheit.<br><strong>Nachteile:</strong> Kapitalbindung, Lagerkosten, Risiko von Überalterung oder Beschädigung.</p>'},
+    {type:'mcq',q:'Welche Aussage zur Lagerhaltung ist richtig?',opts:['Lager verursachen nie Kosten','Lager verbessern die Lieferfähigkeit, führen aber auch zu Kapitalbindung','Lager sind nur in Dienstleistungsunternehmen wichtig','Lager ersetzen die Produktion vollständig'],correct:1,exp:'Lager können Versorgung sichern, verursachen aber Kosten und binden Kapital.'},
+  ]},
+  {id:'l_l1_4',title:'Logistische Zielgrößen',icon:'🎯',topic:'logistik1',steps:[
+    {type:'title',icon:'🎯',title:'Logistische Zielgrößen',sub:'Was soll Logistik leisten?'},
+    {type:'callout',kind:'def',label:'Wichtige logistische Ziele',html:'<ul><li>Geringe Kosten</li><li>Hohe Lieferbereitschaft</li><li>Kurze Lieferzeiten</li><li>Hohe Zuverlässigkeit</li><li>Transparenz</li></ul>'},
+    {type:'callout',kind:'warn',label:'Zielkonflikt',html:'<p>Ein sehr hoher Lagerbestand verbessert oft die Lieferfähigkeit, erhöht aber die Kosten.</p>'},
+    {type:'mcq',q:'Was ist KEIN typisches logistisches Ziel?',opts:['Hohe Lieferbereitschaft','Kurze Lieferzeiten','Hohe Werbeausgaben','Geringe Kosten'],correct:2,exp:'Werbeausgaben sind ein Marketingziel, keine logistische Zielgröße.'},
+  ]},
+  {id:'l_l1_5',title:'Informationsfluss in der Logistik',icon:'📡',topic:'logistik1',steps:[
+    {type:'title',icon:'📡',title:'Informationsfluss in der Logistik',sub:'Daten sind genauso wichtig wie Güter.'},
+    {type:'prose',html:'Neben dem Materialfluss ist der <strong>Informationsfluss</strong> entscheidend. Informationen über Bestände, Nachfrage, Lieferzeiten und Störungen ermöglichen Planung und Steuerung.'},
+    {type:'callout',kind:'satz',label:'Merksatz',html:'<p>Ohne zuverlässige Informationen können logistische Prozesse nicht effizient funktionieren.</p>'},
+    {type:'mcq',q:'Warum ist der Informationsfluss in der Logistik wichtig?',opts:['Er ist unwichtig','Er ermöglicht Planung, Steuerung und Reaktion auf Störungen','Er ersetzt den Materialfluss vollständig','Er ist nur für große Unternehmen relevant'],correct:1,exp:'Informationen über Bestände, Nachfrage und Lieferzeiten sind die Grundlage jeder logistischen Steuerung.'},
+    {type:'complete',title:'✅ Modul Logistik I abgeschlossen!',sub:'Grundlagen, Teilbereiche, Lagerhaltung und Zielgrößen gemeistert!'},
+  ]},
+ ]},
+{id:'m_log2',title:'Logistik II',color:'#fbbf24',icon:'🌐',
+ desc:'SCM, Bestandsmanagement, Bullwhip, Resilienz',
+ lessons:[
+  {id:'l_l2_1',title:'Supply Chain Management',icon:'🌐',topic:'logistik2',steps:[
+    {type:'title',icon:'🌐',title:'Supply Chain Management',sub:'Die gesamte Lieferkette unternehmensübergreifend koordinieren.'},
+    {type:'callout',kind:'def',label:'Supply Chain Management (SCM)',html:'<p>SCM beschreibt die <strong>unternehmensübergreifende Koordination</strong> aller Aktivitäten entlang der Liefer- und Wertschöpfungskette.</p>'},
+    {type:'prose',html:'Ziel: Abstimmung von <strong>Lieferanten, Herstellern, Handel und weiteren Partnern</strong>, damit Materialien, Informationen und Leistungen effizient fließen.'},
+    {type:'mcq',q:'Was beschreibt Supply Chain Management?',opts:['Nur die innerbetriebliche Produktion','Die unternehmensübergreifende Koordination entlang der Lieferkette','Ausschließlich die Preispolitik','Nur die Personalplanung'],correct:1,exp:'Supply Chain Management betrachtet die gesamte Kette von Lieferanten bis zum Kunden.'},
+  ]},
+  {id:'l_l2_2',title:'Bestandsmanagement',icon:'📦',topic:'logistik2',steps:[
+    {type:'title',icon:'📦',title:'Bestandsmanagement',sub:'Wie viel ist genug – und wie viel ist zu viel?'},
+    {type:'callout',kind:'def',label:'Bestandsmanagement',html:'<p>Befasst sich damit, wie hoch <strong>Lagerbestände sein sollen</strong>.</p>'},
+    {type:'callout',kind:'warn',label:'Extremrisiken',html:'<p>Zu <strong>niedrige</strong> Bestände → Lieferengpässe<br>Zu <strong>hohe</strong> Bestände → unnötige Kosten</p><p>Ziel ist ein wirtschaftliches Gleichgewicht.</p>'},
+    {type:'mcq',q:'Was ist das Ziel des Bestandsmanagements?',opts:['Bestände maximieren','Bestände minimieren','Ein wirtschaftliches Gleichgewicht zwischen zu wenig und zu viel finden','Bestände abschaffen'],correct:2,exp:'Bestandsmanagement sucht das Optimum zwischen Versorgungssicherheit und Kosteneffizienz.'},
+  ]},
+  {id:'l_l2_3',title:'Bullwhip-Effekt',icon:'🌀',topic:'logistik2',steps:[
+    {type:'title',icon:'🌀',title:'Der Bullwhip-Effekt',sub:'Kleine Schwankungen – große Wellen in der Lieferkette.'},
+    {type:'callout',kind:'def',label:'Bullwhip-Effekt',html:'<p>Beschreibt die <strong>Aufschaukelung kleiner Nachfrageschwankungen</strong> entlang der Lieferkette. Eine geringe Veränderung beim Endkunden kann zu stark übertriebenen Bestellungen bei Vorstufen führen.</p>'},
+    {type:'callout',kind:'info',label:'Ursachen',html:'<ul><li>Schlechte Information</li><li>Sicherheitsbestände</li><li>Unkoordinierte Planung</li></ul>'},
+    {type:'mcq',q:'Was ist der Bullwhip-Effekt?',opts:['Eine Methode zur Qualitätsprüfung','Die Aufschaukelung kleiner Nachfrageschwankungen entlang der Lieferkette','Eine Form der Fließfertigung','Eine Preisstrategie im Handel'],correct:1,exp:'Kleine Änderungen der Endnachfrage können in vorgelagerten Stufen stark verstärkt werden.'},
+  ]},
+  {id:'l_l2_4',title:'Resilienz in Lieferketten',icon:'💪',topic:'logistik2',steps:[
+    {type:'title',icon:'💪',title:'Resilienz in Lieferketten',sub:'Widerstandsfähigkeit bei Störungen aufbauen.'},
+    {type:'callout',kind:'def',label:'Resilienz',html:'<p>Widerstandsfähigkeit gegenüber Störungen. Lieferketten sollen auch bei Krisen, Transportproblemen, politischen Konflikten oder Ausfällen <strong>funktionsfähig bleiben</strong>.</p>'},
+    {type:'callout',kind:'info',label:'Maßnahmen zur Resilienz',html:'<ul><li>Diversifikation der Lieferanten</li><li>Transparenz in der Kette</li><li>Lagerpuffer</li><li>Alternative Bezugsquellen</li></ul>'},
+    {type:'mcq',q:'Was bedeutet Resilienz in Lieferketten?',opts:['Maximale Lagervermeidung um jeden Preis','Widerstandsfähigkeit und Anpassungsfähigkeit bei Störungen','Ausschließlich lokale Produktion','Nur digitale Bestandsführung'],correct:1,exp:'Resiliente Lieferketten bleiben auch unter unsicheren Bedingungen möglichst funktionsfähig.'},
+  ]},
+  {id:'l_l2_5',title:'Globalisierung & Lieferkettenrisiken',icon:'🗺️',topic:'logistik2',steps:[
+    {type:'title',icon:'🗺️',title:'Globalisierung & Lieferkettenrisiken',sub:'Kostenvorteile vs. Störungsrisiken.'},
+    {type:'prose',html:'Globale Lieferketten bieten <strong>Kostenvorteile und Zugang zu internationalen Märkten</strong>, erhöhen aber oft die Komplexität und das Risiko von Störungen.'},
+    {type:'callout',kind:'warn',label:'Abwägung',html:'<p>Unternehmen müssen zwischen <strong>Effizienz</strong> (globale Beschaffung) und <strong>Sicherheit</strong> (lokale/regionale Versorgung) abwägen.</p>'},
+    {type:'mcq',q:'Was ist ein Nachteil globaler Lieferketten?',opts:['Günstigere Einkaufspreise','Zugang zu neuen Märkten','Höhere Komplexität und Störungsrisiken','Mehr Auswahl an Lieferanten'],correct:2,exp:'Globale Lieferketten sind störungsanfälliger und komplexer zu steuern als lokale.'},
+    {type:'complete',title:'✅ Modul Logistik II abgeschlossen!',sub:'SCM, Bestandsmanagement, Bullwhip und Resilienz gemeistert!'},
+  ]},
+ ]},
+{id:'m_nachs',title:'Soziale Nachhaltigkeit',color:'#4ade80',icon:'🤝',
+ desc:'Verantwortung gegenüber Menschen und Gesellschaft',
+ lessons:[
+  {id:'l_ns_1',title:'Grundlagen sozialer Nachhaltigkeit',icon:'🤝',topic:'nachhaltigkeit_soz',steps:[
+    {type:'title',icon:'🤝',title:'Grundlagen sozialer Nachhaltigkeit',sub:'Wirtschaften im Sinne von Menschen und Gesellschaft.'},
+    {type:'callout',kind:'def',label:'Soziale Nachhaltigkeit',html:'<p>Wirtschaftliche Aktivitäten so gestalten, dass <strong>Menschenrechte, faire Arbeitsbedingungen, Gesundheit, Sicherheit und gesellschaftliche Teilhabe</strong> langfristig gesichert werden.</p>'},
+    {type:'mcq',q:'Was bedeutet soziale Nachhaltigkeit?',opts:['Nur Gewinnsteigerung durch Personalabbau','Langfristig verantwortungsvolle Gestaltung wirtschaftlicher Aktivitäten im Hinblick auf Menschen und Gesellschaft','Ausschließlich die Senkung von Energiekosten','Nur die Einhaltung technischer Qualitätsnormen'],correct:1,exp:'Soziale Nachhaltigkeit bezieht sich auf faire und verantwortungsvolle Bedingungen für Menschen innerhalb und außerhalb des Unternehmens.'},
+  ]},
+  {id:'l_ns_2',title:'Stakeholder-Perspektive',icon:'👥',topic:'nachhaltigkeit_soz',steps:[
+    {type:'title',icon:'👥',title:'Stakeholder-Perspektive',sub:'Wer hat Ansprüche an ein Unternehmen?'},
+    {type:'callout',kind:'def',label:'Stakeholder',html:'<p>Unternehmen stehen nicht nur gegenüber Eigentümern in Verantwortung, sondern auch gegenüber: <strong>Mitarbeitenden, Kunden, Lieferanten, Staat, Kapitalgebern und der Gesellschaft</strong>.</p>'},
+    {type:'mcq',q:'Welche Gruppe gehört zu den Stakeholdern eines Unternehmens?',opts:['Nur Eigentümer','Nur die Geschäftsführung','Mitarbeitende, Kunden, Lieferanten, Staat und weitere Anspruchsgruppen','Nur Wettbewerber'],correct:2,exp:'Stakeholder sind alle relevanten Anspruchsgruppen, die vom Unternehmen betroffen sind oder Einfluss auf es haben.'},
+  ]},
+  {id:'l_ns_3',title:'Arbeitsbedingungen & Menschenrechte',icon:'⚖️',topic:'nachhaltigkeit_soz',steps:[
+    {type:'title',icon:'⚖️',title:'Arbeitsbedingungen & Menschenrechte',sub:'Verantwortung endet nicht an der Unternehmensgrenze.'},
+    {type:'callout',kind:'def',label:'Kernthemen',html:'<ul><li>Faire Löhne</li><li>Arbeitssicherheit</li><li>Angemessene Arbeitszeiten</li><li>Schutz vor Diskriminierung</li><li>Einhaltung grundlegender Menschenrechte</li></ul>'},
+    {type:'prose',html:'Diese Verantwortung <strong>endet nicht an den Unternehmensgrenzen</strong>, sondern betrifft auch Lieferketten.'},
+    {type:'mcq',q:'Warum ist soziale Nachhaltigkeit auch in der Lieferkette wichtig?',opts:['Weil nur der Transport betrachtet wird','Weil Verantwortung und Risiken nicht an der Unternehmensgrenze enden','Weil dadurch automatisch alle Kosten entfallen','Weil Lieferanten keine Rolle für die Reputation spielen'],correct:1,exp:'Unternehmen werden auch an den Bedingungen gemessen, unter denen Zulieferer und Partner arbeiten.'},
+    {type:'complete',title:'✅ Modul Soziale Nachhaltigkeit abgeschlossen!',sub:'Grundlagen, Stakeholder, Arbeitsbedingungen und Diversität gemeistert!'},
+  ]},
+ ]},
+{id:'m_nacho',title:'Ökologische Nachhaltigkeit',color:'#38bdf8',icon:'🌱',
+ desc:'Ressourcenschonung, Kreislaufwirtschaft, Wertkette',
+ lessons:[
+  {id:'l_no_1',title:'Grundlagen ökologischer Nachhaltigkeit',icon:'🌱',topic:'nachhaltigkeit_oek',steps:[
+    {type:'title',icon:'🌱',title:'Grundlagen ökologischer Nachhaltigkeit',sub:'Wirtschaften ohne die Grundlagen zu zerstören.'},
+    {type:'callout',kind:'def',label:'Ökologische Nachhaltigkeit',html:'<p>Wirtschaftliche Aktivitäten so gestalten, dass <strong>natürliche Ressourcen geschont, Umweltbelastungen reduziert</strong> und die ökologischen Lebensgrundlagen langfristig erhalten werden.</p>'},
+    {type:'mcq',q:'Was bedeutet ökologische Nachhaltigkeit?',opts:['Ausschließlich kurzfristige Kostensenkung','Schonung natürlicher Ressourcen und Verringerung von Umweltbelastungen','Nur die Optimierung von Werbekampagnen','Ausschließlich die Steigerung von Absatzmengen'],correct:1,exp:'Ökologische Nachhaltigkeit richtet wirtschaftliches Handeln an Umwelt- und Ressourcenschonung aus.'},
+  ]},
+  {id:'l_no_2',title:'Ressourcenverbrauch & Emissionen',icon:'♻️',topic:'nachhaltigkeit_oek',steps:[
+    {type:'title',icon:'♻️',title:'Ressourcenverbrauch & Emissionen',sub:'Was Unternehmen verbrauchen und verursachen.'},
+    {type:'callout',kind:'info',label:'Verbrauchsarten',html:'<p>Unternehmen verbrauchen <strong>Energie, Rohstoffe, Wasser und Flächen</strong>. Gleichzeitig entstehen Emissionen, Abfälle und andere Umweltbelastungen.</p>'},
+    {type:'callout',kind:'def',label:'Ziel',html:'<p>Ressourcen effizienter nutzen und Emissionen möglichst vermeiden oder senken.</p>'},
+    {type:'mcq',q:'Was ist Ziel beim Umgang mit Ressourcenverbrauch?',opts:['Ressourcenverbrauch maximieren','Ressourcen effizienter nutzen und Emissionen senken','Emissionen ignorieren','Nur Wasserverbrauch reduzieren'],correct:1,exp:'Ökologische Nachhaltigkeit strebt nach Ressourceneffizienz und Emissionsminimierung.'},
+  ]},
+  {id:'l_no_3',title:'Kreislaufwirtschaft',icon:'🔄',topic:'nachhaltigkeit_oek',steps:[
+    {type:'title',icon:'🔄',title:'Kreislaufwirtschaft',sub:'Materialien im Kreislauf halten statt entsorgen.'},
+    {type:'callout',kind:'def',label:'Kreislaufwirtschaft',html:'<p>Materialien möglichst lange im Wirtschaftskreislauf halten. Produkte sollen <strong>langlebig, reparierbar und recycelbar</strong> gestaltet werden.</p>'},
+    {type:'mcq',q:'Was ist ein zentrales Ziel der Kreislaufwirtschaft?',opts:['Produkte möglichst schnell zu entsorgen','Materialien möglichst lange im Kreislauf zu halten','Nur Lagerbestände zu erhöhen','Internationale Lieferketten vollständig abzuschaffen'],correct:1,exp:'Kreislaufwirtschaft will Ressourcen schonen, indem Materialien wiederverwendet, repariert oder recycelt werden.'},
+  ]},
+  {id:'l_no_4',title:'Nachhaltigkeit entlang der Wertkette',icon:'🔗',topic:'nachhaltigkeit_oek',steps:[
+    {type:'title',icon:'🔗',title:'Nachhaltigkeit entlang der Wertkette',sub:'Ökologie betrifft jeden Schritt der Wertschöpfung.'},
+    {type:'prose',html:'Ökologische Nachhaltigkeit betrifft <strong>Beschaffung, Produktion, Logistik, Nutzung und Entsorgung</strong>. Schon bei der Auswahl von Materialien, Lieferanten und Transportwegen entstehen wichtige Umweltwirkungen.'},
+    {type:'mcq',q:'Warum betrifft ökologische Nachhaltigkeit die gesamte Wertkette?',opts:['Weil nur die Produktion Umweltwirkungen verursacht','Weil Umweltwirkungen in Beschaffung, Produktion, Logistik, Nutzung und Entsorgung entstehen','Weil nur der Handel verantwortlich ist','Weil Nachhaltigkeit nur ein Marketingthema ist'],correct:1,exp:'Ökologische Wirkungen entstehen in vielen Stufen der Wertschöpfung und müssen deshalb ganzheitlich betrachtet werden.'},
+    {type:'complete',title:'✅ Modul Ökologische Nachhaltigkeit abgeschlossen!',sub:'Grundlagen, Emissionen, Kreislaufwirtschaft und Wertkette gemeistert!'},
+  ]},
+ ]},
+{id:'m_digit',title:'Digitalisierung',color:'#f472b6',icon:'💻',
+ desc:'Digitale Vernetzung, KI, Chancen und Risiken',
+ lessons:[
+  {id:'l_d_1',title:'Grundlagen der Digitalisierung',icon:'💻',topic:'digitalisierung',steps:[
+    {type:'title',icon:'💻',title:'Grundlagen der Digitalisierung',sub:'Digitale Technologien verändern Unternehmen grundlegend.'},
+    {type:'callout',kind:'def',label:'Digitalisierung',html:'<p>Nutzung digitaler Technologien zur <strong>Erfassung, Verarbeitung, Vernetzung und Nutzung</strong> von Informationen. Sie verändert, wie Leistungen geplant, erstellt, koordiniert, vermarktet und weiterentwickelt werden.</p>'},
+    {type:'mcq',q:'Was bedeutet Digitalisierung im Unternehmenskontext?',opts:['Nur das Scannen von Papierdokumenten','Die Nutzung digitaler Technologien zur Veränderung und Verbesserung betrieblicher Prozesse','Ausschließlich Online-Werbung','Nur die Automatisierung der Buchhaltung'],correct:1,exp:'Digitalisierung betrifft viele betriebliche Prozesse und verändert die Art, wie Informationen genutzt und Leistungen erstellt werden.'},
+  ]},
+  {id:'l_d_2',title:'Digitale Vernetzung von Wertketten',icon:'🔗',topic:'digitalisierung',steps:[
+    {type:'title',icon:'🔗',title:'Digitale Vernetzung von Wertketten',sub:'Informationen fließen schneller und präziser.'},
+    {type:'prose',html:'Durch Digitalisierung können Informationen schneller und präziser entlang der Wertkette ausgetauscht werden. Das verbessert <strong>Planung, Transparenz und Koordination</strong> zwischen Beschaffung, Produktion, Logistik, Marketing und Kunden.'},
+    {type:'mcq',q:'Welchen Vorteil hat die digitale Vernetzung der Wertkette?',opts:['Sie verhindert jede Form von Risiko','Sie verbessert Transparenz, Koordination und Reaktionsfähigkeit','Sie macht Lagerhaltung grundsätzlich überflüssig','Sie ersetzt automatisch alle Mitarbeitenden'],correct:1,exp:'Durch vernetzte Informationen können Prozesse besser abgestimmt und schneller gesteuert werden.'},
+  ]},
+  {id:'l_d_3',title:'Künstliche Intelligenz in Leistungsprozessen',icon:'🤖',topic:'digitalisierung',steps:[
+    {type:'title',icon:'🤖',title:'Künstliche Intelligenz in Leistungsprozessen',sub:'KI als Werkzeug in der Unternehmenssteuerung.'},
+    {type:'callout',kind:'info',label:'Einsatzgebiete von KI',html:'<ul><li>Absatzprognosen</li><li>Qualitätskontrolle</li><li>Routenoptimierung</li><li>Chatbots</li><li>Automatisierte Texterstellung</li></ul>'},
+    {type:'prose',html:'KI verändert damit einzelne Aktivitäten und die <strong>Struktur der Wertkette</strong>.'},
+    {type:'mcq',q:'Wofür kann künstliche Intelligenz in Leistungsprozessen eingesetzt werden?',opts:['Nur für die Gestaltung von Logos','Für Prognosen, Analyse, Automatisierung und Entscheidungsunterstützung','Nur für die Entlassung von Personal','Ausschließlich für rechtliche Entscheidungen'],correct:1,exp:'KI unterstützt viele operative und analytische Aufgaben in Unternehmen.'},
+  ]},
+  {id:'l_d_4',title:'Chancen und Risiken der Digitalisierung',icon:'⚠️',topic:'digitalisierung',steps:[
+    {type:'title',icon:'⚠️',title:'Chancen und Risiken der Digitalisierung',sub:'Digitalisierung ist kein Allheilmittel.'},
+    {type:'callout',kind:'def',label:'Chancen',html:'<ul><li>Effizienzsteigerung</li><li>Bessere Datenverfügbarkeit</li><li>Schnellere Prozesse</li><li>Neue Geschäftsmodelle</li><li>Stärkere Kundenorientierung</li></ul>'},
+    {type:'callout',kind:'warn',label:'Risiken',html:'<ul><li>Hohe Investitionen</li><li>Datenschutzprobleme</li><li>Abhängigkeiten von IT-Systemen</li><li>Cyberrisiken</li><li>Qualifikationsanforderungen</li></ul>'},
+    {type:'mcq',q:'Welches ist KEIN typisches Risiko der Digitalisierung?',opts:['Datenschutzprobleme','Cyberrisiken','Schnellere Prozesse','Abhängigkeiten von IT-Systemen'],correct:2,exp:'Schnellere Prozesse sind eine Chance der Digitalisierung, kein Risiko.'},
+    {type:'complete',title:'✅ Modul Digitalisierung abgeschlossen!',sub:'Grundlagen, Vernetzung, KI sowie Chancen und Risiken gemeistert!'},
+  ]},
+ ]},
+{id:'m_zsg',title:'Ziele, Strategien & Geschäftsmodelle',color:'#a78bfa',icon:'🧭',
+ desc:'Unternehmensziele, Wettbewerbsstrategien, Geschäftsmodelle',
+ lessons:[
+  {id:'l_zsg_1',title:'Grundlagen & Unternehmensziele',icon:'🧭',topic:'ziele_strategie',steps:[
+    {type:'title',icon:'🧭',title:'Ziele, Strategien und Geschäftsmodelle',sub:'Unternehmen handeln nicht zufällig – sondern zielgerichtet.'},
+    {type:'callout',kind:'def',label:'Drei Ebenen',html:'<ul><li><strong>Ziele</strong>: Was soll erreicht werden?</li><li><strong>Strategien</strong>: Wie werden Wettbewerbsvorteile aufgebaut?</li><li><strong>Geschäftsmodelle</strong>: Wie schafft das Unternehmen Nutzen und Erlöse?</li></ul>'},
+    {type:'prose',html:'Unternehmensziele können <strong>ökonomisch</strong> (Gewinn, Rentabilität, Wachstum) oder <strong>nicht-ökonomisch</strong> (Kundenzufriedenheit, Nachhaltigkeit, Qualität) sein.'},
+    {type:'mcq',q:'Was ist ein Unternehmensziel?',opts:['Nur die aktuelle Produktionsmenge','Ein angestrebter zukünftiger Zustand des Unternehmens','Ausschließlich die Personalplanung','Nur der Jahresabschluss'],correct:1,exp:'Unternehmensziele geben an, was das Unternehmen in der Zukunft erreichen möchte – ökonomisch oder nicht-ökonomisch.'},
+  ]},
+  {id:'l_zsg_2',title:'Wettbewerbsstrategien',icon:'🏆',topic:'ziele_strategie',steps:[
+    {type:'title',icon:'🏆',title:'Wettbewerbsstrategien',sub:'Drei Grundstrategien für den Wettbewerb.'},
+    {type:'reveal-steps',steps:[
+      {num:'1',title:'Kostenführerschaft',body:'Leistungen <strong>günstiger</strong> als Wettbewerber anbieten.',done:false},
+      {num:'2',title:'Differenzierung',body:'Sich durch <strong>besondere Merkmale</strong> vom Wettbewerb abheben.',done:false},
+      {num:'3',title:'Fokussierung',body:'Konzentration auf bestimmte <strong>Zielgruppen oder Marktsegmente</strong>.',done:false},
+    ]},
+    {type:'mcq',q:'Welche der folgenden Strategien zielt darauf ab, günstiger als Wettbewerber zu produzieren?',opts:['Differenzierung','Fokussierung','Kostenführerschaft','Diversifikation'],correct:2,exp:'Kostenführerschaft bedeutet, Leistungen zu geringeren Kosten als Wettbewerber anzubieten.'},
+  ]},
+  {id:'l_zsg_3',title:'Geschäftsmodelle',icon:'💡',topic:'ziele_strategie',steps:[
+    {type:'title',icon:'💡',title:'Geschäftsmodelle',sub:'Wie schafft ein Unternehmen Wert – und verdient Geld?'},
+    {type:'callout',kind:'def',label:'Geschäftsmodell',html:'<p>Beschreibt, wie ein Unternehmen <strong>Wert für Kunden schafft, liefert und selbst daraus Erlöse erzielt</strong>.</p><p>Zentrale Fragen: Wer ist der Kunde? Welches Problem wird gelöst? Wie wird die Leistung erstellt? Wie verdient das Unternehmen?</p>'},
+    {type:'mcq',q:'Was beschreibt ein Geschäftsmodell?',opts:['Nur die Rechtsform eines Unternehmens','Wie ein Unternehmen Wert schafft und daraus Erlöse erzielt','Nur die Personalstruktur','Nur die Lagerorganisation'],correct:1,exp:'Ein Geschäftsmodell erklärt, wie Nutzen für Kunden entsteht und wie das Unternehmen wirtschaftlich davon profitiert.'},
+  ]},
+  {id:'l_zsg_4',title:'Strategie und Wertkette',icon:'🔗',topic:'ziele_strategie',steps:[
+    {type:'title',icon:'🔗',title:'Strategie und Wertkette',sub:'Strategie prägt, wie Leistungsprozesse gestaltet werden.'},
+    {type:'callout',kind:'satz',label:'Zusammenhang',html:'<p>Ein Unternehmen mit <strong>Kostenführerschaft</strong> wird Beschaffung, Produktion und Logistik besonders effizient organisieren.<br>Ein <strong>differenzierendes</strong> Unternehmen investiert stärker in Innovation, Qualität, Marke oder Service.</p>'},
+    {type:'mcq',q:'Was ist eine Strategie?',opts:['Ein kurzfristiger Zufallsplan','Ein langfristiger Plan zur Erreichung von Zielen und zum Aufbau von Wettbewerbsvorteilen','Nur die Festlegung von Preisen','Ausschließlich Werbung für Produkte'],correct:1,exp:'Strategien sind langfristige Grundsatzentscheidungen, mit denen Unternehmen ihre Ziele erreichen und sich im Wettbewerb behaupten wollen.'},
+    {type:'complete',title:'✅ Modul Ziele & Strategien abgeschlossen!',sub:'Ziele, Wettbewerbsstrategien und Geschäftsmodelle gemeistert!'},
+  ]},
+ ]},
+{id:'m_mkt',title:'Marketing',color:'#fb923c',icon:'📣',
+ desc:'Grundlagen, Segmentierung, Marketing-Mix',
+ lessons:[
+  {id:'l_m_1',title:'Grundlagen des Marketing',icon:'📣',topic:'marketing1',steps:[
+    {type:'title',icon:'📣',title:'Grundlagen des Marketing',sub:'Marketing bedeutet marktorientierte Unternehmensführung.'},
+    {type:'callout',kind:'def',label:'Marketing',html:'<p>Ausgangspunkt sind <strong>Kundenbedürfnisse, Marktchancen und Wettbewerber</strong>. Unternehmen sollen ihre Leistungen so gestalten, dass sie für bestimmte Zielgruppen attraktiv sind.</p>'},
+    {type:'mcq',q:'Was ist Marketing?',opts:['Nur Werbung','Marktorientierte Unternehmensführung auf Basis von Kundenbedürfnissen und Wettbewerb','Ausschließlich Preisfestlegung','Nur Produktdesign'],correct:1,exp:'Marketing umfasst weit mehr als Werbung. Es richtet das Unternehmen an Markt, Kunden und Wettbewerb aus.'},
+  ]},
+  {id:'l_m_2',title:'Bedürfnis, Bedarf & Nachfrage',icon:'💭',topic:'marketing1',steps:[
+    {type:'title',icon:'💭',title:'Bedürfnis, Bedarf & Nachfrage',sub:'Drei Stufen auf dem Weg zum Markt.'},
+    {type:'reveal-steps',steps:[
+      {num:'1',title:'Bedürfnis',body:'Ein <strong>Mangel- oder Wunschzustand</strong>.',done:false},
+      {num:'2',title:'Bedarf',body:'Bedürfnis + <strong>Kaufkraft</strong>.',done:false},
+      {num:'3',title:'Nachfrage',body:'Bedarf, der am <strong>Markt konkret wirksam</strong> wird.',done:false},
+    ]},
+    {type:'mcq',q:'Was ist der Unterschied zwischen Bedürfnis, Bedarf und Nachfrage?',opts:['Es gibt keinen Unterschied','Bedürfnis ist ein Wunsch, Bedarf hat Kaufkraft, Nachfrage ist marktaktiver Bedarf','Bedarf ist stärker als Nachfrage','Nachfrage existiert ohne Kaufkraft'],correct:1,exp:'Die drei Stufen bauen aufeinander auf: Wunsch → Kaufkraft → Markthandlung.'},
+  ]},
+  {id:'l_m_3',title:'Marktsegmentierung & Positionierung',icon:'🎯',topic:'marketing1',steps:[
+    {type:'title',icon:'🎯',title:'Marktsegmentierung & Positionierung',sub:'Den Markt verstehen und sich darin platzieren.'},
+    {type:'callout',kind:'def',label:'Marktsegmentierung',html:'<p>Der Gesamtmarkt wird in <strong>Teilmärkte oder Segmente</strong> aufgeteilt. Kriterien: demografische, geografische, psychografische oder verhaltensorientierte Merkmale.</p>'},
+    {type:'callout',kind:'def',label:'Positionierung',html:'<p>Wie soll ein Produkt oder Unternehmen im Vergleich zum Wettbewerb im <strong>Kopf der Kunden</strong> wahrgenommen werden?</p>'},
+    {type:'mcq',q:'Was ist Marktsegmentierung?',opts:['Die Aufteilung eines Marktes in unterschiedliche Kundengruppen','Die Verkleinerung eines Unternehmens','Die Zusammenlegung aller Produkte','Die reine Preisgestaltung'],correct:0,exp:'Marktsegmentierung teilt einen Gesamtmarkt in Gruppen mit ähnlichen Merkmalen oder Bedürfnissen.'},
+  ]},
+  {id:'l_m_4',title:'Der Marketing-Mix (4 Ps)',icon:'🔧',topic:'marketing2',steps:[
+    {type:'title',icon:'🔧',title:'Der Marketing-Mix',sub:'Die vier Instrumente der Marktbearbeitung.'},
+    {type:'reveal-steps',steps:[
+      {num:'P1',title:'Produktpolitik',body:'Gestaltung des Leistungsangebots: Qualität, Design, Marke, Verpackung.',done:false},
+      {num:'P2',title:'Preispolitik',body:'Preisniveau, Rabatte, Preisstaffelungen, Preisdifferenzierung.',done:false},
+      {num:'P3',title:'Distributionspolitik',body:'Wie gelangt das Angebot zum Kunden? Direkt oder über Zwischenhändler.',done:false},
+      {num:'P4',title:'Kommunikationspolitik',body:'Werbung, Social Media, PR, Verkaufsförderung.',done:false},
+    ]},
+    {type:'mcq',q:'Welche vier Bereiche gehören klassisch zum Marketing-Mix?',opts:['Produktion, Personal, Finanzierung, Steuern','Produktpolitik, Preispolitik, Distributionspolitik, Kommunikationspolitik','Innovation, Nachhaltigkeit, Logistik, Controlling','Strategie, Organisation, Führung, Bilanzierung'],correct:1,exp:'Die klassischen 4 Ps sind Produkt, Preis, Place und Promotion.'},
+  ]},
+  {id:'l_m_5',title:'Zusammenhang der Marketinginstrumente',icon:'🔗',topic:'marketing2',steps:[
+    {type:'title',icon:'🔗',title:'Zusammenhang der Marketinginstrumente',sub:'Die 4 Ps müssen zusammenpassen.'},
+    {type:'callout',kind:'warn',label:'Achtung: Konsistenz',html:'<p>Produkt, Preis, Distribution und Kommunikation müssen <strong>zueinander passen und auf die Zielgruppe abgestimmt</strong> sein.</p><p>Ein hochwertig positioniertes Produkt benötigt meist eine andere Preis- und Kommunikationsstrategie als ein standardisiertes Massenprodukt.</p>'},
+    {type:'mcq',q:'Was regelt die Distributionspolitik?',opts:['Wie ein Angebot zum Kunden gelangt','Wie Mitarbeitende eingestellt werden','Wie ein Unternehmen besteuert wird','Wie Gewinne intern verteilt werden'],correct:0,exp:'Distributionspolitik gestaltet die Absatzwege und den Vertrieb zum Kunden.'},
+    {type:'complete',title:'✅ Modul Marketing abgeschlossen!',sub:'Grundlagen, Segmentierung, Marketing-Mix gemeistert!'},
+  ]},
+ ]},
+{id:'m_innov',title:'Innovation',color:'#60a5fa',icon:'💡',
+ desc:'Grundlagen, Arten, Prozess, Open Innovation',
+ lessons:[
+  {id:'l_i_1',title:'Grundlagen von Innovation',icon:'💡',topic:'innovation1',steps:[
+    {type:'title',icon:'💡',title:'Grundlagen von Innovation',sub:'Mehr als eine gute Idee.'},
+    {type:'callout',kind:'def',label:'Innovation',html:'<p>Die <strong>erfolgreiche wirtschaftliche Umsetzung neuer Ideen</strong>. Innovationen können Produkte, Prozesse, Dienstleistungen oder Geschäftsmodelle betreffen.</p>'},
+    {type:'callout',kind:'info',label:'Invention ≠ Innovation',html:'<p><strong>Invention</strong>: neue Idee oder Erfindung<br><strong>Innovation</strong>: erfolgreiche praktische und wirtschaftliche Umsetzung</p><p>Nicht jede Erfindung wird zur Innovation!</p>'},
+    {type:'mcq',q:'Was ist eine Innovation?',opts:['Jede beliebige Idee','Die erfolgreiche wirtschaftliche Umsetzung einer neuen Idee','Nur eine technische Erfindung','Ausschließlich Werbung für neue Produkte'],correct:1,exp:'Innovation setzt voraus, dass eine neue Idee nicht nur erfunden, sondern praktisch und wirtschaftlich genutzt wird.'},
+  ]},
+  {id:'l_i_2',title:'Arten von Innovationen',icon:'🔬',topic:'innovation1',steps:[
+    {type:'title',icon:'🔬',title:'Arten von Innovationen',sub:'Inkrementell oder radikal? Produkt oder Prozess?'},
+    {type:'reveal-steps',steps:[
+      {num:'1',title:'Produktinnovation',body:'Neues oder verbessertes Produkt oder Dienstleistung.',done:false},
+      {num:'2',title:'Prozessinnovation',body:'Verbesserter oder neuer Ablauf in der Leistungserstellung.',done:false},
+      {num:'3',title:'Geschäftsmodellinnovation',body:'Veränderung, wie Wert geschaffen und erzielt wird.',done:false},
+      {num:'4',title:'Inkrementell vs. radikal',body:'Inkrementell: schrittweise Verbesserung. Radikal: grundlegende Veränderung.',done:false},
+    ]},
+    {type:'mcq',q:'Was kennzeichnet eine inkrementelle Innovation?',opts:['Sie verbessert Bestehendes schrittweise','Sie schafft immer einen völlig neuen Markt','Sie betrifft nur die Buchhaltung','Sie ist immer erfolglos'],correct:0,exp:'Inkrementelle Innovationen entwickeln bestehende Produkte oder Prozesse in kleinen Schritten weiter.'},
+  ]},
+  {id:'l_i_3',title:'Der Innovationsprozess',icon:'🔄',topic:'innovation2',steps:[
+    {type:'title',icon:'🔄',title:'Der Innovationsprozess',sub:'Von der Idee bis zur Markteinführung.'},
+    {type:'reveal-steps',steps:[
+      {num:'1',title:'Ideengewinnung',body:'Ideen sammeln aus internen und externen Quellen.',done:false},
+      {num:'2',title:'Bewertung',body:'Ideen nach Potenzial und Machbarkeit beurteilen.',done:false},
+      {num:'3',title:'Entwicklung',body:'Ideen ausarbeiten und konkretisieren.',done:false},
+      {num:'4',title:'Test',body:'Prototypen und Piloten erproben.',done:false},
+      {num:'5',title:'Markteinführung',body:'Neue Leistung auf den Markt bringen.',done:false},
+    ]},
+    {type:'mcq',q:'Welche Phasen gehören typischerweise zum Innovationsprozess?',opts:['Nur Werbung und Vertrieb','Ideengewinnung, Bewertung, Entwicklung, Test und Markteinführung','Nur Buchhaltung und Lagerung','Nur Preisfestsetzung'],correct:1,exp:'Innovationen durchlaufen meist mehrere Phasen von der Idee bis zur Markteinführung.'},
+  ]},
+  {id:'l_i_4',title:'Stage-Gate & Open Innovation',icon:'🚪',topic:'innovation2',steps:[
+    {type:'title',icon:'🚪',title:'Stage-Gate & Open Innovation',sub:'Strukturiert innovieren – auch mit Externen.'},
+    {type:'callout',kind:'def',label:'Stage-Gate-Ansatz',html:'<p>Strukturiert den Innovationsprozess in einzelne Phasen und <strong>Entscheidungspunkte (Gates)</strong>. Nach jeder Phase: Weiterführen, Anpassen oder Beenden?</p>'},
+    {type:'callout',kind:'def',label:'Open Innovation',html:'<p>Der Innovationsprozess wird für <strong>externe Akteure</strong> geöffnet: Kunden, Lieferanten, Forschungseinrichtungen. Breiteres Wissen, schnellere Innovation.</p>'},
+    {type:'mcq',q:'Was bedeutet Open Innovation?',opts:['Innovation ohne Planung','Öffnung des Innovationsprozesses für externe Akteure','Ausschließlich interne Entwicklung im Geheimen','Nur die Digitalisierung von Produkten'],correct:1,exp:'Open Innovation bezieht externe Wissensquellen und Partner in den Innovationsprozess ein.'},
+  ]},
+  {id:'l_i_5',title:'Risiken & Erfolgsfaktoren',icon:'⚠️',topic:'innovation2',steps:[
+    {type:'title',icon:'⚠️',title:'Risiken & Erfolgsfaktoren von Innovationen',sub:'Innovation ist unsicher – aber steuerbar.'},
+    {type:'callout',kind:'warn',label:'Risiken',html:'<ul><li>Technische Probleme</li><li>Fehleinschätzungen des Marktes</li><li>Hohe Entwicklungskosten</li></ul>'},
+    {type:'callout',kind:'def',label:'Erfolgsfaktoren',html:'<ul><li>Kundennähe</li><li>Schnelle Umsetzung</li><li>Interdisziplinäre Zusammenarbeit</li><li>Ausreichende Ressourcen</li><li>Systematisches Innovationsmanagement</li></ul>'},
+    {type:'mcq',q:'Wozu dient der Stage-Gate-Ansatz?',opts:['Zur zufälligen Auswahl von Projekten','Zur Strukturierung des Innovationsprozesses durch Phasen und Entscheidungspunkte','Nur zur Personalplanung','Ausschließlich zur Preisberechnung'],correct:1,exp:'Stage-Gate hilft, Innovationsprojekte systematisch zu steuern und an Entscheidungspunkten zu bewerten.'},
+    {type:'complete',title:'✅ Modul Innovation abgeschlossen!',sub:'Grundlagen, Arten, Prozess und Open Innovation gemeistert!'},
+  ]},
+ ]},
+];
+
+// ═══════════════════════════════════════════════
+// FLASHCARDS
+// ═══════════════════════════════════════════════
+const CARDS=[
+  // Produktion I
+  {t:'produktion1',q:'Was sind Produktionsfaktoren?',h:'Arbeit, Betriebsmittel...',a:'Produktionsfaktoren sind die Mittel zur Erstellung von Leistungen: insbesondere <code>Arbeit</code>, <code>Betriebsmittel</code> und <code>Werkstoffe</code>.'},
+  {t:'produktion1',q:'Nenne wichtige Produktionsziele.',h:'Kosten, Qualität...',a:'<code>Kosten</code>, <code>Qualität</code>, <code>Zeit</code>, <code>Flexibilität</code> und <code>Termintreue</code>.'},
+  {t:'produktion1',q:'Welche drei grundlegenden Produktionsarten gibt es?',h:'Einzel-, Serien-...',a:'<code>Einzelfertigung</code>, <code>Serienfertigung</code> und <code>Massenfertigung</code>.'},
+  {t:'produktion1',q:'Was ist Massenfertigung?',h:'Große Mengen...',a:'Die Herstellung großer Mengen <code>standardisierter</code> Produkte. Hohe Effizienz, wenig Flexibilität.'},
+  {t:'produktion1',q:'Unterschied Werkstatt- vs. Fließfertigung?',h:'Flexibel vs. effizient...',a:'<code>Werkstattfertigung</code>: flexibel, aber langsamer. <code>Fließfertigung</code>: effizient und standardisiert, weniger flexibel.'},
+  // Produktion II
+  {t:'produktion2',q:'Was ist Produktionsplanung?',h:'Was, wann, wo...',a:'Produktionsplanung legt fest, <code>was</code>, <code>wann</code>, <code>wo</code> und in welcher <code>Menge</code> produziert werden soll.'},
+  {t:'produktion2',q:'Was ist das zentrale Ziel von Lean Production?',h:'Verschwendung...',a:'Die <code>Vermeidung von Verschwendung</code> und die effiziente Gestaltung von Produktionsprozessen.'},
+  {t:'produktion2',q:'Welche Kriterien spielen bei Make-or-Buy eine Rolle?',h:'Kosten, Know-how...',a:'<code>Kosten</code>, <code>Qualität</code>, <code>Know-how</code>, <code>Abhängigkeiten</code> und strategische Bedeutung.'},
+  {t:'produktion2',q:'Was ist Kapazitätsplanung?',h:'Ressourcen anpassen...',a:'Sicherstellung, dass ausreichend <code>Personal, Maschinen und Materialien</code> für die geplante Produktion verfügbar sind.'},
+  // Logistik I
+  {t:'logistik1',q:'Was ist Logistik?',h:'Planung, Steuerung...',a:'Logistik ist die Planung, Steuerung und Kontrolle von <code>Güter- und Informationsflüssen</code> zur bedarfsgerechten Versorgung.'},
+  {t:'logistik1',q:'Nenne die Teilbereiche der Logistik.',h:'Beschaffung, Produktion...',a:'<code>Beschaffungslogistik</code>, <code>Produktionslogistik</code> und <code>Distributionslogistik</code>.'},
+  {t:'logistik1',q:'Welche Vor- und Nachteile hat Lagerhaltung?',h:'Lieferfähigkeit vs. Kosten...',a:'Vorteile: Lieferfähigkeit, Versorgungssicherheit. Nachteile: <code>Kapitalbindung</code>, Lagerkosten, Veralterungsrisiko.'},
+  // Logistik II
+  {t:'logistik2',q:'Was ist Supply Chain Management?',h:'Unternehmensübergreifend...',a:'Die unternehmensübergreifende <code>Planung, Steuerung und Koordination</code> der Liefer- und Wertschöpfungskette.'},
+  {t:'logistik2',q:'Was beschreibt der Bullwhip-Effekt?',h:'Aufschaukelung...',a:'Die <code>Verstärkung kleiner Nachfrageschwankungen</code> entlang der Lieferkette.'},
+  {t:'logistik2',q:'Was bedeutet Resilienz?',h:'Widerstandsfähigkeit...',a:'Widerstandsfähigkeit und <code>Anpassungsfähigkeit</code> eines Systems gegenüber Störungen.'},
+  // Soziale Nachhaltigkeit
+  {t:'nachhaltigkeit_soz',q:'Was ist soziale Nachhaltigkeit?',h:'Menschenrechte, Arbeit...',a:'Die langfristig verantwortungsvolle Gestaltung wirtschaftlicher Aktivitäten im Hinblick auf <code>Menschenrechte, faire Arbeitsbedingungen</code>, Sicherheit und gesellschaftliche Verantwortung.'},
+  {t:'nachhaltigkeit_soz',q:'Was sind Stakeholder?',h:'Anspruchsgruppen...',a:'Stakeholder sind <code>Anspruchsgruppen</code> eines Unternehmens, z.B. Mitarbeitende, Kunden, Lieferanten, Kapitalgeber, Staat und Gesellschaft.'},
+  {t:'nachhaltigkeit_soz',q:'Nenne Beispiele für soziale Nachhaltigkeit.',h:'Faire Löhne...',a:'Faire Löhne, Arbeitssicherheit, Schutz vor Diskriminierung, <code>Diversität</code>, Chancengleichheit und Achtung von Menschenrechten.'},
+  // Ökologische Nachhaltigkeit
+  {t:'nachhaltigkeit_oek',q:'Was ist ökologische Nachhaltigkeit?',h:'Ressourcenschonung...',a:'Die umweltverträgliche Gestaltung wirtschaftlicher Aktivitäten durch <code>Ressourcenschonung</code> und Verringerung negativer Umweltwirkungen.'},
+  {t:'nachhaltigkeit_oek',q:'Was ist Kreislaufwirtschaft?',h:'Wiederverwenden...',a:'Ein Ansatz, bei dem Materialien möglichst lange <code>genutzt, wiederverwendet, repariert und recycelt</code> werden.'},
+  {t:'nachhaltigkeit_oek',q:'Nenne typische ökologische Zielgrößen.',h:'Energie, Emissionen...',a:'Weniger Energieverbrauch, geringere <code>Emissionen</code>, weniger Abfall, effizientere Ressourcennutzung.'},
+  // Digitalisierung
+  {t:'digitalisierung',q:'Was ist Digitalisierung?',h:'Digitale Technologien...',a:'Die Nutzung digitaler Technologien zur <code>Erfassung, Verarbeitung, Vernetzung und Nutzung</code> von Informationen in Prozessen und Geschäftsmodellen.'},
+  {t:'digitalisierung',q:'Nenne Chancen der Digitalisierung.',h:'Effizienz, Daten...',a:'Effizienzsteigerung, schnellere Prozesse, bessere <code>Datenverfügbarkeit</code>, neue Geschäftsmodelle und stärkere Kundenorientierung.'},
+  {t:'digitalisierung',q:'Nenne Risiken der Digitalisierung.',h:'Kosten, Cyberrisiken...',a:'Hohe Investitionen, <code>Datenschutzprobleme</code>, Cyberrisiken, Systemabhängigkeiten und neue Qualifikationsanforderungen.'},
+  // Ziele & Strategie
+  {t:'ziele_strategie',q:'Was ist ein Unternehmensziel?',h:'Angestrebter Zustand...',a:'Ein angestrebter zukünftiger Zustand des Unternehmens, z.B. Gewinn, Wachstum, Nachhaltigkeit oder <code>Kundenzufriedenheit</code>.'},
+  {t:'ziele_strategie',q:'Nenne die drei grundlegenden Wettbewerbsstrategien.',h:'Porter...',a:'<code>Kostenführerschaft</code>, <code>Differenzierung</code> und <code>Fokussierung</code>.'},
+  {t:'ziele_strategie',q:'Was ist ein Geschäftsmodell?',h:'Wert schaffen...',a:'Beschreibt, wie ein Unternehmen <code>Wert für Kunden schafft</code>, diesen liefert und daraus Erlöse erzielt.'},
+  // Marketing I & II
+  {t:'marketing1',q:'Was ist der Unterschied zwischen Bedürfnis, Bedarf und Nachfrage?',h:'Wunsch, Kaufkraft...',a:'Bedürfnis ist ein Wunsch. Bedarf ist ein Bedürfnis mit <code>Kaufkraft</code>. Nachfrage ist am Markt tatsächlich wirksamer Bedarf.'},
+  {t:'marketing1',q:'Was ist Marktsegmentierung?',h:'Märkte aufteilen...',a:'Die Aufteilung eines Gesamtmarktes in Teilmärkte mit ähnlichen <code>Kundenmerkmalen oder Bedürfnissen</code>.'},
+  {t:'marketing1',q:'Was bedeutet Positionierung?',h:'Im Kopf der Kunden...',a:'Die bewusste Gestaltung der Wahrnehmung eines Angebots im Kopf der <code>Zielgruppe</code>.'},
+  {t:'marketing2',q:'Was ist der Marketing-Mix?',h:'4 Ps...',a:'Die Gesamtheit der wichtigsten Instrumente zur Marktbearbeitung: <code>Produkt-, Preis-, Distributions- und Kommunikationspolitik</code>.'},
+  {t:'marketing2',q:'Was gehört zur Produktpolitik?',h:'Design, Marke...',a:'Qualität, <code>Design</code>, <code>Marke</code>, Verpackung, Sortiment und Serviceleistungen.'},
+  {t:'marketing2',q:'Was umfasst die Kommunikationspolitik?',h:'Werbung, Social Media...',a:'Alle Maßnahmen zur Information und Bindung von Kunden: <code>Werbung</code>, Social Media, PR und Verkaufsförderung.'},
+  // Innovation I & II
+  {t:'innovation1',q:'Was ist Innovation?',h:'Umsetzung einer Idee...',a:'Die <code>erfolgreiche wirtschaftliche Umsetzung</code> einer neuen Idee.'},
+  {t:'innovation1',q:'Was ist der Unterschied zwischen Invention und Innovation?',h:'Erfindung vs. Umsetzung...',a:'Invention ist die Erfindung oder neue Idee, Innovation ist deren <code>erfolgreiche praktische und wirtschaftliche Umsetzung</code>.'},
+  {t:'innovation1',q:'Welche Arten von Innovationen gibt es?',h:'Produkt, Prozess...',a:'Produktinnovationen, Prozessinnovationen, Geschäftsmodellinnovationen sowie <code>inkrementelle und radikale Innovationen</code>.'},
+  {t:'innovation2',q:'Was ist ein Innovationsprozess?',h:'Idee bis Markt...',a:'Ein strukturierter Ablauf von der Ideengewinnung über Entwicklung und Test bis zur <code>Markteinführung</code>.'},
+  {t:'innovation2',q:'Was ist der Stage-Gate-Ansatz?',h:'Phasen und Gates...',a:'Ein Modell, das den Innovationsprozess in <code>Phasen und Entscheidungspunkte</code> gliedert.'},
+  {t:'innovation2',q:'Warum ist die Schnittstelle zwischen Marketing und F&E wichtig?',h:'Kundenbedürfnisse...',a:'Weil <code>Kundenbedürfnisse</code> aus dem Markt mit technischem Wissen verbunden werden müssen, damit marktfähige Innovationen entstehen.'},
+];
+
+// ═══════════════════════════════════════════════
+// QUIZ
+// ═══════════════════════════════════════════════
+const QUIZ=[
+  // Produktion I
+  {t:'produktion1',q:'Was ist das Hauptziel der Produktion?',o:['Nur möglichst viele Produkte herzustellen','Leistungen wirtschaftlich, qualitativ angemessen und termingerecht zu erstellen','Die Marketingabteilung zu unterstützen','Personalkosten zu senken'],c:1,e:'Produktion soll Leistungen so erstellen, dass Kosten, Qualität, Zeit und weitere Zielgrößen sinnvoll erfüllt werden.'},
+  {t:'produktion1',q:'Welche Produktionsart beschreibt die Herstellung großer Mengen standardisierter Produkte?',o:['Einzelfertigung','Serienfertigung','Massenfertigung','Projektfertigung'],c:2,e:'Massenfertigung ist auf hohe Stückzahlen standardisierter Produkte ausgerichtet.'},
+  {t:'produktion1',q:'Welche Aussage zur Werkstattfertigung ist richtig?',o:['Sie ist besonders unflexibel','Sie ist meist sehr flexibel, aber oft weniger effizient','Sie ist nur für digitale Produkte geeignet','Sie kommt nur in Dienstleistungsunternehmen vor'],c:1,e:'Werkstattfertigung erlaubt individuelle Bearbeitungsschritte, ist aber häufig mit längeren Wegen und höheren Kosten verbunden.'},
+  // Produktion II
+  {t:'produktion2',q:'Was ist das Ziel der Kapazitätsplanung?',o:['Nur Marketingkosten senken','Sicherstellen, dass ausreichend, aber nicht übermäßig viele Ressourcen vorhanden sind','Ausschließlich Produktqualität messen','Alle Schritte an Lieferanten abgeben'],c:1,e:'Kapazitätsplanung sorgt dafür, dass Personal, Maschinen und Materialien passend zur Produktionsmenge verfügbar sind.'},
+  {t:'produktion2',q:'Wofür steht Lean Production?',o:['Für besonders teure Verfahren','Für die Maximierung von Lagerbeständen','Für eine schlanke Produktion mit möglichst wenig Verschwendung','Für vollständige Handarbeit'],c:2,e:'Lean Production zielt auf Effizienz und die Vermeidung von Verschwendung ab.'},
+  {t:'produktion2',q:'Worum geht es bei der Make-or-Buy-Entscheidung?',o:['Um Werbung vs. Vertrieb','Um Eigenfertigung vs. Fremdbezug','Um zwei Kundengruppen','Um Logistik vs. Marketing'],c:1,e:'Make-or-Buy beschreibt die Entscheidung, ob Leistungen intern oder extern erbracht werden.'},
+  // Logistik I
+  {t:'logistik1',q:'Was ist das grundlegende Ziel der Logistik?',o:['Möglichst viele Lager zu bauen','Güter in richtiger Menge, Zeit, Qualität und am richtigen Ort bereitzustellen','Nur Marketingprozesse zu unterstützen','Nur Transportkosten zu erhöhen'],c:1,e:'Logistik sichert die wirtschaftliche und bedarfsgerechte Versorgung mit Gütern und Informationen.'},
+  {t:'logistik1',q:'Welche Aussage zur Lagerhaltung ist richtig?',o:['Lager verursachen nie Kosten','Lager verbessern die Lieferfähigkeit, führen aber auch zu Kapitalbindung','Lager sind nur in Dienstleistungsunternehmen wichtig','Lager ersetzen die Produktion'],c:1,e:'Lager können Versorgung sichern, verursachen aber Kosten und binden Kapital.'},
+  {t:'logistik1',q:'Welche drei Teilbereiche gehören klassisch zur Logistik?',o:['Beschaffung, Produktion, Marketing','Beschaffungslogistik, Produktionslogistik, Distributionslogistik','Innovation, Finanzierung, Besteuerung','Personal, IT, Vertrieb'],c:1,e:'Diese drei Bereiche strukturieren die wesentlichen logistischen Aufgaben im Unternehmen.'},
+  // Logistik II
+  {t:'logistik2',q:'Was beschreibt Supply Chain Management?',o:['Nur die innerbetriebliche Produktion','Die unternehmensübergreifende Koordination entlang der Lieferkette','Ausschließlich Preispolitik','Nur Personalplanung'],c:1,e:'Supply Chain Management betrachtet die gesamte Kette von Lieferanten bis zum Kunden.'},
+  {t:'logistik2',q:'Was ist der Bullwhip-Effekt?',o:['Eine Methode zur Qualitätsprüfung','Die Aufschaukelung kleiner Nachfrageschwankungen entlang der Lieferkette','Eine Form der Fließfertigung','Eine Preisstrategie im Handel'],c:1,e:'Kleine Änderungen der Endnachfrage können in vorgelagerten Stufen stark verstärkt werden.'},
+  {t:'logistik2',q:'Was bedeutet Resilienz in Lieferketten?',o:['Maximale Lagervermeidung','Widerstandsfähigkeit und Anpassungsfähigkeit bei Störungen','Ausschließlich lokale Produktion','Nur digitale Bestandsführung'],c:1,e:'Resiliente Lieferketten bleiben auch unter unsicheren Bedingungen möglichst funktionsfähig.'},
+  // Soziale Nachhaltigkeit
+  {t:'nachhaltigkeit_soz',q:'Was bedeutet soziale Nachhaltigkeit?',o:['Nur Gewinnsteigerung durch Personalabbau','Langfristig verantwortungsvolle Gestaltung im Hinblick auf Menschen und Gesellschaft','Ausschließlich Energiekosten senken','Nur technische Qualitätsnormen einhalten'],c:1,e:'Soziale Nachhaltigkeit bezieht sich auf faire und verantwortungsvolle Bedingungen für Menschen.'},
+  {t:'nachhaltigkeit_soz',q:'Welche Gruppe gehört zu den Stakeholdern?',o:['Nur Eigentümer','Nur Geschäftsführung','Mitarbeitende, Kunden, Lieferanten, Staat und weitere Anspruchsgruppen','Nur Wettbewerber'],c:2,e:'Stakeholder sind alle relevanten Anspruchsgruppen, die vom Unternehmen betroffen sind.'},
+  // Ökologische Nachhaltigkeit
+  {t:'nachhaltigkeit_oek',q:'Was bedeutet ökologische Nachhaltigkeit?',o:['Kurzfristige Kostensenkung','Schonung natürlicher Ressourcen und Verringerung von Umweltbelastungen','Optimierung von Werbekampagnen','Steigerung von Absatzmengen'],c:1,e:'Ökologische Nachhaltigkeit richtet wirtschaftliches Handeln an Umwelt- und Ressourcenschonung aus.'},
+  {t:'nachhaltigkeit_oek',q:'Was ist ein zentrales Ziel der Kreislaufwirtschaft?',o:['Produkte möglichst schnell zu entsorgen','Materialien möglichst lange im Kreislauf zu halten','Lagerbestände zu erhöhen','Lieferketten abzuschaffen'],c:1,e:'Kreislaufwirtschaft will Ressourcen schonen durch Wiederverwenden, Reparieren und Recyceln.'},
+  // Digitalisierung
+  {t:'digitalisierung',q:'Was bedeutet Digitalisierung im Unternehmenskontext?',o:['Nur das Scannen von Papierdokumenten','Nutzung digitaler Technologien zur Veränderung und Verbesserung betrieblicher Prozesse','Ausschließlich Online-Werbung','Nur Automatisierung der Buchhaltung'],c:1,e:'Digitalisierung betrifft viele betriebliche Prozesse.'},
+  {t:'digitalisierung',q:'Wofür kann KI in Leistungsprozessen eingesetzt werden?',o:['Nur für Logogestaltung','Für Prognosen, Analyse, Automatisierung und Entscheidungsunterstützung','Nur für Entlassungen','Nur für rechtliche Entscheidungen'],c:1,e:'KI unterstützt viele operative und analytische Aufgaben in Unternehmen.'},
+  // Ziele & Strategie
+  {t:'ziele_strategie',q:'Was ist eine Strategie?',o:['Ein kurzfristiger Zufallsplan','Ein langfristiger Plan zur Erreichung von Zielen und zum Aufbau von Wettbewerbsvorteilen','Nur die Festlegung von Preisen','Ausschließlich Werbung'],c:1,e:'Strategien sind langfristige Grundsatzentscheidungen für Wettbewerbsvorteile.'},
+  {t:'ziele_strategie',q:'Was beschreibt ein Geschäftsmodell?',o:['Nur die Rechtsform','Wie ein Unternehmen Wert schafft und Erlöse erzielt','Nur Personalstruktur','Nur Lagerorganisation'],c:1,e:'Ein Geschäftsmodell erklärt, wie Nutzen für Kunden entsteht und das Unternehmen profitiert.'},
+  // Marketing
+  {t:'marketing1',q:'Was ist Marketing?',o:['Nur Werbung','Marktorientierte Unternehmensführung auf Basis von Kundenbedürfnissen','Ausschließlich Preisfestlegung','Nur Produktdesign'],c:1,e:'Marketing richtet das Unternehmen an Markt, Kunden und Wettbewerb aus.'},
+  {t:'marketing2',q:'Welche vier Bereiche gehören zum Marketing-Mix?',o:['Produktion, Personal, Finanzierung, Steuern','Produktpolitik, Preispolitik, Distributionspolitik, Kommunikationspolitik','Innovation, Nachhaltigkeit, Logistik, Controlling','Strategie, Organisation, Führung, Bilanzierung'],c:1,e:'Die klassischen 4 Ps sind Produkt, Preis, Place und Promotion.'},
+  {t:'marketing2',q:'Was regelt die Distributionspolitik?',o:['Wie ein Angebot zum Kunden gelangt','Wie Mitarbeitende eingestellt werden','Wie ein Unternehmen besteuert wird','Wie Gewinne verteilt werden'],c:0,e:'Distributionspolitik gestaltet die Absatzwege und den Vertrieb.'},
+  // Innovation
+  {t:'innovation1',q:'Was ist eine Innovation?',o:['Jede beliebige Idee','Die erfolgreiche wirtschaftliche Umsetzung einer neuen Idee','Nur eine technische Erfindung','Ausschließlich Werbung für neue Produkte'],c:1,e:'Innovation setzt voraus, dass eine neue Idee wirtschaftlich genutzt wird.'},
+  {t:'innovation1',q:'Was ist der Unterschied zwischen Invention und Innovation?',o:['Es gibt keinen Unterschied','Invention ist die Erfindung, Innovation die erfolgreiche Umsetzung','Innovation ist immer kleiner','Invention betrifft nur Marketing'],c:1,e:'Invention = Idee, Innovation = erfolgreiche Umsetzung.'},
+  {t:'innovation2',q:'Was bedeutet Open Innovation?',o:['Innovation ohne Planung','Öffnung des Innovationsprozesses für externe Akteure','Nur interne Entwicklung','Nur die Digitalisierung von Produkten'],c:1,e:'Open Innovation bezieht externe Wissensquellen in den Innovationsprozess ein.'},
+
+  // ── PRODUKTION I (7 neue) ──
+  {t:'produktion1',q:'Was sind die drei klassischen Produktionsfaktoren?',o:['Planung, Steuerung, Kontrolle','Arbeit, Betriebsmittel, Werkstoffe','Kosten, Qualität, Zeit','Einkauf, Produktion, Vertrieb'],c:1,e:'Klassische Produktionsfaktoren: Arbeit, Betriebsmittel und Werkstoffe. Ergänzt durch Informationen und Wissen.'},
+  {t:'produktion1',q:'Zwischen welchen Produktionszielen besteht ein typischer Zielkonflikt?',o:['Kosten und Gewinn','Hohe Flexibilität und geringe Kosten','Qualität und Termintreue','Wachstum und Rentabilität'],c:1,e:'Hohe Flexibilität erfordert flexible Strukturen, die oft teurer sind. Klassischer Zielkonflikt.'},
+  {t:'produktion1',q:'Was ist Einzelfertigung?',o:['Große Mengen identischer Produkte','Individuelle Herstellung eines Produkts nach Kundenanforderung','Serienweise Herstellung gleicher Produkte','Automatisierte Massenproduktion'],c:1,e:'Einzelfertigung: Jedes Produkt wird individuell hergestellt, z.B. Sondermaschinen, Maßanzüge.'},
+  {t:'produktion1',q:'Was kennzeichnet die Fließfertigung?',o:['Maximale Flexibilität bei hohen Kosten','Standardisierte Abläufe mit festen Stationen, effizient aber wenig flexibel','Individuelle Bearbeitung pro Kundenauftrag','Gruppenweise Fertigung ähnlicher Teile'],c:1,e:'Fließfertigung: Produkt durchläuft feste Arbeitsstationen — sehr effizient, aber unflexibel bei Produktwechsel.'},
+  {t:'produktion1',q:'Warum ist Produktion Teil der Wertkette?',o:['Weil sie der teuerste Bereich ist','Weil Produktionsentscheidungen Kosten, Qualität und Lieferfähigkeit anderer Bereiche beeinflussen','Weil nur Produktion Wert schafft','Weil Produktion unabhängig von Marketing ist'],c:1,e:'Produktion ist mit Beschaffung, Logistik, Marketing und F&E verbunden. Entscheidungen wirken auf die gesamte Wertkette.'},
+  {t:'produktion1',q:'Was ist Serienfertigung?',o:['Herstellung eines einzelnen Produkts','Herstellung einer begrenzten Stückzahl gleicher Produkte','Herstellung unbegrenzter Mengen','Nur für Dienstleistungen geeignet'],c:1,e:'Serienfertigung: Begrenzte Stückzahl gleichartiger Produkte, z.B. eine Fahrzeugserie.'},
+  {t:'produktion1',q:'Was ist Gruppenfertigung?',o:['Identisch mit Fließfertigung','Kombination von Werkstatt- und Fließfertigungsvorteilen durch vollständige Bearbeitung in Gruppen','Nur für große Unternehmen geeignet','Massenfertigung ohne Automatisierung'],c:1,e:'Gruppenfertigung: Gruppen bearbeiten Teilprodukte vollständig — kombiniert Flexibilität und Effizienz.'},
+
+  // ── PRODUKTION II (7 neue) ──
+  {t:'produktion2',q:'Was ist der Unterschied zwischen Produktionsplanung und -steuerung?',o:['Es gibt keinen','Planung = was/wann/wo, Steuerung = operative Umsetzung im Betrieb','Steuerung kommt vor Planung','Nur Steuerung ist betriebsrelevant'],c:1,e:'Planung legt fest was, wann, wo und wieviel produziert wird. Steuerung setzt das im laufenden Betrieb um.'},
+  {t:'produktion2',q:'Was sind typische Verschwendungsarten in der Lean Production?',o:['Hohe Qualität und kurze Zeiten','Wartezeiten, Überproduktion, unnötige Transporte, hohe Bestände, Fehler','Zu niedrige Lagerbestände','Zu viele Mitarbeitende'],c:1,e:'Lean Production identifiziert 7 Verschwendungsarten: Wartezeiten, Überproduktion, Transport, Bestände, Bewegung, Fehler, Überbearbeitung.'},
+  {t:'produktion2',q:'Welche Kriterien sprechen für Eigenfertigung bei Make-or-Buy?',o:['Immer wenn Kosten geringer sind','Wenn strategisches Know-how, Qualitätskontrolle oder Geheimhaltung wichtig sind','Wenn externe Anbieter billiger sind','Nur bei großen Stückzahlen'],c:1,e:'Eigenfertigung sinnvoll bei: strategischem Know-how, Qualitätskontrolle, Geheimhaltung oder wenn Abhängigkeit von Lieferanten vermieden werden soll.'},
+  {t:'produktion2',q:'Was beschreibt der Begriff „Kapazitätsengpass"?',o:['Zu hohe Lagerbestände','Ressourcen reichen nicht aus um die geplante Produktion zu erfüllen','Zu viele Maschinen vorhanden','Überproduktion'],c:1,e:'Engpass = Kapazität ist zu gering für den Bedarf. Führt zu Verzögerungen und Lieferproblemen.'},
+  {t:'produktion2',q:'Welcher Vorteil spricht für Automatisierung?',o:['Höhere Flexibilität bei Produktwechsel','Gleichbleibende Qualität und geringere Fehlerquoten','Geringere Investitionskosten','Mehr Beschäftigung'],c:1,e:'Automatisierung liefert konstante Qualität und weniger Fehler durch Ausschalten menschlicher Fehlerquellen.'},
+  {t:'produktion2',q:'Was ist das Ziel von Qualitätsmanagement?',o:['Nur Kosten senken','Fehler vermeiden, Kundenerwartungen erfüllen und Wettbewerbsfähigkeit stärken','Produktion beschleunigen','Mitarbeitende entlassen'],c:1,e:'QM sichert und verbessert Qualität in Produkten und Prozessen — mit dem Ziel langfristiger Kundenzufriedenheit.'},
+  {t:'produktion2',q:'Was unterscheidet Produktionsplanung von Kapazitätsplanung?',o:['Kein Unterschied','Produktionsplanung = was/wann/wieviel. Kapazitätsplanung = ob genug Ressourcen vorhanden sind','Kapazitätsplanung ist wichtiger','Produktionsplanung gilt nur für Massenfertigung'],c:1,e:'Produktionsplanung plant den Output. Kapazitätsplanung prüft ob ausreichend Input-Ressourcen (Personal, Maschinen) verfügbar sind.'},
+
+  // ── LOGISTIK I (7 neue) ──
+  {t:'logistik1',q:'Was leistet die Beschaffungslogistik?',o:['Bringt fertige Produkte zum Kunden','Versorgt das Unternehmen mit Materialien und Vorprodukten','Koordiniert interne Materialflüsse','Plant die Produktion'],c:1,e:'Beschaffungslogistik: Versorgung des Unternehmens mit Materialien von Lieferanten — erster Teil der logistischen Kette.'},
+  {t:'logistik1',q:'Was ist der Zweck von Lagerhaltung?',o:['Kapital binden','Versorgungsunsicherheiten ausgleichen und Lieferfähigkeit sichern','Produktion verzögern','Transportkosten erhöhen'],c:1,e:'Lager puffern Schwankungen zwischen Angebot und Nachfrage — erhöhen Lieferfähigkeit, verursachen aber Kosten.'},
+  {t:'logistik1',q:'Was ist ein typischer Zielkonflikt in der Logistik?',o:['Schnelle Lieferung und günstige Preise','Hohe Lieferbereitschaft durch hohe Lagerbestände vs. geringe Lagerkosten','Qualität und Zuverlässigkeit','Planung und Steuerung'],c:1,e:'Hohe Lagerbestände sichern Lieferfähigkeit, verursachen aber Kapitalbindung und Lagerkosten.'},
+  {t:'logistik1',q:'Welche Rolle spielt der Informationsfluss in der Logistik?',o:['Er ist unwichtig','Er ermöglicht Planung, Steuerung und Reaktion auf Störungen','Er ersetzt den Materialfluss','Nur relevant für große Unternehmen'],c:1,e:'Informationen über Bestände, Nachfrage und Lieferzeiten sind die Grundlage jeder logistischen Steuerung.'},
+  {t:'logistik1',q:'Was ist Distributionslogistik?',o:['Interne Materialflüsse in der Produktion','Transport fertiger Produkte vom Unternehmen zum Kunden','Beschaffung von Rohstoffen','Lagerplanung'],c:1,e:'Distributionslogistik: Bringt fertige Produkte zum Kunden — letztes Glied der logistischen Kette.'},
+  {t:'logistik1',q:'Was bedeutet „die richtige Qualität" als logistisches Ziel?',o:['Produkte müssen neuwertig sein','Güter sollen ohne Schäden oder Mängel ankommen','Qualität ist kein logistisches Ziel','Nur Lebensmittel benötigen Qualitätssicherung'],c:1,e:'Logistik muss sicherstellen dass Güter in einwandfreiem Zustand (richtige Qualität) ankommen — nicht nur zur richtigen Zeit.'},
+  {t:'logistik1',q:'Was ist Produktionslogistik?',o:['Transport zum Kunden','Koordination von Materialflüssen innerhalb der Produktion','Beschaffung von Lieferanten','Lagerung fertiger Produkte'],c:1,e:'Produktionslogistik: Steuert Materialflüsse zwischen Lagern und Fertigungsplätzen innerhalb des Unternehmens.'},
+
+  // ── LOGISTIK II (7 neue) ──
+  {t:'logistik2',q:'Welche Maßnahmen erhöhen die Resilienz einer Lieferkette?',o:['Nur einen Lieferanten nutzen','Diversifikation der Lieferanten, Lagerpuffer und Transparenz','Bestände abbauen','Globale Konzentration auf einen Standort'],c:1,e:'Resilienz durch: mehrere Lieferanten, Sicherheitsbestände, Transparenz über die Kette und alternative Bezugsquellen.'},
+  {t:'logistik2',q:'Was verursacht den Bullwhip-Effekt?',o:['Zu hohe Lagerbestände','Schlechte Information, Sicherheitsbestände und unkoordinierte Planung in der Lieferkette','Zu niedrige Nachfrage','Direkte Kommunikation mit Kunden'],c:1,e:'Bullwhip-Ursachen: fehlende oder verspätete Informationen, übertriebene Sicherheitsbestände, Losgrößeneffekte.'},
+  {t:'logistik2',q:'Was ist das Ziel des Bestandsmanagements?',o:['Bestände maximieren','Ein wirtschaftliches Gleichgewicht zwischen Versorgungssicherheit und Lagerkosten finden','Bestände eliminieren','Nur Rohmaterialien lagern'],c:1,e:'Bestandsmanagement: Weder zu viel (Kosten) noch zu wenig (Engpässe) — optimale Bestandshöhe finden.'},
+  {t:'logistik2',q:'Was unterscheidet SCM von klassischer Logistik?',o:['Kein Unterschied','SCM koordiniert unternehmensübergreifend, klassische Logistik ist innerbetrieblich','SCM ist günstiger','SCM gilt nur für Großunternehmen'],c:1,e:'SCM = unternehmensübergreifend: koordiniert Lieferanten, Hersteller, Handel. Klassische Logistik = innerbetrieblich.'},
+  {t:'logistik2',q:'Warum sind globale Lieferketten störungsanfälliger?',o:['Wegen niedrigerer Kosten','Größere Komplexität, längere Transportwege und mehr potenzielle Schwachstellen','Weil internationale Partner unzuverlässig sind','Wegen höherer Qualitätsstandards'],c:1,e:'Globale Ketten haben mehr Schnittstellen, längere Lieferzeiten und sind anfälliger für politische, klimatische oder logistische Störungen.'},
+  {t:'logistik2',q:'Was ist ein Sicherheitsbestand?',o:['Ein zu hoher Lagerbestand','Ein Pufferlager das Nachfrageschwankungen oder Lieferverzögerungen abfangen soll','Ein gesetzlich vorgeschriebener Mindestbestand','Ein Bestand für Qualitätskontrollen'],c:1,e:'Sicherheitsbestand = Reserve die Schwankungen abpuffert, ohne den regulären Betrieb zu gefährden.'},
+  {t:'logistik2',q:'Was beschreibt das Konzept „Just-in-Time"?',o:['Möglichst hohe Lagerbestände aufbauen','Materialien werden genau dann geliefert wenn sie gebraucht werden — minimale Lagerung','Produktion ohne Planung','Schnellstmögliche Lieferung unabhängig von Kosten'],c:1,e:'Just-in-Time: Anlieferung genau zum Bedarfszeitpunkt. Reduziert Lagerkosten, erhöht aber die Störungsanfälligkeit.'},
+
+  // ── SOZIALE NACHHALTIGKEIT (5 neue) ──
+  {t:'nachhaltigkeit_soz',q:'Was bedeutet Chancengleichheit im Unternehmen?',o:['Alle verdienen gleich viel','Unabhängig von persönlichen Merkmalen erhalten Menschen faire Zugangs- und Entwicklungsmöglichkeiten','Nur Frauen werden gefördert','Alle Stellen werden intern besetzt'],c:1,e:'Chancengleichheit: faire Zugänge unabhängig von Geschlecht, Herkunft, Alter — Teil sozialer Nachhaltigkeit.'},
+  {t:'nachhaltigkeit_soz',q:'Warum ist das Lieferkettensorgfaltspflichtengesetz ein Beispiel sozialer Nachhaltigkeit?',o:['Es reduziert Lagerkosten','Es verpflichtet Unternehmen, Menschenrechte auch bei Lieferanten zu beachten','Es gilt nur für die eigene Produktion','Es betrifft nur Umweltthemen'],c:1,e:'Das Gesetz erweitert die soziale Verantwortung über Unternehmensgrenzen hinaus auf die gesamte Lieferkette.'},
+  {t:'nachhaltigkeit_soz',q:'Welchen Nutzen kann Diversität im Unternehmen haben?',o:['Nur symbolischen Charakter','Verschiedene Perspektiven können Innovationskraft und Problemlösungsfähigkeit stärken','Immer höhere Kosten','Nur in internationalen Unternehmen relevant'],c:1,e:'Diverse Teams bringen unterschiedliche Perspektiven, was Kreativität, Entscheidungsqualität und Innovation fördern kann.'},
+  {t:'nachhaltigkeit_soz',q:'Was umfasst Arbeitssicherheit als Teil sozialer Nachhaltigkeit?',o:['Nur technische Schutzmaßnahmen','Schutz vor körperlichen und psychischen Risiken am Arbeitsplatz','Nur gesetzlich vorgeschriebene Maßnahmen','Nur für Produktionsbetriebe relevant'],c:1,e:'Arbeitssicherheit umfasst physische und psychische Gesundheit, Unfallschutz und ergonomische Arbeitsbedingungen.'},
+  {t:'nachhaltigkeit_soz',q:'Welche Aussage zur Stakeholder-Perspektive ist richtig?',o:['Nur Eigentümer sind relevante Stakeholder','Unternehmen haben Verantwortung gegenüber vielen Anspruchsgruppen wie Mitarbeitenden, Kunden und Gesellschaft','Stakeholder haben keine Rechte','Nur externe Stakeholder sind relevant'],c:1,e:'Stakeholder-Perspektive: Unternehmen schulden nicht nur Eigentümern Rechenschaft, sondern allen Betroffenen.'},
+
+  // ── ÖKOLOGISCHE NACHHALTIGKEIT (6 neue) ──
+  {t:'nachhaltigkeit_oek',q:'Was ist der Unterschied zwischen Kreislaufwirtschaft und linearer Wirtschaft?',o:['Kein Unterschied','Lineare Wirtschaft: Herstellen-Nutzen-Entsorgen. Kreislaufwirtschaft: Materialien werden wiederverwendet','Kreislaufwirtschaft ist teurer','Nur für Recyclingbetriebe relevant'],c:1,e:'Linear = Ende des Lebenswegs ist Entsorgung. Kreislauf = Materialien bleiben durch Wiederverwendung, Reparatur und Recycling im System.'},
+  {t:'nachhaltigkeit_oek',q:'Was sind typische Emissionsarten von Unternehmen?',o:['Nur CO₂','CO₂, Lärm, Abwasser, Abfälle und weitere Schadstoffe','Nur durch Produktion verursacht','Nur messbar durch staatliche Stellen'],c:1,e:'Unternehmen erzeugen vielfältige Emissionen: Treibhausgase, Lärm, Abwasser, Abfälle — entlang der gesamten Wertkette.'},
+  {t:'nachhaltigkeit_oek',q:'Was ist Ressourceneffizienz?',o:['Möglichst viele Ressourcen einsetzen','Mit möglichst wenig Input denselben Output erzielen','Ressourcen durch billige ersetzen','Nur Energieeffizienz'],c:1,e:'Ressourceneffizienz = gleicher oder besserer Output bei weniger Ressourceneinsatz (Energie, Material, Wasser).'},
+  {t:'nachhaltigkeit_oek',q:'Warum ist ökologische Nachhaltigkeit auch betriebswirtschaftlich relevant?',o:['Sie ist nur eine Imagefrage','Ressourceneffizienz senkt Kosten, Nachhaltigkeitsrisiken können zu Reputationsverlusten führen','Sie hat keine betriebswirtschaftliche Bedeutung','Nur für börsennotierte Unternehmen'],c:1,e:'Ressourcensparen senkt direkt Kosten. Umweltrisiken können Umsatz gefährden. Regulierung (CO₂-Steuer) wird stärker.'},
+  {t:'nachhaltigkeit_oek',q:'Was ist ein typisches Ziel der Kreislaufwirtschaft für Produktdesign?',o:['Möglichst kurze Lebensdauer für Neukäufe','Produkte langlebig, reparierbar und recycelbar gestalten','Nur günstige Materialien','Möglichst viele Varianten'],c:1,e:'Kreislaufwirtschaft beginnt beim Design: Produkte sollen reparierbar, langlebig und am Ende recycelbar sein.'},
+  {t:'nachhaltigkeit_oek',q:'Was versteht man unter einer Lebenszyklusanalyse (LCA)?',o:['Analyse der Mitarbeiterkarrieren','Betrachtung aller Umweltwirkungen eines Produkts von Rohstoffgewinnung bis Entsorgung','Nur Produktionsphase analysieren','Finanzanalyse eines Unternehmens'],c:1,e:'LCA = Life Cycle Assessment: systematische Analyse der Umweltwirkungen über den gesamten Produktlebensweg.'},
+
+  // ── DIGITALISIERUNG (8 neue) ──
+  {t:'digitalisierung',q:'Was ist der Unterschied zwischen Digitalisierung und Digitaler Transformation?',o:['Kein Unterschied','Digitalisierung = analoge Inhalte digital machen. Transformation = grundlegende Veränderung von Geschäftsmodellen und Prozessen','Transformation ist teurer','Nur Transformation betrifft Unternehmen'],c:1,e:'Digitalisierung = Umwandlung analoger Prozesse. Digitale Transformation = tiefgreifender strategischer Wandel durch digitale Technologien.'},
+  {t:'digitalisierung',q:'Welche Funktion hat KI bei Absatzprognosen?',o:['KI ersetzt den Vertrieb','KI analysiert historische Daten und Muster um zukünftige Nachfrage vorherzusagen','KI legt Preise fest','KI kontaktiert Kunden automatisch'],c:1,e:'KI-Prognosen: Muster aus Vergangenheitsdaten werden genutzt, um Nachfrage genauer vorherzusagen — bessere Planung.'},
+  {t:'digitalisierung',q:'Was ist ein Cyberrisiko?',o:['Risiko durch zu viele Mitarbeitende','Gefahr durch Hackerangriffe, Datenverlust oder Systemausfälle digitaler Infrastruktur','Risiko durch falsche Marketingkampagnen','Risiko durch globale Lieferketten'],c:1,e:'Cyberrisiken umfassen Hackerangriffe, Ransomware, Datenlecks und Systemausfälle — steigen mit zunehmender Digitalisierung.'},
+  {t:'digitalisierung',q:'Wie verbessert digitale Vernetzung die Wertkette?',o:['Sie erhöht Lagerbestände','Schnellerer Informationsfluss verbessert Koordination und Reaktionsfähigkeit aller Bereiche','Sie ersetzt menschliche Arbeit vollständig','Nur in der Logistik relevant'],c:1,e:'Vernetzte Systeme ermöglichen Echtzeit-Informationen über Bestände, Nachfrage und Prozesse — bessere Abstimmung der Wertkette.'},
+  {t:'digitalisierung',q:'Was sind Chancen der Digitalisierung für kleine Unternehmen?',o:['Keine — nur Großunternehmen profitieren','Digitale Tools ermöglichen auch kleinen Betrieben effiziente Prozesse und neue Kundenkanäle','Nur Kosteneinsparung bei Personal','Digitalisierung ist für KMU zu teuer'],c:1,e:'KMU profitieren von Cloud-Software, E-Commerce und Automatisierung — ohne große IT-Infrastruktur.'},
+  {t:'digitalisierung',q:'Was bedeutet datenbasierte Steuerung?',o:['Entscheidungen nach Gefühl','Entscheidungen werden durch systematisch gesammelte und analysierte Daten unterstützt','Nur für Finanzentscheidungen','Daten ersetzen alle Manager'],c:1,e:'Datenbasierte Steuerung: Sensordaten, Marktdaten und Prozessdaten werden genutzt, um fundiertere und schnellere Entscheidungen zu treffen.'},
+  {t:'digitalisierung',q:'Welches Risiko entsteht durch hohe Abhängigkeit von IT-Systemen?',o:['Zu viele Mitarbeitende','Systemausfälle können den gesamten Betrieb lahmlegen','Zu viele Daten','Zu hohe Qualität'],c:1,e:'Systemabhängigkeit: Fällt ein kritisches IT-System aus, können Produktion, Logistik oder Vertrieb sofort stillstehen.'},
+  {t:'digitalisierung',q:'Was ist ein digitales Geschäftsmodell?',o:['Klassisches Geschäftsmodell mit Website','Ein Geschäftsmodell das digitale Technologien zur Wertschöpfung oder Verteilung nutzt','Nur Online-Handel','Ein Geschäftsmodell ohne physische Produkte'],c:1,e:'Digitale Geschäftsmodelle nutzen Plattformen, Daten oder Software als zentralen Werttreiber, z.B. Streaming, SaaS, Plattformökonomie.'},
+
+  // ── ZIELE, STRATEGIEN & GESCHÄFTSMODELLE (6 neue) ──
+  {t:'ziele_strategie',q:'Was ist „Stuck in the Middle"?',o:['Eine Wachstumsstrategie','Wenn ein Unternehmen keine klare Wettbewerbsstrategie verfolgt und weder günstigster noch differenziertester Anbieter ist','Ein Begriff aus dem Marketing','Eine Finanzierungsform'],c:1,e:'Stuck in the Middle (Porter): Unternehmen ohne klare strategische Positionierung sind langfristig gefährdet.'},
+  {t:'ziele_strategie',q:'Was ist ein Zielkonflikt?',o:['Wenn zwei Ziele identisch sind','Wenn die Erreichung eines Ziels die Erreichung eines anderen erschwert oder verhindert','Wenn Ziele nicht messbar sind','Wenn Strategie und Taktik sich unterscheiden'],c:1,e:'Zielkonflikte: z.B. Gewinnmaximierung vs. Nachhaltigkeit, oder Qualität vs. Kostensenkung.'},
+  {t:'ziele_strategie',q:'Was unterscheidet operative von strategischen Zielen?',o:['Kein Unterschied','Operative Ziele sind kurzfristig und konkret, strategische Ziele langfristig und grundsätzlich','Strategische Ziele sind immer messbar','Operative Ziele betreffen nur Produktion'],c:1,e:'Strategische Ziele geben langfristige Richtung vor (z.B. Marktführerschaft). Operative Ziele sind kurzfristig umsetzbar.'},
+  {t:'ziele_strategie',q:'Was ist das Business Model Canvas?',o:['Ein Finanzierungsplan','Ein Werkzeug zur strukturierten Beschreibung von Geschäftsmodellen mit 9 Bausteinen','Eine Marketingkampagne','Ein Produktionsplan'],c:1,e:'Business Model Canvas (Osterwalder): 9 Bausteine eines Geschäftsmodells, u.a. Wertversprechen, Kundensegmente, Erlösströme.'},
+  {t:'ziele_strategie',q:'Was beschreibt Differenzierung als Wettbewerbsstrategie?',o:['Günstigster Anbieter sein','Sich durch einzigartige Merkmale (Qualität, Marke, Service) vom Wettbewerb abheben','Nur in Nischenmärkten aktiv sein','Produkte standardisieren'],c:1,e:'Differenzierung: Unternehmen bietet etwas, wofür Kunden einen Aufpreis zahlen — Qualität, Design, Marke oder Service.'},
+  {t:'ziele_strategie',q:'Wie beeinflusst die Strategie die Gestaltung der Wertkette?',o:['Gar nicht','Kostenführer optimieren Beschaffung/Produktion/Logistik auf Effizienz; Differenzierer investieren in Qualität/Innovation/Service','Nur das Marketing wird beeinflusst','Strategie und Wertkette sind unabhängig'],c:1,e:'Strategie und Wertkette sind direkt verknüpft: Die Wahl der Strategie bestimmt, welche Aktivitäten besonders wichtig sind.'},
+
+  // ── MARKETING I (5 neue) ──
+  {t:'marketing1',q:'Was ist der Unterschied zwischen Bedürfnis und Nachfrage?',o:['Kein Unterschied','Bedürfnis ist ein Wunsch ohne Kaufkraft, Nachfrage ist kaufkräftiger Bedarf am Markt','Nachfrage entsteht vor dem Bedürfnis','Nur Bedürfnis ist wirtschaftlich relevant'],c:1,e:'Bedürfnis → Bedarf (mit Kaufkraft) → Nachfrage (am Markt aktiv). Marketing schließt die Lücke zwischen Bedürfnis und Kauf.'},
+  {t:'marketing1',q:'Was ist Targeting?',o:['Das Schalten von Werbung','Die Entscheidung, welche Segmente nach der Marktsegmentierung besonders attraktiv sind','Die Preisfestsetzung','Das Design von Produkten'],c:1,e:'Targeting = Auswahl der Zielsegmente nach der Segmentierung. Welche Gruppen will das Unternehmen ansprechen?'},
+  {t:'marketing1',q:'Was ist ein Positionierungsvorteil?',o:['Das günstigste Angebot','Die spezifische Stärke, durch die ein Produkt in der Wahrnehmung der Zielgruppe besser als Konkurrenzprodukte ist','Der höchste Marktanteil','Die größte Produktvielfalt'],c:1,e:'Positionierungsvorteil: Das Merkmal, das die Zielgruppe als bedeutsam und einzigartig wahrnimmt — Grundlage der Markenbildung.'},
+  {t:'marketing1',q:'Warum ist Marktsegmentierung wichtig?',o:['Um Kosten zu senken','Weil unterschiedliche Kundengruppen verschiedene Bedürfnisse haben — gezieltere Ansprache möglich','Weil Märkte immer gleich sind','Um Konkurrenten zu imitieren'],c:1,e:'Segmentierung ermöglicht maßgeschneiderte Angebote für Kundengruppen statt one-size-fits-all — höhere Relevanz und Effizienz.'},
+  {t:'marketing1',q:'Was ist der Unterschied zwischen Marketing und Werbung?',o:['Kein Unterschied','Marketing ist marktorientierte Unternehmensführung; Werbung ist nur ein Instrument der Kommunikationspolitik','Werbung ist teurer','Marketing gilt nur für B2C'],c:1,e:'Marketing umfasst die gesamte marktorientierte Ausrichtung (Produkt, Preis, Distribution, Kommunikation). Werbung ist nur ein Teilaspekt.'},
+
+  // ── MARKETING II (5 neue) ──
+  {t:'marketing2',q:'Was ist Preisdifferenzierung?',o:['Für alle Kunden denselben Preis verlangen','Unterschiedliche Preise für dasselbe Produkt für verschiedene Kundengruppen oder Zeitpunkte','Rabatte für Großkunden','Nur Hochpreisstrategien'],c:1,e:'Preisdifferenzierung: z.B. Seniorenrabatt, Frühbucherpreise, Studententarife — verschiedene Preise bei gleichem Produkt.'},
+  {t:'marketing2',q:'Was ist der Unterschied zwischen direktem und indirektem Vertrieb?',o:['Kein Unterschied','Direkt = Unternehmen verkauft selbst; Indirekt = über Zwischenhändler wie Händler oder Plattformen','Indirekt ist immer günstiger','Direkt gilt nur für Dienstleistungen'],c:1,e:'Direktvertrieb: eigene Shops, Website. Indirekter Vertrieb: Einzelhandel, Großhandel, Online-Marktplätze — mehr Reichweite, weniger Kontrolle.'},
+  {t:'marketing2',q:'Warum müssen die 4 Ps aufeinander abgestimmt sein?',o:['Das ist nicht notwendig','Inkonsistenz zwischen Produkt, Preis, Distribution und Kommunikation verwirrt Kunden und schwächt die Positionierung','Nur Preis und Produkt müssen passen','Abstimmung gilt nur für Luxusprodukte'],c:1,e:'Konsistenz der 4 Ps: Ein Premiumprodukt braucht entsprechenden Preis, exklusive Distribution und hochwertige Kommunikation.'},
+  {t:'marketing2',q:'Was ist Public Relations (PR)?',o:['Bezahlte Werbung','Maßnahmen zur Gestaltung des öffentlichen Images eines Unternehmens, oft ohne direkte Bezahlung','Nur für Krisen relevant','Ein Teil der Produktpolitik'],c:1,e:'PR = Öffentlichkeitsarbeit: Pressemitteilungen, Events, Social Responsibility — baut Vertrauen und Image auf.'},
+  {t:'marketing2',q:'Was ist der Unterschied zwischen Produktpolitik und Kommunikationspolitik?',o:['Kein Unterschied','Produktpolitik gestaltet das Angebot selbst; Kommunikationspolitik informiert Kunden über das Angebot','Kommunikationspolitik ist wichtiger','Produktpolitik gilt nur für physische Güter'],c:1,e:'Produktpolitik = Was wird angeboten (Qualität, Design, Marke). Kommunikationspolitik = Wie wird es kommuniziert (Werbung, PR, Social Media).'},
+
+  // ── INNOVATION I (5 neue) ──
+  {t:'innovation1',q:'Was ist eine radikale Innovation?',o:['Eine schrittweise Verbesserung','Eine grundlegende Veränderung die neue Märkte schafft oder bestehende disruptiert','Nur technologische Innovationen','Eine teure Innovation'],c:1,e:'Radikale Innovation: Schafft völlig Neues — z.B. iPhone, Internet. Im Gegensatz zu inkrementellen Verbesserungen.'},
+  {t:'innovation1',q:'Was ist eine Prozessinnovation?',o:['Ein neues Produkt','Verbesserung oder Neuentwicklung von Abläufen in der Leistungserstellung','Nur in der Produktion relevant','Ein neues Marketingkonzept'],c:1,e:'Prozessinnovation: Neue oder verbesserte Methoden, Technologien oder Abläufe zur Leistungserstellung — z.B. Automatisierung.'},
+  {t:'innovation1',q:'Warum können nicht alle Inventionen zu Innovationen werden?',o:['Wegen Patentschutz','Weil viele Ideen technisch, wirtschaftlich oder marktmäßig nicht erfolgreich umgesetzt werden können','Weil zu viele Ideen existieren','Wegen fehlender Kreativität'],c:1,e:'Invention → Innovation erfordert erfolgreiche Umsetzung am Markt. Viele Erfindungen scheitern an Kosten, Marktpassung oder Timing.'},
+  {t:'innovation1',q:'Was ist eine Geschäftsmodellinnovation?',o:['Nur ein neues Produkt','Veränderung der Art wie ein Unternehmen Wert schafft und Erlöse erzielt','Nur eine Marketingmaßnahme','Eine Finanztransaktion'],c:1,e:'Geschäftsmodellinnovation: z.B. Netflix (Abo statt Kauf), Airbnb (Plattform statt Hotel) — nicht das Produkt ändert sich, sondern das Modell.'},
+  {t:'innovation1',q:'Welche Bedeutung hat Innovation für den Wettbewerb?',o:['Keine — Qualität reicht','Innovationen ermöglichen Differenzierung, Effizienzgewinne und den Erschluss neuer Märkte','Nur für Technologieunternehmen','Innovation ist immer teuer und riskant'],c:1,e:'Unternehmen die nicht innovieren riskieren Marktanteilsverluste durch Wettbewerber die neue Lösungen anbieten.'},
+
+  // ── INNOVATION II (5 neue) ──
+  {t:'innovation2',q:'Was ist der Unterschied zwischen Stage-Gate und Lean Startup?',o:['Kein Unterschied','Stage-Gate ist strukturiert und sequenziell; Lean Startup iterativ mit schnellen Tests am Markt','Lean Startup ist für große Unternehmen','Stage-Gate ist schneller'],c:1,e:'Stage-Gate: strukturierte Phasen mit Entscheidungspunkten. Lean Startup: schnelle Iterationen, Kundenfeedback, MVP — agiler Ansatz.'},
+  {t:'innovation2',q:'Was ist ein MVP (Minimum Viable Product)?',o:['Das günstigste Produkt','Eine einfache Version eines Produkts mit Kernfunktionen zum schnellen Testen am Markt','Ein Produkt für Minderheiten','Das finale Produkt'],c:1,e:'MVP: Einfachste Version die ausreicht, um echtes Kundenfeedback zu erhalten — Kernprinzip des Lean Startup.'},
+  {t:'innovation2',q:'Welche Risiken hat eine Innovationsstrategie?',o:['Keine','Technische Probleme, Marktfehleinschätzungen, hohe Entwicklungskosten und Zeitdruck','Nur finanzielle Risiken','Nur bei radikalen Innovationen'],c:1,e:'Innovationsrisiken: technisches Scheitern, falsches Marktverständnis, Ressourcenüberschreitung, Konkurrenz kommt schneller.'},
+  {t:'innovation2',q:'Was ist der Vorteil von interdisziplinären Teams bei Innovation?',o:['Sie sind billiger','Verschiedene Fachperspektiven erhöhen die Qualität und Kreativität von Lösungen','Sie brauchen weniger Koordination','Nur für Großunternehmen geeignet'],c:1,e:'Interdisziplinarität: Marketing-Know-how + technisches Wissen + Nutzerperspektive führt zu marktfähigeren Innovationen.'},
+  {t:'innovation2',q:'Warum ist die Schnittstelle zwischen Marketing und F&E entscheidend?',o:['Wegen niedrigerer Kosten','Weil Kundenbedürfnisse aus dem Markt mit technischem Wissen verbunden werden müssen','Weil F&E immer teurer ist','Weil Marketing die Entwicklung leitet'],c:1,e:'Ohne Marktorientierung entstehen technisch gute, aber unverkäufliche Produkte. Marketing liefert Kundenbedürfnisse, F&E die Lösungen.'},
+  {t:'innovation1',q:'Was sind Erfolgsfaktoren für Innovationen?',o:['Nur hohe Investitionen','Kundennähe, schnelle Umsetzung, interdisziplinäre Zusammenarbeit und systematisches Innovationsmanagement','Geheimhaltung und interne Entwicklung','Nur Technologieführerschaft'],c:1,e:'Erfolgreiche Innovationen verbinden Kundennähe, Geschwindigkeit, Teamarbeit und strukturiertes Management.'},
+];
+
+// ═══════════════════════════════════════════════
+// SPACED REPETITION POOL
+// Questions from across all topics, drawn randomly
+// for end-of-lesson review
+// ═══════════════════════════════════════════════
+const SR_POOL=[
+  {q:'Was sind die drei klassischen Produktionsfaktoren?',opts:['Marketing, Vertrieb, Service','Arbeit, Betriebsmittel, Werkstoffe','Preis, Qualität, Zeit','Lager, Transport, Einkauf'],correct:1,exp:'Arbeit, Betriebsmittel und Werkstoffe sind die klassischen Produktionsfaktoren.'},
+  {q:'Was ist der Bullwhip-Effekt?',opts:['Eine Qualitätsmethode','Aufschaukelung kleiner Nachfrageschwankungen in der Lieferkette','Eine Produktionstechnik','Ein Lageralgorithmus'],correct:1,exp:'Kleine Änderungen beim Endkunden werden in vorgelagerten Stufen stark verstärkt.'},
+  {q:'Was bedeutet Make-or-Buy?',opts:['Kaufen oder verkaufen','Selbst herstellen oder fremd beziehen','Lagern oder transportieren','Werben oder schweigen'],correct:1,exp:'Make-or-Buy entscheidet ob Eigenfertigung oder Fremdbezug sinnvoller ist.'},
+  {q:'Was ist das Ziel von Lean Production?',opts:['Maximale Lagerbestände','Verschwendung vermeiden und Effizienz steigern','Vollständige Handarbeit','Maximale Mitarbeiterzahl'],correct:1,exp:'Lean Production eliminiert Verschwendung für einen schlanken Produktionsprozess.'},
+  {q:'Welche drei Bereiche strukturieren die Logistik klassisch?',opts:['Einkauf, Produktion, Vertrieb','Beschaffungs-, Produktions- und Distributionslogistik','Planung, Kontrolle, Steuerung','Lager, Transport, Zoll'],correct:1,exp:'Diese drei Teilbereiche decken die logistischen Aufgaben vom Lieferanten bis zum Kunden ab.'},
+  {q:'Was beschreibt Supply Chain Management?',opts:['Nur innerbetriebliche Abläufe','Unternehmensübergreifende Koordination der Liefer- und Wertschöpfungskette','Nur Lagerplanung','Nur Einkaufsprozesse'],correct:1,exp:'SCM koordiniert alle Akteure entlang der gesamten Lieferkette.'},
+  {q:'Was sind die drei Wettbewerbsstrategien nach Porter?',opts:['Werbung, Service, Qualität','Kostenführerschaft, Differenzierung, Fokussierung','Preis, Menge, Zeit','Export, Import, Handel'],correct:1,exp:'Kostenführerschaft, Differenzierung und Fokussierung sind die drei Grundstrategien.'},
+  {q:'Was ist der Unterschied zwischen Invention und Innovation?',opts:['Kein Unterschied','Invention = Idee, Innovation = erfolgreiche wirtschaftliche Umsetzung','Innovation ist kleiner als Invention','Invention ist neuere Begriff'],correct:1,exp:'Erst die praktische Umsetzung macht aus einer Erfindung eine Innovation.'},
+  {q:'Was bedeutet ökologische Nachhaltigkeit?',opts:['Nur Gewinnmaximierung','Schonung natürlicher Ressourcen und Reduktion von Umweltbelastungen','Nur Personalkostensenkung','Maximierung des Outputs'],correct:1,exp:'Ökologische Nachhaltigkeit schützt natürliche Lebensgrundlagen.'},
+  {q:'Was sind Stakeholder?',opts:['Nur Aktionäre','Alle Anspruchsgruppen des Unternehmens wie Kunden, Mitarbeitende, Staat','Nur das Management','Nur Lieferanten'],correct:1,exp:'Stakeholder umfassen alle Gruppen, die vom Unternehmen betroffen sind oder Einfluss haben.'},
+  {q:'Welche vier Instrumente bilden den klassischen Marketing-Mix?',opts:['Produktion, Personal, Finanzen, Steuern','Produkt-, Preis-, Distributions- und Kommunikationspolitik','Innovation, Nachhaltigkeit, Logistik, Controlling','Werbung, Vertrieb, Lager, IT'],correct:1,exp:'Die 4 Ps sind Produkt, Preis, Place und Promotion.'},
+  {q:'Was ist Kreislaufwirtschaft?',opts:['Wegwerfwirtschaft','Ansatz zur Langnutzung von Materialien durch Wiederverwenden und Recyceln','Nur Mülltrennung','Nur Energiesparen'],correct:1,exp:'Kreislaufwirtschaft hält Materialien möglichst lange im Wirtschaftskreislauf.'},
+  {q:'Was ist Open Innovation?',opts:['Innovation ohne Plan','Öffnung des Innovationsprozesses für externe Partner und Wissensquellen','Geheime Produktentwicklung','Nur digitale Innovation'],correct:1,exp:'Open Innovation nutzt externes Wissen von Kunden, Lieferanten und Forschung.'},
+  {q:'Was beschreibt Resilienz in Lieferketten?',opts:['Maximale Lagerreduktion','Widerstandsfähigkeit und Anpassungsfähigkeit gegenüber Störungen','Nur lokale Beschaffung','Nur digitale Steuerung'],correct:1,exp:'Resiliente Lieferketten bleiben auch bei Krisen und Störungen funktionsfähig.'},
+  {q:'Was ist Digitalisierung im Unternehmenskontext?',opts:['Nur Scannen von Dokumenten','Nutzung digitaler Technologien zur Verbesserung und Transformation betrieblicher Prozesse','Nur Online-Werbung','Nur E-Mail-Kommunikation'],correct:1,exp:'Digitalisierung verändert grundlegend wie Leistungen geplant und erstellt werden.'},
+];
+
+// ═══════════════════════════════════════════════
+// STEP ENRICHMENT — runs once at init
+// Automatically inserts recall + think steps after
+// callout/prose, and SR questions before complete
+// ═══════════════════════════════════════════════
+function enrichModules(){
+  // For each lesson with at least one callout/def, convert the FIRST
+  // callout.def to a recall step, and add a think step after the 2nd prose.
+  // Also inject 2 SR questions before any 'complete' step.
+  MODULES.forEach(m=>{
+    m.lessons.forEach(lesson=>{
+      const enriched=[];
+      let recallInserted=0;
+      let thinkInserted=0;
+      let hasComplete=false;
+      lesson.steps.forEach((s,i)=>{
+        enriched.push(s);
+        // After first def callout → insert recall
+        if(s.type==='callout' && s.kind==='def' && recallInserted===0){
+          const answer=stripHtml(s.html);
+          if(answer.length>20){
+            enriched.push({
+              type:'recall',
+              q:`Kannst du die Definition von „${s.label}" in eigenen Worten erklären?`,
+              answer:answer
+            });
+            recallInserted++;
+          }
+        }
+        // After second prose → insert think pause (once per lesson)
+        if(s.type==='prose' && thinkInserted===0 && i>=2){
+          const thinkQ=genThinkQ(lesson.topic,lesson.title);
+          if(thinkQ){
+            enriched.push({type:'think',q:thinkQ.q,hint:thinkQ.hint});
+            thinkInserted++;
+          }
+        }
+        if(s.type==='complete') hasComplete=true;
+      });
+      // Inject 2 spaced review questions before complete step
+      if(hasComplete){
+        const completeIdx=enriched.findIndex(s=>s.type==='complete');
+        const picked=SR_POOL.sort(()=>Math.random()-0.5).slice(0,2)
+          .map(q=>({...q,type:'sr-mcq'}));
+        enriched.splice(completeIdx,0,...picked);
+      }
+      lesson.steps=enriched;
+    });
+  });
+}
+
+function stripHtml(html){
+  return html.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim().slice(0,200);
+}
+
+const THINK_QS={
+  produktion1:[
+    {q:'Stell dir vor du leitest eine Bäckerei. Welche Produktionsart würdest du für ein Standardbrötchen wählen – und warum?',hint:'Tipp: Denke an Stückzahl und Standardisierungsgrad.'},
+    {q:'Warum kann „hohe Flexibilität" und „niedrige Kosten" als Produktionsziel im Widerspruch stehen?',hint:'Tipp: Was kostet Flexibilität? Was erfordert Kostensenkung?'},
+  ],
+  produktion2:[
+    {q:'Warum könnte ein Unternehmen TROTZ höherer Kosten lieber selbst produzieren statt einzukaufen?',hint:'Tipp: Denke an Know-how, Abhängigkeiten und Qualitätskontrolle.'},
+    {q:'Was könnten typische Verschwendungsquellen in einem Supermarkt sein?',hint:'Tipp: Wende die 7 Verschwendungsarten von Lean auf den Einzelhandel an.'},
+  ],
+  logistik1:[
+    {q:'Warum ist ein zu hoher Lagerbestand ein Problem – obwohl mehr Vorrat doch Sicherheit schafft?',hint:'Tipp: Was passiert mit gebundenem Kapital? Was kann veralten?'},
+  ],
+  logistik2:[
+    {q:'Erkläre den Bullwhip-Effekt anhand eines Beispiels aus dem Alltag.',hint:'Tipp: Stell dir eine Lieferkette von Toilettenpapier während einer Krise vor.'},
+  ],
+  nachhaltigkeit_soz:[
+    {q:'Warum sollte ein Unternehmen nicht nur auf seine eigene Produktion schauen, sondern auch auf die Bedingungen bei seinen Lieferanten?',hint:'Tipp: Reputation, rechtliche Verantwortung, Lieferkettensorgfaltspflichten.'},
+  ],
+  nachhaltigkeit_oek:[
+    {q:'Nenne ein Produkt, das du täglich nutzt, und überlege: Wo in seiner Herstellung entstehen ökologische Probleme?',hint:'Tipp: Denke an Rohstoffe, Transport, Energie, Entsorgung.'},
+  ],
+  digitalisierung:[
+    {q:'Ein kleines Handwerksunternehmen zögert bei der Digitalisierung. Welche Chancen verpasst es, welche Risiken hat es aber auch, die großen Firmen nicht haben?',hint:'Tipp: Ressourcen, Datenhoheit, persönliche Kundenbeziehungen.'},
+  ],
+  ziele_strategie:[
+    {q:'Apple und Aldi sind beide sehr erfolgreich. Welche Wettbewerbsstrategie verfolgt welches Unternehmen – und warum kann man nicht beides gleichzeitig sein?',hint:'Tipp: Stuck in the middle – was bedeutet das?'},
+  ],
+  marketing1:[
+    {q:'Warum reicht es nicht, einfach das beste Produkt zu haben? Was zeigt das Konzept von Bedürfnis → Bedarf → Nachfrage?',hint:'Tipp: Kaufkraft und Marktwahrnehmung spielen eine Rolle.'},
+  ],
+  marketing2:[
+    {q:'Ein Luxusauto wird bei einem Discounter verkauft. Was passiert mit der Positionierung? Welches der 4 Ps ist verletzt?',hint:'Tipp: Wie wirkt Distributionspolitik auf die Markenwahrnehmung?'},
+  ],
+  innovation1:[
+    {q:'Warum scheitern viele gute Erfindungen daran, Innovationen zu werden?',hint:'Tipp: Marktpassung, Ressourcen, Timing, Diffusion.'},
+  ],
+  innovation2:[
+    {q:'Was könnte schiefgehen, wenn ein Unternehmen den Stage-Gate-Ansatz zu streng anwendet?',hint:'Tipp: Kreativität, Risikobereitschaft, schnelle Märkte.'},
+  ],
+};
+
+function genThinkQ(topic,title){
+  const pool=THINK_QS[topic];
+  if(!pool||!pool.length)return null;
+  return pool[Math.floor(Math.random()*pool.length)];
+}
+let S={xp:0,streak:0,cardsLearned:[],activities:[],quizCorrect:0,quizTotal:0,lessonsDone:[]};
+
+function save(){try{localStorage.setItem('bwl_v1',JSON.stringify(S));}catch(e){}}
+function load(){
+  try{
+    const r=localStorage.getItem('bwl_v1');
+    if(!r)return;
+    const d=JSON.parse(r);
+    Object.assign(S,d);
+    S.cardsLearned=d.cardsLearned||[];
+    S.activities=d.activities||[];
+    S.lessonsDone=d.lessonsDone||[];
+  }catch(e){}
+}
+function addXP(n){S.xp+=n;document.getElementById('spXP').textContent=S.xp+' XP';save();}
+function addAct(text,color='#4dd9c0'){
+  S.activities.push({text,color});
+  if(S.activities.length>50)S.activities.shift();
+}
+
+// ═══════════════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════════════
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const map=['s-home','s-kurs','s-karten','s-quiz'];
+  const i=map.indexOf(id);
+  if(i>=0)document.querySelectorAll('.nb')[i].classList.add('active');
+  document.getElementById('content').scrollTop=0;
+  if(id==='s-home')renderHome();
+}
+
+// ═══════════════════════════════════════════════
+// HOME
+// ═══════════════════════════════════════════════
+function renderHome(){
+  document.getElementById('spXP').textContent=S.xp+' XP';
+  document.getElementById('spStreak').textContent='🔥 '+S.streak;
+  const totalLes=MODULES.reduce((a,m)=>a+m.lessons.length,0);
+  const doneLes=S.lessonsDone.length;
+  const learned=S.cardsLearned.length;
+  const ov=Math.round((learned/CARDS.length*0.4+doneLes/totalLes*0.6)*100);
+  document.getElementById('overallBar').style.width=ov+'%';
+  document.getElementById('overallPct').textContent=ov+'% Gesamtfortschritt';
+  document.getElementById('dCards').textContent=learned;
+  document.getElementById('dXP').textContent=S.xp;
+  document.getElementById('dLes').textContent=doneLes;
+  if(S.quizTotal>0)document.getElementById('dAcc').textContent=Math.round(S.quizCorrect/S.quizTotal*100)+'%';
+  const tr=document.getElementById('topicRows');
+  tr.innerHTML=TOPICS.map(t=>{
+    const tot=CARDS.filter(c=>c.t===t.id).length;
+    const don=CARDS.filter((c,i)=>c.t===t.id&&S.cardsLearned.includes(i)).length;
+    const p=tot>0?Math.round(don/tot*100):0;
+    return `<div class="trow"><div class="tdot" style="background:${t.color}"></div>
+      <div class="tname">${t.name}</div>
+      <div class="tbar-w"><div class="tbar" style="width:${p}%;background:${t.color}"></div></div>
+      <div class="tpct">${p}%</div></div>`;
+  }).join('');
+  const al=document.getElementById('actList');
+  if(!S.activities.length){al.innerHTML='<div class="act-row"><div class="adot" style="background:var(--muted)"></div>Starte mit dem Kurs!</div>';return;}
+  al.innerHTML=S.activities.slice(-6).reverse().map(a=>`<div class="act-row"><div class="adot" style="background:${a.color}"></div>${a.text}</div>`).join('');
+}
+
+// ═══════════════════════════════════════════════
+// COURSE
+// ═══════════════════════════════════════════════
+function renderModules(){
+  const totalLes=MODULES.reduce((a,m)=>a+m.lessons.length,0);
+  const p=totalLes>0?Math.round(S.lessonsDone.length/totalLes*100):0;
+  document.getElementById('courseBar').style.width=p+'%';
+  const ml=document.getElementById('modList');
+  ml.innerHTML=MODULES.map((m,mi)=>{
+    const allDone=m.lessons.every(l=>S.lessonsDone.includes(l.id));
+    const doneCnt=m.lessons.filter(l=>S.lessonsDone.includes(l.id)).length;
+    const st=allDone?'✅':doneCnt>0?'🔄':'⬜';
+    const les=m.lessons.map((l,li)=>{
+      const done=S.lessonsDone.includes(l.id);
+      const isNext=!done&&(li===0||S.lessonsDone.includes(m.lessons[li-1]?.id));
+      let badge=done?'<span class="les-badge done-b">✓ done</span>':
+                isNext?'<span class="les-badge new">Starten</span>':
+                '<span class="les-badge">›</span>';
+      return `<div class="les-item" onclick="openLesson('${m.id}','${l.id}')">
+        <div class="les-icon" style="background:${m.color}18;color:${m.color}">${l.icon}</div>
+        <div class="les-title ${done?'done':''}">${l.title}</div>
+        ${badge}</div>`;
+    }).join('');
+    return `<div class="mod-card">
+      <div class="mod-head" onclick="toggleMod(${mi})">
+        <div class="mod-num" style="background:${m.color}18;color:${m.color}">${m.icon}</div>
+        <div class="mod-info"><div class="mod-title">${m.title}</div>
+          <div class="mod-meta">${doneCnt}/${m.lessons.length} · ${m.desc}</div></div>
+        <div class="mod-status">${st}</div>
+      </div>
+      <div class="mod-lessons" id="ml_${mi}">${les}</div>
+    </div>`;
+  }).join('');
+  MODULES.forEach((m,mi)=>{
+    if(m.lessons.some(l=>!S.lessonsDone.includes(l.id))){
+      document.getElementById('ml_'+mi)?.classList.add('open');
+      return;
+    }
+  });
+}
+
+function toggleMod(i){document.getElementById('ml_'+i)?.classList.toggle('open');}
+
+// ═══════════════════════════════════════════════
+// LESSON VIEWER
+// ═══════════════════════════════════════════════
+let CL=null,CS=0,CM=null;
+let lvInteracted=false;
+
+function openLesson(modId,lesId){
+  CM=MODULES.find(m=>m.id===modId);
+  CL=CM.lessons.find(l=>l.id===lesId);
+  CS=0;lvInteracted=false;
+  document.getElementById('lvTitle').textContent=CL.title;
+  document.getElementById('lvMod').textContent=CM.title;
+  renderStep();
+  document.getElementById('lv').classList.add('open');
+}
+
+function closeLesson(){
+  document.getElementById('lv').classList.remove('open');
+  renderModules();
+}
+
+function renderStep(){
+  const steps=CL.steps;
+  const total=steps.length;
+  const pct=((CS+1)/total)*100;
+  document.getElementById('lvPbar').style.width=pct+'%';
+  document.getElementById('lvProg').textContent=(CS+1)+'/'+total;
+  document.getElementById('lvPrev').style.visibility=CS===0?'hidden':'visible';
+  const isLast=CS===total-1;
+  document.getElementById('lvNext').textContent=isLast?'✅ Abschließen':'Weiter →';
+  document.getElementById('lvBody').innerHTML=`<div class="lv-step">${buildStep(steps[CS])}</div>`;
+  document.getElementById('lvBody').scrollTop=0;
+  lvInteracted=false;
+  // Lock "Weiter" for steps that require interaction
+  const lockTypes=['recall','think','mcq','fillin','sr-mcq'];
+  if(lockTypes.includes(steps[CS].type)){
+    lockNext();
+  } else {
+    unlockNext();
+  }
+}
+
+function esc(s){return s?s.replace(/'/g,"&#39;").replace(/"/g,"&quot;"):''}
+
+function buildStep(s){
+  switch(s.type){
+    case 'title': return `
+      <div style="margin-bottom:20px;font-size:2.5rem">${s.icon||''}</div>
+      <div class="st-title">${s.title}</div>
+      <div class="st-subtitle">${s.sub}</div>
+      <div class="continue-hint">Tippe „Weiter" um zu beginnen</div>`;
+
+    case 'prose': return `<p class="prose">${s.html}</p>`;
+
+    case 'callout': return `
+      <div class="callout ${s.kind}">
+        <div class="callout-label">${s.label}</div>
+        ${s.html}
+      </div>`;
+
+    case 'reveal-steps': return `
+      <div class="reveal-steps">
+        ${s.steps.map((st,i)=>`
+          <div class="reveal-step" id="rs_${i}" onclick="toggleReveal(${i})">
+            <div class="rs-header">
+              <div class="rs-num" id="rsn_${i}">${st.num}</div>
+              <div class="rs-title">${st.title}</div>
+              <div class="rs-arrow" id="rsa_${i}">›</div>
+            </div>
+            <div class="rs-body" id="rsb_${i}">${st.body}</div>
+          </div>`).join('')}
+      </div>`;
+
+    case 'mcq': return `
+      <div class="mcq">
+        <div class="mcq-q">${s.q}</div>
+        <div class="mcq-opts">
+          ${s.opts.map((o,i)=>`
+            <button class="mcq-opt" id="mopt_${i}" onclick="answerMCQ(${i},${s.correct},'${esc(s.exp)}')">
+              <span class="opt-letter">${'ABCD'[i]}</span>${o}
+            </button>`).join('')}
+        </div>
+        <div class="mcq-fb" id="mcqfb"></div>
+      </div>`;
+
+    case 'fillin': return `
+      <div class="fillin">
+        <div class="fillin-q">${s.q}</div>
+        <div class="fillin-wrap">
+          <input class="fillin-input" id="fii" placeholder="Antwort eingeben…" 
+            onkeydown="if(event.key==='Enter')checkFillin('${esc(s.answer)}','${esc(s.exp)}')">
+          <button class="btn p" onclick="checkFillin('${esc(s.answer)}','${esc(s.exp)}')">✓</button>
+        </div>
+        <div class="fillin-fb" id="fifb"></div>
+        <div style="margin-top:6px;font-size:0.7rem;color:var(--muted)">Hinweis: ${s.hint}</div>
+      </div>`;
+
+    case 'complete': return `
+      <div class="lesson-complete">
+        <div class="lc-emoji">🎓</div>
+        <div class="lc-title">${s.title}</div>
+        <div class="lc-sub">${s.sub}</div>
+        <div class="lc-xp">+20 XP</div>
+        <div class="lc-xp-label">verdient!</div>
+      </div>`;
+
+    /* ── ACTIVE RECALL ─────────────────────────────
+       Shows prompt, user types guess, then sees answer.
+       "Weiter" locked until user either submits or reveals. */
+    case 'recall': return `
+      <div class="recall-wrap" id="recallWrap">
+        <div class="recall-label">💬 Active Recall</div>
+        <div class="recall-prompt">${s.q}</div>
+        <div class="recall-input-row">
+          <input class="recall-input" id="rcl_inp" placeholder="Deine Antwort…"
+            onkeydown="if(event.key==='Enter')submitRecall()">
+          <button class="recall-hint-btn" onclick="revealRecall()">Zeigen →</button>
+        </div>
+        <button class="btn p" style="width:100%;margin-bottom:4px" onclick="submitRecall()">Antwort prüfen ✓</button>
+        <div class="recall-result" id="rcl_res"></div>
+      </div>`;
+
+    /* ── THINK PAUSE ────────────────────────────────
+       Elaborative interrogation: open text, no right/wrong.
+       Unlocks "Weiter" after submitting. */
+    case 'think': return `
+      <div class="think-wrap">
+        <div class="think-label">🤔 Denk kurz nach</div>
+        <div class="think-q">${s.q}</div>
+        <textarea class="think-ta" id="think_ta" placeholder="Schreib deine Gedanken…"></textarea>
+        <button class="think-submit" onclick="submitThink()">Weiter denken →</button>
+        <div class="think-fb" id="think_fb">${s.hint||''}</div>
+      </div>`;
+
+    /* ── SPACED REVIEW ──────────────────────────────
+       Injected dynamically at end of lesson. Wrapper only. */
+    case 'sr-mcq': return `
+      <div>
+        <div class="sr-banner">
+          <span class="sr-badge">🔁 Wiederholung</span>
+          <span class="sr-text">Diese Frage stammt aus einer früheren Lektion – teste ob du es noch weißt!</span>
+        </div>
+        <div class="mcq">
+          <div class="mcq-q">${s.q}</div>
+          <div class="mcq-opts">
+            ${s.opts.map((o,i)=>`
+              <button class="mcq-opt" id="mopt_${i}" onclick="answerMCQ(${i},${s.correct},'${esc(s.exp)}')">
+                <span class="opt-letter">${'ABCD'[i]}</span>${o}
+              </button>`).join('')}
+          </div>
+          <div class="mcq-fb" id="mcqfb"></div>
+        </div>
+      </div>`;
+
+    default: return `<p class="prose">${JSON.stringify(s)}</p>`;
+  }
+}
+
+function toggleReveal(i){
+  const body=document.getElementById('rsb_'+i);
+  const arrow=document.getElementById('rsa_'+i);
+  const num=document.getElementById('rsn_'+i);
+  const open=body.classList.toggle('open');
+  arrow.classList.toggle('open',open);
+  if(open)num.classList.add('done');
+  lvInteracted=true;
+  unlockNext();
+}
+
+// ── ACTIVE RECALL ────────────────────────────────
+function submitRecall(){
+  const inp=document.getElementById('rcl_inp');
+  const res=document.getElementById('rcl_res');
+  if(!inp||!res)return;
+  const val=inp.value.trim();
+  const s=CL.steps[CS];
+  if(!val){revealRecall();return;}
+  inp.disabled=true;
+  // Show the correct answer and ask user to self-assess
+  res.innerHTML=`
+    <div style="margin-bottom:8px"><strong>✅ Musterlösung:</strong></div>
+    <div style="margin-bottom:10px;line-height:1.65">${s.answer}</div>
+    <div class="recall-selfcheck"><strong>War deine Antwort richtig?</strong></div>
+    <div class="recall-btns">
+      <button class="btn r" style="flex:1" onclick="rateRecall(0)">😕 Nein</button>
+      <button class="btn o" style="flex:1" onclick="rateRecall(1)">🤔 Teilweise</button>
+      <button class="btn g" style="flex:1" onclick="rateRecall(2)">✅ Ja!</button>
+    </div>`;
+  res.className='recall-result hint show';
+}
+
+function revealRecall(){
+  const inp=document.getElementById('rcl_inp');
+  const res=document.getElementById('rcl_res');
+  if(!inp||!res)return;
+  inp.disabled=true;
+  const s=CL.steps[CS];
+  res.innerHTML=`
+    <div style="margin-bottom:8px"><strong>📖 Antwort:</strong></div>
+    <div style="line-height:1.65;margin-bottom:10px">${s.answer}</div>
+    <div class="recall-selfcheck"><strong>Wusstest du es?</strong></div>
+    <div class="recall-btns">
+      <button class="btn r" style="flex:1" onclick="rateRecall(0)">😕 Nein</button>
+      <button class="btn o" style="flex:1" onclick="rateRecall(1)">🤔 Teilweise</button>
+      <button class="btn g" style="flex:1" onclick="rateRecall(2)">✅ Ja!</button>
+    </div>`;
+  res.className='recall-result hint show';
+}
+
+function rateRecall(r){
+  if(r===2)addXP(8);
+  else if(r===1)addXP(4);
+  else addXP(1);
+  // disable rating buttons
+  document.querySelectorAll('.recall-btns .btn').forEach(b=>b.disabled=true);
+  lvInteracted=true;
+  unlockNext();
+  save();
+}
+
+// ── THINK PAUSE ──────────────────────────────────
+function submitThink(){
+  const ta=document.getElementById('think_ta');
+  const fb=document.getElementById('think_fb');
+  if(!ta||!fb)return;
+  if(ta.value.trim().length<3){ta.focus();return;}
+  ta.disabled=true;
+  document.querySelector('.think-submit').disabled=true;
+  fb.classList.add('show');
+  addXP(5);
+  lvInteracted=true;
+  unlockNext();
+  save();
+}
+
+// ── NEXT BUTTON LOCK ─────────────────────────────
+function unlockNext(){
+  document.getElementById('lvNext').classList.remove('locked');
+}
+
+function lockNext(){
+  document.getElementById('lvNext').classList.add('locked');
+}
+
+function answerMCQ(idx,correct,exp){
+  const opts=document.querySelectorAll('.mcq-opt');
+  if(opts[0].disabled)return;
+  opts.forEach(o=>o.disabled=true);
+  opts[correct].classList.add('correct');
+  const fb=document.getElementById('mcqfb');
+  if(idx===correct){
+    addXP(10);
+    fb.textContent='✅ Richtig! '+exp;
+    fb.className='mcq-fb ok show';
+  } else {
+    opts[idx].classList.add('wrong');
+    fb.textContent='❌ Falsch. '+exp;
+    fb.className='mcq-fb no show';
+    addXP(2);
+  }
+  lvInteracted=true;unlockNext();save();
+}
+
+function checkFillin(answer,exp){
+  const inp=document.getElementById('fii');
+  const fb=document.getElementById('fifb');
+  const val=inp.value.trim().toLowerCase();
+  if(val===answer.toLowerCase()||val===answer){
+    inp.classList.add('ok');
+    fb.textContent='✅ Korrekt! '+exp;
+    fb.className='fillin-fb ok show';
+    addXP(5);
+  } else {
+    fb.textContent=`❌ Nicht ganz. Richtig: ${answer}. ${exp}`;
+    fb.className='fillin-fb no show';
+  }
+  inp.disabled=true;
+  lvInteracted=true;unlockNext();save();
+}
+
+function lvNav(dir){
+  const steps=CL.steps;
+  const newIdx=CS+dir;
+  if(newIdx<0)return;
+  if(newIdx>=steps.length){
+    if(!S.lessonsDone.includes(CL.id)){
+      S.lessonsDone.push(CL.id);
+      addXP(20);
+      addAct(`Lektion: "${CL.title}"`,CM.color);
+      save();
+    }
+    closeLesson();
+    return;
+  }
+  CS=newIdx;
+  renderStep();
+}
+
+// ═══════════════════════════════════════════════
+// FLASHCARDS
+// ═══════════════════════════════════════════════
+let fcCards=[],fcIdx=0;
+
+function initFC(){
+  const f=document.getElementById('fcFilters');
+  let h=`<div class="fc-chip active" onclick="fcFilter('all',this)">Alle (${CARDS.length})</div>`;
+  TOPICS.forEach(t=>{
+    const n=CARDS.filter(c=>c.t===t.id).length;
+    if(n>0)h+=`<div class="fc-chip" onclick="fcFilter('${t.id}',this)">${t.name} (${n})</div>`;
+  });
+  f.innerHTML=h;
+  fcFilter('all',f.querySelector('.fc-chip'));
+}
+
+function fcFilter(topic,btn){
+  document.querySelectorAll('.fc-chip').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  fcCards=topic==='all'?CARDS.map((c,i)=>({...c,oi:i})):CARDS.map((c,i)=>({...c,oi:i})).filter(c=>c.t===topic);
+  fcIdx=0;fcRender();
+  document.getElementById('fc').classList.remove('flipped');
+  document.getElementById('fcRating').classList.remove('show');
+}
+
+function fcRender(){
+  document.getElementById('fc').classList.remove('flipped');
+  document.getElementById('fcRating').classList.remove('show');
+  if(!fcCards.length){document.getElementById('fcQ').textContent='Keine Karten';document.getElementById('fcCtr').textContent='0/0';return;}
+  const c=fcCards[fcIdx];
+  const t=TOPICS.find(x=>x.id===c.t);
+  ['fcCat','fcCatB'].forEach(id=>document.getElementById(id).textContent=t?.name||c.t);
+  document.getElementById('fcQ').textContent=c.q;
+  document.getElementById('fcH').textContent=c.h?'💡 '+c.h:'';
+  document.getElementById('fcA').innerHTML=c.a;
+  document.getElementById('fcCtr').textContent=(fcIdx+1)+'/'+fcCards.length;
+}
+
+function flipCard(){
+  document.getElementById('fc').classList.toggle('flipped');
+  if(document.getElementById('fc').classList.contains('flipped'))
+    document.getElementById('fcRating').classList.add('show');
+}
+function fcPrev(){fcIdx=fcIdx>0?fcIdx-1:fcCards.length-1;fcRender();}
+function fcNext(){fcIdx=fcIdx<fcCards.length-1?fcIdx+1:0;fcRender();}
+
+function fcRate(r){
+  if(!fcCards.length)return;
+  const c=fcCards[fcIdx];
+  if(r===2&&!S.cardsLearned.includes(c.oi)){S.cardsLearned.push(c.oi);addXP(5);addAct(`Karte: "${c.q.slice(0,35)}…"`);}
+  else if(r===1)addXP(2);
+  save();setTimeout(fcNext,220);
+}
+
+// ═══════════════════════════════════════════════
+// QUIZ
+// ═══════════════════════════════════════════════
+let qQs=[],qIdx=0,qScore=0,qTopic='all';
+
+function initQSetup(){
+  const g=document.getElementById('qTopicGrid');
+  let h=`<div class="q-tbtn sel" onclick="qSelTopic('all',this)">🎲 Alle<span>${QUIZ.length} Fragen</span></div>`;
+  TOPICS.forEach(t=>{
+    const n=QUIZ.filter(q=>q.t===t.id).length;
+    if(n>0)h+=`<div class="q-tbtn" onclick="qSelTopic('${t.id}',this)">${t.name}<span>${n} Fragen</span></div>`;
+  });
+  g.innerHTML=h;
+}
+
+function qSelTopic(t,btn){
+  document.querySelectorAll('.q-tbtn').forEach(b=>b.classList.remove('sel'));
+  btn.classList.add('sel');qTopic=t;
+}
+
+function startQuiz(){
+  let pool=qTopic==='all'?QUIZ:QUIZ.filter(q=>q.t===qTopic);
+  qQs=pool.sort(()=>Math.random()-0.5).slice(0,Math.min(10,pool.length));
+  qIdx=0;qScore=0;
+  document.getElementById('qSetup').style.display='none';
+  document.getElementById('qActive').classList.add('show');
+  document.getElementById('qResult').classList.remove('show');
+  renderQ();
+}
+
+function renderQ(){
+  const con=document.getElementById('qContainer');
+  if(qIdx>=qQs.length){showQResult();return;}
+  const q=qQs[qIdx];
+  const t=TOPICS.find(x=>x.id===q.t);
+  document.getElementById('qPbar').style.width=(qIdx/qQs.length*100)+'%';
+  document.getElementById('qInfo').textContent=(qIdx+1)+'/'+qQs.length;
+  document.getElementById('qScoreD').textContent=qScore+'/'+qIdx;
+  const opts=q.o.map((o,i)=>`<button class="q-opt" onclick="ansQ(${i})">
+    <span class="ol">${'ABCD'[i]}</span>${o}</button>`).join('');
+  con.innerHTML=`<div class="q-card">
+    <div class="q-cat">${t?.name||q.t}</div>
+    <div class="q-q">${q.q}</div>
+    <div class="q-opts">${opts}</div>
+    <div class="q-fb" id="qfb"></div>
+  </div>
+  <div class="q-next-wrap"><button class="btn" id="qnb" style="display:none" onclick="qNext()">Weiter →</button></div>`;
+}
+
+function ansQ(idx){
+  const opts=document.querySelectorAll('.q-opt');
+  if(opts[0].disabled)return;
+  opts.forEach(o=>o.disabled=true);
+  const q=qQs[qIdx];
+  opts[q.c].classList.add('correct');
+  const fb=document.getElementById('qfb');
+  if(idx===q.c){
+    qScore++;S.quizCorrect++;addXP(10);
+    fb.textContent='✅ Richtig! '+q.e;fb.className='q-fb ok show';
+    addAct(`Quiz korrekt: "${q.q.slice(0,35)}…"`, '#4ade80');
+  } else {
+    opts[idx].classList.add('wrong');
+    fb.textContent='❌ '+q.e;fb.className='q-fb no show';addXP(2);
+    addAct(`Quiz falsch: "${q.q.slice(0,35)}…"`, '#f87171');
+  }
+  S.quizTotal++;
+  document.getElementById('qnb').style.display='flex';
+  save();
+}
+
+function qNext(){qIdx++;renderQ();}
+
+function showQResult(){
+  document.getElementById('qContainer').innerHTML='';
+  document.getElementById('qPbar').style.width='100%';
+  const pct=qQs.length?Math.round(qScore/qQs.length*100):0;
+  let emoji,title,sub;
+  if(pct>=90){emoji='🏆';title='Hervorragend!';sub='Top-Leistung!';}
+  else if(pct>=70){emoji='🎉';title='Gut gemacht!';sub='Noch etwas üben!';}
+  else if(pct>=50){emoji='📚';title='Weiter üben!';sub='Kurs & Karten helfen.';}
+  else{emoji='💪';title='Nicht aufgeben!';sub='Starte mit dem Kurs.';}
+  document.getElementById('qrEmoji').textContent=emoji;
+  document.getElementById('qrTitle').textContent=title;
+  document.getElementById('qrScore').textContent=qScore+'/'+qQs.length;
+  document.getElementById('qrSub').textContent=sub;
+  document.getElementById('qResult').classList.add('show');
+  addXP(qScore*5);addAct(`Quiz: ${qScore}/${qQs.length} (${pct}%)`,pct>=70?'#4ade80':'#fbbf24');
+  save();renderHome();
+}
+
+function restartQuiz(){
+  document.getElementById('qResult').classList.remove('show');
+  document.getElementById('qSetup').style.display='';
+  document.getElementById('qActive').classList.remove('show');
+  initQSetup();
+}
+
+// ═══════════════════════════════════════════════
+// THEME TOGGLE
+// ═══════════════════════════════════════════════
+function toggleTheme(){
+  const isLight = document.documentElement.classList.toggle('light');
+  document.getElementById('themeBtn').textContent = isLight ? '☀️' : '🌙';
+  try{ localStorage.setItem('bwl_theme', isLight ? 'light' : 'dark'); }catch(e){}
+}
+
+function loadTheme(){
+  try{
+    const saved = localStorage.getItem('bwl_theme');
+    if(saved === 'light'){
+      document.documentElement.classList.add('light');
+      document.getElementById('themeBtn').textContent = '☀️';
+    } else {
+      document.documentElement.classList.remove('light');
+      document.getElementById('themeBtn').textContent = '🌙';
+    }
+  }catch(e){}
+}
+
+// ═══════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════
+load();
+loadTheme();
+enrichModules(); // inject active recall, think, spaced review
+renderHome();
+renderModules();
+initFC();
+initQSetup();
+</script>
+
+</body>
+</html>
