@@ -433,55 +433,17 @@ background:var(--s2);border-radius:9px;padding:10px 13px;border:1px solid var(--
 .think-label{font-size:0.58rem;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;
 font-family:'JetBrains Mono',monospace;color:var(--violet);margin-bottom:7px}
 
-/* ── KI ANALYSE ── */
-.ai-box{
-margin-top:10px;
-background:var(--s1);
-border:1px solid var(--border);
-border-radius:12px;
-padding:12px 14px;
-color:var(--text);
-}
-.ai-head{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:10px;
-margin-bottom:10px;
-}
-.ai-badge{
-font-size:0.62rem;
-font-weight:700;
-letter-spacing:0.08em;
-text-transform:uppercase;
-font-family:'JetBrains Mono',monospace;
-color:var(--violet);
-}
-.ai-score{
-font-size:0.78rem;
-font-family:'JetBrains Mono',monospace;
-color:var(--teal);
-font-weight:700;
-}
+
+/* ── KI MINI FEEDBACK ── */
+.ai-box{margin-top:10px;background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:12px 14px;color:var(--text)}
+.ai-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+.ai-badge{font-size:0.62rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;font-family:'JetBrains Mono',monospace;color:var(--violet)}
+.ai-score{font-size:0.78rem;font-family:'JetBrains Mono',monospace;color:var(--teal);font-weight:700}
 .ai-section + .ai-section{margin-top:10px}
-.ai-section strong{
-display:block;
-margin-bottom:4px;
-font-size:0.78rem;
-color:var(--text);
-}
-.ai-section p,
-.ai-section li{
-font-size:0.8rem;
-line-height:1.6;
-color:var(--dim);
-}
+.ai-section strong{display:block;margin-bottom:4px;font-size:0.78rem;color:var(--text)}
+.ai-section p,.ai-section li{font-size:0.8rem;line-height:1.6;color:var(--dim)}
 .ai-section ul{padding-left:18px}
-.ai-note{
-font-size:0.72rem;
-color:var(--muted);
-margin-top:8px;
-}
+.ai-mini-note{margin-top:8px;font-size:0.72rem;color:var(--muted)}
 
 /* ── SPACED REVIEW banner ── */
 .sr-banner{background:linear-gradient(135deg,rgba(155,135,245,0.12),rgba(77,217,192,0.08));
@@ -1306,15 +1268,72 @@ const SR_POOL=[
   {q:'Was ist Digitalisierung im Unternehmenskontext?',opts:['Nur Scannen von Dokumenten','Nutzung digitaler Technologien zur Verbesserung und Transformation betrieblicher Prozesse','Nur Online-Werbung','Nur E-Mail-Kommunikation'],correct:1,exp:'Digitalisierung verändert grundlegend wie Leistungen geplant und erstellt werden.'},
 ];
 
+
+const AI_ENDPOINT='https://lernapp-leistungsprozesse.jdjdujejdhfhdzsj.workers.dev/api/analyse';
+
+function makeRecallPoints(answer){
+  return String(answer||'')
+    .replace(/\s+/g,' ')
+    .split(/[.;:!?]| – | - /)
+    .map(s=>s.trim())
+    .filter(Boolean)
+    .slice(0,3)
+    .map(s=>s.slice(0,80));
+}
+
+function makeThinkPoints(topic,title,hint=''){
+  return [String(hint||`Reflexion zu ${title||topic||'dem Thema'}`).trim().slice(0,80)].filter(Boolean);
+}
+
+async function callAIAnalysis(step,userAnswer,modus='recall'){
+  const punkte = Array.isArray(step.aiPoints) ? step.aiPoints.slice(0,3) : [];
+  const res = await fetch(AI_ENDPOINT,{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({
+      frage: step.q || '',
+      punkte,
+      userAntwort: String(userAnswer||'').slice(0,500),
+      modus
+    })
+  });
+  if(!res.ok){
+    let msg='KI-Analyse fehlgeschlagen';
+    try{
+      const err=await res.json();
+      if(err?.error) msg=err.error;
+    }catch(e){}
+    throw new Error(msg);
+  }
+  return await res.json();
+}
+
+function renderMiniAIResult(data, localSolution=''){
+  return `
+    <div class="ai-box">
+      <div class="ai-head">
+        <span class="ai-badge">KI-Check</span>
+        <span class="ai-score">${data?.s ?? 0}/100</span>
+      </div>
+      <div class="ai-section">
+        <strong>Feedback</strong>
+        <p>${data?.f || 'Keine Rückmeldung.'}</p>
+      </div>
+      ${localSolution ? `
+      <div class="ai-section">
+        <strong>Musterlösung</strong>
+        <p>${localSolution}</p>
+      </div>
+      <div class="ai-mini-note">Die Musterlösung kommt direkt aus der App und verbraucht keine zusätzlichen KI-Tokens.</div>` : ''}
+    </div>`;
+}
+
 // ═══════════════════════════════════════════════
 // STEP ENRICHMENT — runs once at init
 // Automatically inserts recall + think steps after
 // callout/prose, and SR questions before complete
 // ═══════════════════════════════════════════════
 function enrichModules(){
-  // For each lesson with at least one callout/def, convert the FIRST
-  // callout.def to a recall step, and add a think step after the 2nd prose.
-  // Also inject 2 SR questions before any 'complete' step.
   MODULES.forEach(m=>{
     m.lessons.forEach(lesson=>{
       const enriched=[];
@@ -1323,7 +1342,6 @@ function enrichModules(){
       let hasComplete=false;
       lesson.steps.forEach((s,i)=>{
         enriched.push(s);
-        // After first def callout → insert recall
         if(s.type==='callout' && s.kind==='def' && recallInserted===0){
           const answer=stripHtml(s.html);
           if(answer.length>20){
@@ -1331,13 +1349,11 @@ function enrichModules(){
               type:'recall',
               q:`Kannst du die Definition von „${s.label}" in eigenen Worten erklären?`,
               answer:answer,
-              aiIdeal:answer,
-              aiPoints:[s.label||lesson.title,'eigene Worte','korrekte Kernaussage']
+              aiPoints:makeRecallPoints(answer)
             });
             recallInserted++;
           }
         }
-        // After second prose → insert think pause (once per lesson)
         if(s.type==='prose' && thinkInserted===0 && i>=2){
           const thinkQ=genThinkQ(lesson.topic,lesson.title);
           if(thinkQ){
@@ -1345,15 +1361,13 @@ function enrichModules(){
               type:'think',
               q:thinkQ.q,
               hint:thinkQ.hint,
-              aiIdeal:thinkQ.hint||'Begründe deine Antwort mit einem fachlichen Zusammenhang aus der Lektion.',
-              aiPoints:[lesson.title,'fachliche Begründung','klarer Zusammenhang']
+              aiPoints:makeThinkPoints(lesson.topic,lesson.title,thinkQ.hint)
             });
             thinkInserted++;
           }
         }
         if(s.type==='complete') hasComplete=true;
       });
-      // Inject 2 spaced review questions before complete step
       if(hasComplete){
         const completeIdx=enriched.findIndex(s=>s.type==='complete');
         const picked=SR_POOL.sort(()=>Math.random()-0.5).slice(0,2)
@@ -1566,93 +1580,6 @@ function renderStep(){
 }
 
 function esc(s){return s?s.replace(/'/g,"&#39;").replace(/"/g,"&quot;"):''}
-function escHtml(s){
-  return String(s??'')
-    .replace(/&/g,'&amp;')
-    .replace(/</g,'&lt;')
-    .replace(/>/g,'&gt;')
-    .replace(/"/g,'&quot;')
-    .replace(/'/g,'&#39;');
-}
-
-const AI_ENDPOINT='https://lernapp-leistungsprozesse.jdjdujejdhfhdzsj.workers.dev/api/analyse';
-
-async function callAIAnalysis(step,userAnswer){
-  const payload={
-    frage:step.q||'',
-    musterloesung:step.aiIdeal||step.answer||step.hint||'',
-    erwartetePunkte:step.aiPoints||[],
-    userAntwort:userAnswer||''
-  };
-
-  const res=await fetch(AI_ENDPOINT,{
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify(payload)
-  });
-
-  let data;
-  try{
-    data=await res.json();
-  }catch(e){
-    throw new Error('Ungültige Server-Antwort');
-  }
-
-  if(!res.ok){
-    throw new Error(data?.error||'KI-Analyse fehlgeschlagen');
-  }
-
-  return data;
-}
-
-function renderAIBlock(data){
-  const richtige=(data.richtige_punkte||[])
-    .map(x=>`<li>${escHtml(x)}</li>`).join('');
-  const fehlende=(data.fehlende_punkte||[])
-    .map(x=>`<li>${escHtml(x)}</li>`).join('');
-  const falsche=(data.falsche_punkte||[])
-    .map(x=>`<li>${escHtml(x)}</li>`).join('');
-
-  return `
-    <div class="ai-box">
-      <div class="ai-head">
-        <span class="ai-badge">KI-Analyse</span>
-        <span class="ai-score">${Number.isFinite(data.score)?data.score:0}/100</span>
-      </div>
-
-      <div class="ai-section">
-        <strong>Feedback</strong>
-        <p>${escHtml(data.kurzes_feedback||'Keine Rückmeldung erhalten.')}</p>
-      </div>
-
-      ${richtige?`
-      <div class="ai-section">
-        <strong>Richtig erkannt</strong>
-        <ul>${richtige}</ul>
-      </div>`:''}
-
-      ${fehlende?`
-      <div class="ai-section">
-        <strong>Fehlende Punkte</strong>
-        <ul>${fehlende}</ul>
-      </div>`:''}
-
-      ${falsche?`
-      <div class="ai-section">
-        <strong>Ungenaue oder falsche Punkte</strong>
-        <ul>${falsche}</ul>
-      </div>`:''}
-
-      ${(data.verbesserte_musterantwort||'')?`
-      <div class="ai-section">
-        <strong>Verbesserte Musterantwort</strong>
-        <p>${escHtml(data.verbesserte_musterantwort)}</p>
-      </div>`:''}
-
-      <div class="ai-note">Die KI liefert eine Hilfseinschätzung, keine offizielle Musterbewertung.</div>
-    </div>
-  `;
-}
 
 function buildStep(s){
   switch(s.type){
@@ -1786,32 +1713,37 @@ async function submitRecall(){
   if(!inp||!res)return;
   const val=inp.value.trim();
   const s=CL.steps[CS];
-
-  if(!val){
-    res.className='recall-result hint show';
-    res.innerHTML='Bitte gib erst eine Antwort ein.';
-    return;
-  }
+  if(!val){revealRecall();return;}
 
   inp.disabled=true;
   const submitBtn=document.querySelector('#recallWrap .btn.p');
   if(submitBtn) submitBtn.disabled=true;
+
   res.className='recall-result hint show';
   res.innerHTML='KI prüft deine Antwort…';
 
   try{
-    const data=await callAIAnalysis(s,val);
+    const data=await callAIAnalysis(s,val,'recall');
     res.className='recall-result ok show';
-    res.innerHTML=renderAIBlock(data);
-    addXP(8);
-    lvInteracted=true;
-    unlockNext();
-    save();
+    res.innerHTML=renderMiniAIResult(data,s.answer||'') + `
+      <div class="recall-selfcheck"><strong>War deine Antwort richtig?</strong></div>
+      <div class="recall-btns">
+        <button class="btn r" style="flex:1" onclick="rateRecall(0)">😕 Nein</button>
+        <button class="btn o" style="flex:1" onclick="rateRecall(1)">🤔 Teilweise</button>
+        <button class="btn g" style="flex:1" onclick="rateRecall(2)">✅ Ja!</button>
+      </div>`;
   }catch(err){
-    inp.disabled=false;
-    if(submitBtn) submitBtn.disabled=false;
     res.className='recall-result hint show';
-    res.innerHTML=`Die KI-Analyse konnte nicht geladen werden.<br><small>${escHtml(err.message)}</small>`;
+    res.innerHTML=`
+      <div style="margin-bottom:8px"><strong>KI gerade nicht verfügbar.</strong></div>
+      <div style="line-height:1.65;margin-bottom:10px">${s.answer||''}</div>
+      <div class="ai-mini-note">${err.message}</div>
+      <div class="recall-selfcheck"><strong>Wusstest du es?</strong></div>
+      <div class="recall-btns">
+        <button class="btn r" style="flex:1" onclick="rateRecall(0)">😕 Nein</button>
+        <button class="btn o" style="flex:1" onclick="rateRecall(1)">🤔 Teilweise</button>
+        <button class="btn g" style="flex:1" onclick="rateRecall(2)">✅ Ja!</button>
+      </div>`;
   }
 }
 
@@ -1821,11 +1753,10 @@ function revealRecall(){
   if(!inp||!res)return;
   inp.disabled=true;
   const s=CL.steps[CS];
-  const submitBtn=document.querySelector('#recallWrap .btn.p');
-  if(submitBtn) submitBtn.disabled=true;
   res.innerHTML=`
     <div style="margin-bottom:8px"><strong>📖 Musterlösung:</strong></div>
-    <div style="line-height:1.65;margin-bottom:10px">${escHtml(s.aiIdeal||s.answer||s.hint||'Keine Musterlösung hinterlegt.')}</div>
+    <div style="line-height:1.65;margin-bottom:10px">${s.answer}</div>
+    <div class="ai-mini-note">Die Musterlösung ist lokal in der App gespeichert.</div>
     <div class="recall-selfcheck"><strong>Wusstest du es?</strong></div>
     <div class="recall-btns">
       <button class="btn r" style="flex:1" onclick="rateRecall(0)">😕 Nein</button>
@@ -1852,26 +1783,26 @@ async function submitThink(){
   const fb=document.getElementById('think_fb');
   if(!ta||!fb)return;
   const val=ta.value.trim();
-  if(val.length<3){ta.focus();return;}
+  if(val.length<8){ta.focus();return;}
+
   ta.disabled=true;
   const btn=document.querySelector('.think-submit');
   if(btn) btn.disabled=true;
   fb.classList.add('show');
   fb.innerHTML='KI analysiert deine Überlegung…';
 
+  const s=CL.steps[CS];
   try{
-    const s=CL.steps[CS];
-    const data=await callAIAnalysis(s,val);
-    fb.innerHTML=renderAIBlock(data);
+    const data=await callAIAnalysis(s,val,'think');
+    fb.innerHTML=renderMiniAIResult(data,'');
     addXP(5);
-    lvInteracted=true;
-    unlockNext();
-    save();
   }catch(err){
-    ta.disabled=false;
-    if(btn) btn.disabled=false;
-    fb.innerHTML=`Die KI-Analyse konnte nicht geladen werden.<br><small>${escHtml(err.message)}</small>`;
+    fb.innerHTML=`<strong>Gespeichert.</strong><br>${s.hint||'Deine Überlegung wurde übernommen.'}<div class="ai-mini-note">${err.message}</div>`;
+    addXP(3);
   }
+  lvInteracted=true;
+  unlockNext();
+  save();
 }
 
 // ── NEXT BUTTON LOCK ─────────────────────────────
