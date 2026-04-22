@@ -732,6 +732,8 @@ const TOPICS=[
   {id:'marketing2',name:'Marketing II',color:'#34d399'},
   {id:'innovation1',name:'Innovation I',color:'#60a5fa'},
   {id:'innovation2',name:'Innovation II',color:'#e879f9'},
+  {id:'bmc',name:'Business Model Canvas',color:'#06b6d4'},
+  {id:'persona_vpc',name:'Persona Map & VPC',color:'#a855f7'},
 ];
 
 // ═══════════════════════════════════════════════
@@ -1086,6 +1088,131 @@ const MODULES=[
     {type:'complete',title:'✅ Modul Innovation abgeschlossen!',sub:'Grundlagen, Arten, Prozess und Open Innovation gemeistert!'},
   ]},
  ]},
+{id:'m_bmc',title:'Business Model Canvas',color:'#06b6d4',icon:'🗺️',
+ desc:'Geschäftsmodell, 9 Bausteine, Nintendo-Beispiel',
+ lessons:[
+  {id:'l_bmc_1',title:'Was ist ein Geschäftsmodell?',icon:'💡',topic:'bmc',steps:[
+    {type:'title',icon:'💡',title:'Was ist ein Geschäftsmodell?',sub:'Ein Geschäftsmodell beschreibt die Art und Weise, wie ein Unternehmen Wert schafft, liefert und davon profitiert.'},
+    {type:'callout',kind:'def',label:'Definition: Geschäftsmodell',html:'<p>Ein Geschäftsmodell beschreibt die Art und Weise, wie ein Unternehmen <strong>Wert schafft, liefert und davon profitiert</strong>. Es beantwortet vier zentrale Fragen: <strong>Wer? Was? Wie? Wie viel?</strong></p>'},
+    {type:'callout',kind:'info',label:'Die vier Dimensionen (Gassmann et al. 2013)',html:'<ul><li><strong>Wer?</strong> – Kundensegmente</li><li><strong>Was?</strong> – Wertbeitrag</li><li><strong>Wie?</strong> – Wertschöpfung</li><li><strong>Wie viel?</strong> – Ertragsmechanismus</li></ul>'},
+    {type:'prose',html:'Ein Geschäftsmodell ist <strong>kein Businessplan und keine Strategie allein</strong> – es ist das übergeordnete Modell, wie alle Teile zusammenwirken.'},
+    {type:'mcq',q:'Was beschreibt ein Geschäftsmodell?',opts:['Nur die Finanzplanung','Wie ein Unternehmen Wert schafft, liefert und davon profitiert','Nur die Organisationsstruktur','Ausschließlich das Marketingkonzept'],correct:1,exp:'Ein Geschäftsmodell beantwortet Wer?, Was?, Wie? und Wie viel? und beschreibt das Zusammenspiel aller Teile.'},
+  ]},
+  {id:'l_bmc_2',title:'Business Model Canvas – Überblick',icon:'🗺️',topic:'bmc',steps:[
+    {type:'title',icon:'🗺️',title:'Business Model Canvas',sub:'Osterwalder & Pigneur (2010): Neun Bausteine in vier Bereichen.'},
+    {type:'callout',kind:'def',label:'Business Model Canvas',html:'<p>Das BMC beschreibt Geschäftsmodelle schrittweise mit <strong>9 zentralen Bausteinen</strong> aus vier Bereichen: <strong>Kunden, Angebot, Infrastruktur, Finanzielle Realisierbarkeit</strong>. Es dient als Bauplan für die Umsetzung der unternehmerischen Strategie.</p>'},
+    {type:'callout',kind:'info',label:'Die 9 Bausteine',html:'<ul><li>Kundensegmente</li><li>Wertbeitrag</li><li>Kanäle</li><li>Kundenbeziehungen</li><li>Erlösströme</li><li>Schlüsselressourcen</li><li>Schlüsselaktivitäten</li><li>Schlüsselpartner</li><li>Kostenstruktur</li></ul>'},
+    {type:'mcq',q:'Aus wie vielen Bausteinen besteht der Business Model Canvas?',opts:['5','7','9','12'],correct:2,exp:'Der BMC nach Osterwalder & Pigneur (2010) hat genau 9 Bausteine in 4 Bereichen.'},
+  ]},
+  {id:'l_bmc_3',title:'1. Kundensegmente',icon:'👥',topic:'bmc',steps:[
+    {type:'title',icon:'👥',title:'Kundensegmente',sub:'Welche Gruppen möchte das Unternehmen erreichen?'},
+    {type:'callout',kind:'def',label:'Kundensegmente',html:'<p>Die <strong>Gruppe an Personen und/oder Organisationen</strong>, die ein Unternehmen erreichen und für die es Wert schaffen möchte. Eine Organisation bedient ein oder mehrere Kundensegmente.</p>'},
+    {type:'callout',kind:'info',label:'Arten von Kundensegmenten',html:'<ul><li><strong>Massenmarkt</strong> – breite Zielgruppe</li><li><strong>Nischenmarkt</strong> – spezialisierter Zielmarkt</li><li><strong>Segmente im Markt</strong> – verschiedene Teilgruppen</li><li><strong>Diversifikation</strong> – unterschiedliche, unverbundene Segmente</li><li><strong>Multi-Sided Märkte</strong> – zwei oder mehr abhängige Gruppen</li></ul>'},
+    {type:'callout',kind:'info',label:'Charakteristika von Kundensegmenten',html:'<ul><li><strong>Demografische Merkmale</strong> (Alter, Einkommen…)</li><li><strong>Verhaltensmerkmale</strong> (Kaufverhalten, Nutzung…)</li><li><strong>Psychografische Merkmale</strong> (Werte, Lebensstil…)</li></ul>'},
+    {type:'callout',kind:'example',label:'Beispiel Nintendo',html:'<p><strong>Massenmarkt</strong> | <strong>Gamer</strong> | <strong>Gelegenheitsspieler</strong> | <strong>Retro Fans</strong></p>'},
+    {type:'mcq',q:'Was sind Kundensegmente im BMC?',opts:['Nur Großkunden','Die Gruppen von Personen/Organisationen, die ein Unternehmen erreichen und für die es Wert schafft','Nur B2B-Kunden','Nur internationale Märkte'],correct:1,exp:'Kundensegmente definieren, für wen das Geschäftsmodell Wert erzeugt.'},
+  ]},
+  {id:'l_bmc_4',title:'2. Wertbeitrag',icon:'💎',topic:'bmc',steps:[
+    {type:'title',icon:'💎',title:'Wertbeitrag (Value Proposition)',sub:'Was bietet das Unternehmen, das Kunden anzieht?'},
+    {type:'callout',kind:'def',label:'Wertbeitrag',html:'<p>Wertbeiträge <strong>basieren auf einem Bündel an Produkten und Dienstleistungen</strong>, die für ein Kundensegment Wert schaffen. Sie lösen Kundenprobleme und befriedigen Kundenbedürfnisse.</p>'},
+    {type:'callout',kind:'info',label:'Elemente eines Wertbeitrags',html:'<ul><li><strong>Neuheit</strong></li><li><strong>Performance</strong></li><li><strong>Design</strong></li><li><strong>Marke / Status</strong></li><li><strong>Preis</strong></li><li><strong>Kosteneinsparung</strong></li><li><strong>Risikoreduktion</strong></li></ul>'},
+    {type:'callout',kind:'example',label:'Beispiel Nintendo – Wertbeitrag',html:'<ul><li>Neuheit durch Gaming Genres</li><li>Benutzerfreundlichkeit</li><li>Einzigartige Markenidentität</li><li>Community</li><li>Vielfältiges Angebot</li><li>Exklusive Spiele und Inhalte</li></ul>'},
+    {type:'mcq',q:'Was ist ein „Wertbeitrag" im BMC?',opts:['Nur der Preis eines Produkts','Ein Bündel aus Produkten/Dienstleistungen, das für ein Kundensegment Wert schafft','Nur Werbemaßnahmen','Nur die Unternehmensfinanzierung'],correct:1,exp:'Der Wertbeitrag beschreibt, warum Kunden das Angebot dem Wettbewerb vorziehen.'},
+  ]},
+  {id:'l_bmc_5',title:'3. Kanäle & 4. Kundenbeziehungen',icon:'📡',topic:'bmc',steps:[
+    {type:'title',icon:'📡',title:'Kanäle & Kundenbeziehungen',sub:'Wie erreicht das Unternehmen seine Kunden – und wie pflegt es die Beziehung?'},
+    {type:'callout',kind:'def',label:'Kanäle',html:'<p>Wertbeiträge werden dem Kunden über <strong>Kommunikations- und Vertriebskanäle</strong> angeboten. Unterschieden wird in: <strong>eigene / Partner-Kanäle</strong> und <strong>direkt / indirekt</strong>.</p>'},
+    {type:'callout',kind:'info',label:'Kanalphasen',html:'<p>Aufmerksamkeit → Bewertung → Kauf → Zustellung → After-Sales</p>'},
+    {type:'callout',kind:'info',label:'Kanäle von Nintendo',html:'<ul><li>Eigene Läden &amp; Online Verkauf (Nintendo eShop)</li><li>Partner Läden (z.B. MediaMarkt, Saturn)</li><li>Großhändler</li><li>Nintendo Direct (Aufmerksamkeit &amp; Bewertung)</li></ul>'},
+    {type:'callout',kind:'def',label:'Kundenbeziehungen',html:'<p>Kundenbeziehungen werden für jedes Kundensegment aufgebaut und gepflegt. Kategorien: <strong>Persönlicher Kontakt, fest zugeordneter persönlicher Kontakt, Self-Service, automatisierter Service, Co-Creation, Communities</strong>.</p>'},
+    {type:'callout',kind:'example',label:'Kundenbeziehungen Nintendo',html:'<ul><li>Online Support</li><li>Co-Creation (z.B. Super Mario Maker 2)</li><li>Automatisierter Service</li><li>Nintendo Events</li><li>Fan Communities</li></ul>'},
+    {type:'mcq',q:'Welche Phasen durchläuft ein Kanal?',opts:['Planung, Durchführung, Kontrolle','Aufmerksamkeit, Bewertung, Kauf, Zustellung, After-Sales','Produktion, Lagerung, Transport','Marketing, Vertrieb, Service'],correct:1,exp:'Kanäle begleiten den Kunden von der ersten Aufmerksamkeit bis zum After-Sales-Service.'},
+  ]},
+  {id:'l_bmc_6',title:'5. Erlösströme & 9. Kostenstruktur',icon:'💰',topic:'bmc',steps:[
+    {type:'title',icon:'💰',title:'Erlösströme & Kostenstruktur',sub:'Wie verdient das Unternehmen Geld – und was kostet es?'},
+    {type:'callout',kind:'def',label:'Erlösströme',html:'<p>Erlösströme resultieren aus dem <strong>erfolgreichen Angebot der Wertbeiträge</strong> für den Kunden.</p>'},
+    {type:'callout',kind:'info',label:'Möglichkeiten Erlöse zu erzielen',html:'<ul><li>Verkauf von Waren und Gütern</li><li>Nutzungsgebühr</li><li>Abonnement / Mitgliedsbeitrag</li><li>Miete / Pacht / Leasing</li><li>Lizensierung</li><li>Vermittlungsgebühr / Provision</li><li>Werbung</li></ul>'},
+    {type:'callout',kind:'info',label:'Preismechanismen',html:'<p><strong>Fixe Preisfestsetzung:</strong> Listenpreis, produktmerkmalabhängig, segmentabhängig, mengenabhängig.<br><strong>Dynamische Preisfestsetzung:</strong> Preisverhandlung, Echtzeitmarkt, Auktionen, Ertragsmanagement.</p>'},
+    {type:'callout',kind:'example',label:'Erlösströme Nintendo',html:'<ul><li>Verkauf von Hardware (Switch etc.)</li><li>Spielverkäufe</li><li>Abonnement / Mitgliedsbeitrag (Nintendo Switch Online)</li><li>Lizensierung</li></ul>'},
+    {type:'callout',kind:'def',label:'Kostenstruktur',html:'<p>Die Kostenstruktur resultiert aus den <strong>Kostenbeiträgen der einzelnen Bausteine</strong> des Geschäftsmodells. Unterschieden wird in <strong>Cost-Driven</strong> (schlanke Kostenstruktur, Fokus Kostenreduktion, z.B. Ryanair) und <strong>Value-Driven</strong> (Fokus Value Creation, z.B. Luxushotels).</p>'},
+    {type:'callout',kind:'info',label:'Charakterisierungsmerkmale',html:'<ul><li>Fixe Kosten vs. Variable Kosten</li><li>Economies of Scale</li><li>Economies of Scope</li><li>Lerneffekte</li></ul>'},
+    {type:'callout',kind:'example',label:'Kostenstruktur Nintendo',html:'<ul><li>F&amp;E-Ausgaben</li><li>Herstellungskosten</li><li>Marketingausgaben</li><li>Lizenzgebühren</li><li>Mitarbeiterkosten</li></ul>'},
+    {type:'mcq',q:'Was ist der Unterschied zwischen Cost-Driven und Value-Driven Kostenstruktur?',opts:['Es gibt keinen Unterschied','Cost-Driven = schlanke Kostenstruktur (z.B. Ryanair); Value-Driven = Fokus auf Wertschöpfung (z.B. Luxushotels)','Value-Driven ist immer günstiger','Cost-Driven ist nur für Luxusmarken'],correct:1,exp:'Cost-Driven fokussiert auf minimale Kosten; Value-Driven auf hohen Kundennutzen, akzeptiert dafür höhere Kosten.'},
+  ]},
+  {id:'l_bmc_7',title:'6–8. Schlüsselressourcen, -aktivitäten, -partner',icon:'🔑',topic:'bmc',steps:[
+    {type:'title',icon:'🔑',title:'Schlüsselressourcen, -aktivitäten, -partner',sub:'Wie wird der Wertbeitrag erstellt und geliefert?'},
+    {type:'callout',kind:'def',label:'Schlüsselressourcen',html:'<p>Die <strong>notwendigen Assets</strong> für das Angebot und die Bereitstellung der anderen Bausteine. Kategorien: <strong>Physisch</strong> (Gebäude, Maschinen), <strong>Intellektuell</strong> (Marken, Patente, Wissen), <strong>Personell</strong> (Spezialisten), <strong>Finanziell</strong> (Kreditlinien, Kapital).</p>'},
+    {type:'callout',kind:'example',label:'Schlüsselressourcen Nintendo',html:'<ul><li>IP-Portfolio</li><li>Hardware- und Software-Ingenieure</li><li>Markenreputation</li><li>Vertriebsnetzwerk</li><li>Hochqualifizierte Mitarbeiter</li><li>Kundentreue</li></ul>'},
+    {type:'callout',kind:'def',label:'Schlüsselaktivitäten',html:'<p>Die <strong>wichtigsten Dinge, die ein Unternehmen tun muss</strong>, damit das Geschäftsmodell funktioniert. Mögliche Arten: <strong>Produktion, Problemlösung, Netzwerke</strong>.</p>'},
+    {type:'callout',kind:'example',label:'Schlüsselaktivitäten Nintendo',html:'<ul><li>Hardware-Entwicklung</li><li>Software-Entwicklung</li><li>F&amp;E</li><li>Marketing</li><li>Distribution</li><li>Merchandise</li><li>Nintendo-Verfilmungen</li></ul>'},
+    {type:'callout',kind:'def',label:'Schlüsselpartner',html:'<p>Einige Schlüsselaktivitäten werden <strong>ausgegliedert</strong> und Ressourcen außerhalb akquiriert. Vier Arten: <strong>Buyer-Supplier-Beziehung, Kooperation, Joint Venture, Strategische Allianz</strong>. Motivation: Optimierung/Economies of Scale, Risikoreduktion, Einkauf spezieller Ressourcen.</p>'},
+    {type:'callout',kind:'example',label:'Schlüsselpartner Nintendo',html:'<ul><li>Software-Entwickler (z.B. Unity)</li><li>Zulieferer von Komponenten (z.B. Samsung)</li><li>Plattformpartner (z.B. Adobe Target)</li><li>Lizenznehmer (z.B. Warner Bros. Games)</li><li>Einzelhändler</li><li>Strategische Allianz mit Entwicklungsunternehmen (z.B. Game Freak)</li></ul>'},
+    {type:'mcq',q:'Welche vier Kategorien gehören zu den Schlüsselressourcen?',opts:['Kunden, Produkte, Preise, Märkte','Physisch, Intellektuell, Personell, Finanziell','Marketing, Vertrieb, Service, IT','Planung, Produktion, Lager, Transport'],correct:1,exp:'Schlüsselressourcen werden nach Art eingeteilt: physisch (Maschinen), intellektuell (Patente), personell (Spezialisten), finanziell (Kapital).'},
+  ]},
+  {id:'l_bmc_8',title:'BMC Nintendo – Gesamtüberblick',icon:'🎮',topic:'bmc',steps:[
+    {type:'title',icon:'🎮',title:'BMC Nintendo – Gesamtüberblick',sub:'Alle 9 Bausteine zusammen am Beispiel Nintendo.'},
+    {type:'callout',kind:'info',label:'Kundensegmente',html:'<p>Massenmarkt | Gamer | Gelegenheitsspieler | Retro Fans</p>'},
+    {type:'callout',kind:'info',label:'Wertbeitrag',html:'<p>Unterhaltung | Neue Gaming Genres | Einfachheit | Markenidentität | Community | Vielfalt | Exklusive Spiele und Inhalte</p>'},
+    {type:'callout',kind:'info',label:'Kanäle',html:'<p>Indirekt (eShop) | Direkt (Nintendo Stores) | Partnerläden (Saturn) | Großhändler | Nintendo Direct</p>'},
+    {type:'callout',kind:'info',label:'Kundenbeziehungen',html:'<p>Co-Creation | Fan Communities | Persönlicher Kontakt (Events, Stores) | Online Support</p>'},
+    {type:'callout',kind:'info',label:'Erlösströme',html:'<p>Hardware-Verkauf | Software-Verkauf (Download) | 12-Monats-Abo | Partnerschaften | Merchandising &amp; Lizensierung</p>'},
+    {type:'callout',kind:'info',label:'Schlüsselressourcen',html:'<p>IP-Portfolio | Vertriebsnetzwerk | Kundentreue | Hochqualifizierte Mitarbeiter</p>'},
+    {type:'callout',kind:'info',label:'Schlüsselaktivitäten',html:'<p>F&amp;E | Software-/Hardwareentwicklung | Marketing | Distribution | Verfilmungen</p>'},
+    {type:'callout',kind:'info',label:'Schlüsselpartner',html:'<p>Softwareentwickler | Komponentenzulieferer (Samsung) | Plattformpartner (Adobe) | Lizenznehmer (Warner Bros.) | Einzelhändler | Strategische Allianzen (Game Freak)</p>'},
+    {type:'callout',kind:'info',label:'Kostenstruktur',html:'<p>F&amp;E-Ausgaben | Herstellungskosten | Marketingausgaben | IP-Gebühren | Mitarbeiterkosten</p>'},
+    {type:'mcq',q:'Ist Nintendo eher Cost-Driven oder Value-Driven?',opts:['Eindeutig Cost-Driven wie Ryanair','Eher Value-Driven, da der Fokus auf einzigartigen Spielerlebnissen und Markenidentität liegt','Weder noch – Nintendo ist eine Ausnahme','Ausschließlich Cost-Driven wegen günstiger Preise'],correct:1,exp:'Nintendo fokussiert auf Innovation, Marke und Spielerlebnisse – typisch Value-Driven, obwohl auch Kosteneffizienz eine Rolle spielt.'},
+    {type:'complete',title:'✅ Modul Business Model Canvas abgeschlossen!',sub:'Alle 9 Bausteine und das Nintendo-Beispiel gemeistert!'},
+  ]},
+ ]},
+{id:'m_persona_vpc',title:'Persona Map & Value Proposition Canvas',color:'#a855f7',icon:'🎯',
+ desc:'Kunden verstehen, Wert schaffen, FIT herstellen',
+ lessons:[
+  {id:'l_pv_1',title:'Persona Map – Grundlagen',icon:'👤',topic:'persona_vpc',steps:[
+    {type:'title',icon:'👤',title:'Persona Map',sub:'Nur wer seine Kund*innen gut kennt, kann ihnen eine passgenaue Lösung anbieten.'},
+    {type:'callout',kind:'def',label:'Was ist eine Persona?',html:'<p>Eine <strong>Persona</strong> ist eine konkrete, fiktive Person, die stellvertretend für eine Kundengruppe steht. Ziel: Nicht eine anonyme Masse berücksichtigen, sondern <strong>eine Lösung für eine Persona</strong> entwickeln. Am Ende fragt man: „Würde Heidi, Ben oder Liese das Produkt kaufen?"</p>'},
+    {type:'prose',html:'Personas werden auf Basis eigener Erhebungen erstellt: <strong>Marktforschungen, empathische Interviews, Teilnehmerbeobachtungen oder (Selbst-)Experimente</strong>. Je konkreter und greifbarer, desto besser – die Persona soll sich wie ein echter Mensch anfühlen.'},
+    {type:'callout',kind:'info',label:'Felder der Persona Map',html:'<ul><li><strong>Name</strong></li><li><strong>Alter</strong></li><li><strong>Beruf</strong> (Branche, Tätigkeit)</li><li><strong>Lebensziele</strong></li><li><strong>Zitat</strong> – typische Aussage</li><li><strong>Hintergrund</strong> – biographisch, sozioökonomisch, kulturell</li><li><strong>Schlüsselerlebnisse</strong> – positive &amp; negative</li><li><strong>Interessen und Hobbies</strong></li><li><strong>Aktivitäten und Verhalten</strong> im Alltag</li></ul>'},
+    {type:'mcq',q:'Was ist der Zweck einer Persona?',opts:['Nur demografische Statistiken zu sammeln','Eine konkrete fiktive Person zu erschaffen, die eine Kundengruppe repräsentiert, um passgenaue Lösungen zu entwickeln','Nur für Marktforschungsinstitute relevant','Ausschließlich für B2B-Märkte geeignet'],correct:1,exp:'Eine Persona macht abstrakte Kundengruppen greifbar und erlaubt es, Lösungen gezielt auf eine repräsentative Person auszurichten.'},
+  ]},
+  {id:'l_pv_2',title:'Persona Map – Herangehensweise',icon:'🔬',topic:'persona_vpc',steps:[
+    {type:'title',icon:'🔬',title:'Persona Map – Herangehensweise',sub:'Wie wird eine Persona erstellt und eingesetzt?'},
+    {type:'callout',kind:'info',label:'Vorgehen',html:'<p>Mit Hilfe der Vorlage die eigene Kundengruppe personalisieren. Die Persona so <strong>konkret und spezifisch wie möglich</strong> ausfüllen: Name, Biographie, Charakter, Schlüsselerlebnisse, Interessen, typische Zitate. Am Ende soll die Persona sich anfühlen wie eine <strong>gute alte Bekannte</strong>.</p>'},
+    {type:'callout',kind:'warn',label:'Wichtig: Datengrundlage',html:'<p>Personas sollten auf Basis <strong>eigener Erhebungen, Gespräche und Tests</strong> erstellt werden – nicht nur aus Annahmen. Methoden: Marktforschungen, empathische Interviews, Teilnehmerbeobachtungen, (Selbst-)Experimente.</p>'},
+    {type:'callout',kind:'satz',label:'Kombination mit VPC & AIDA',html:'<p>Die Persona Map lässt sich gut in Kombination mit dem <strong>Value Proposition Canvas</strong> verwenden. Mit dem VPC kann geprüft werden, wie gut das Wertangebot zu den Kund*innen passt. Zudem kann mit Hilfe des <strong>AIDA-Modells</strong> herausgearbeitet werden, wie Kund*innen besser angesprochen werden.</p>'},
+    {type:'callout',kind:'info',label:'Quelle',html:'<p>Lewrick, M./Link, P./Leifer, L. (2020): <em>Das Design Thinking Toolbook. Die besten Werkzeuge &amp; Methoden.</em> München: Vahlen, S. 97–102.</p>'},
+    {type:'mcq',q:'Womit lässt sich die Persona Map gut kombinieren?',opts:['Nur mit dem Businessplan','Mit dem Value Proposition Canvas (Wertpassung) und dem AIDA-Modell (Kundenansprache)','Nur mit der SWOT-Analyse','Ausschließlich mit dem Marketing-Mix'],correct:1,exp:'Persona Map + VPC prüft Wertpassung; Persona Map + AIDA hilft zu klären, wie Kund*innen besser angesprochen werden können.'},
+  ]},
+  {id:'l_pv_3',title:'Value Proposition Canvas – Überblick',icon:'⭕',topic:'persona_vpc',steps:[
+    {type:'title',icon:'⭕',title:'Value Proposition Canvas',sub:'Ergänzung des BMC – Wert schaffen und Kunden verstehen.'},
+    {type:'callout',kind:'def',label:'Value Proposition Canvas (VPC)',html:'<p>Das VPC ist eine <strong>Ergänzung des Business Model Canvas</strong> und hilft, ein Leistungsversprechen für die Kundengruppe zu entwickeln. Es greift die zwei zentralen Felder <strong>Wertbeitrag und Kundensegmente</strong> des BMC auf und verdeutlicht, wie zwischen diesen Feldern eine gute <strong>Passung (FIT)</strong> hergestellt werden kann.</p>'},
+    {type:'callout',kind:'info',label:'Die zwei Seiten des VPC',html:'<ul><li><strong>Kundenprofil (Customer Segment)</strong> – klärt das Verständnis für den Kunden: Customer Jobs, Pains, Gains</li><li><strong>Value Map (Value Proposition)</strong> – beschreibt, wie man Wert für diese Kunden generieren möchte: Products &amp; Services, Pain Relievers, Gain Creators</li></ul>'},
+    {type:'callout',kind:'satz',label:'Das Ziel: FIT',html:'<p>Wert schaffen (Wertbeiträge, die umgesetzt werden, um Kunden anzuziehen) + Kunden beobachten (Kundencharakteristika, die im Markt angenommen, beobachtet und verifiziert werden) = <strong>FIT</strong></p>'},
+    {type:'mcq',q:'Was ist der Zweck des Value Proposition Canvas?',opts:['Die Finanzplanung zu erstellen','Zu prüfen, wie gut Wertbeitrag und Kundenbedürfnisse zusammenpassen (FIT)','Nur die Kostenstruktur zu analysieren','Ausschließlich Wettbewerbsanalyse'],correct:1,exp:'Der VPC hilft, Wertangebot (Value Map) und Kundenbedürfnisse (Customer Profile) so zu gestalten, dass ein FIT entsteht.'},
+  ]},
+  {id:'l_pv_4',title:'VPC – Kundenprofil (Customer Jobs, Pains, Gains)',icon:'🔍',topic:'persona_vpc',steps:[
+    {type:'title',icon:'🔍',title:'Kundenprofil – Customer Jobs, Pains, Gains',sub:'Die Kund*innen fokussiert beschreiben.'},
+    {type:'callout',kind:'def',label:'Customer Jobs',html:'<p>Beschreiben die Dinge, die Kund*innen in ihrem Leben zu bewältigen versuchen. Drei Arten:<br><strong>Funktionale Jobs</strong> – z.B. Sprache lernen, gesund ernähren<br><strong>Soziale Jobs</strong> – auf Wahrnehmung durch andere abzielend, z.B. kompetent wirken<br><strong>Emotionale Jobs</strong> – z.B. sich in der Arbeit sicher fühlen</p>'},
+    {type:'callout',kind:'def',label:'Pains',html:'<p>Beschreiben alles, was Kund*innen <strong>vor, während oder nach der Erledigung einer Aufgabe bekümmert</strong> oder was sie davon abhält, eine Aufgabe zu erledigen. Auch Risiken: potenziell schlechte Ergebnisse bei mangelhafter Aufgabenerfüllung.</p>'},
+    {type:'callout',kind:'def',label:'Gains',html:'<p>Beschreiben die <strong>Ergebnisse und Nutzen, die Kund*innen wirklich brauchen</strong>. Umfassen: funktionale Brauchbarkeit, soziale Vorteile, positive Gefühle, Kosteneinsparungen. Einige Nutzenelemente werden erbeten, erwartet, gewünscht – andere würden Kund*innen überraschen.</p>'},
+    {type:'callout',kind:'info',label:'Leitfragen – Pains',html:'<ul><li>Was definieren Kund*innen als „zu aufwendig"? Zeit, Kosten, Mühe?</li><li>Was verursacht ein schlechtes Gefühl? Frustrationen, Ärgernisse?</li><li>Welche Schwierigkeiten und Herausforderungen stehen sie gegenüber?</li><li>Welche negativen sozialen Konsequenzen fürchten sie? (Gesicht verlieren, Status, Vertrauen)</li><li><strong>Was lässt Kund*innen nachts nicht schlafen?</strong> Was sind ihre großen Sorgen und Bedenken?</li></ul>'},
+    {type:'callout',kind:'info',label:'Leitfragen – Gains',html:'<ul><li>Welche Qualität erwarten Kund*innen?</li><li>Wodurch kommen aktuelle Wertangebote gut an?</li><li>Was würde ihre Aufgaben oder ihr Leben erleichtern?</li><li>Welche positiven gesellschaftlichen Konsequenzen wünschen sie sich?</li><li>Wovon träumen Kund*innen? Was wäre eine große Erleichterung?</li></ul>'},
+    {type:'mcq',q:'Was beschreiben „Pains" im Value Proposition Canvas?',opts:['Die Wünsche der Kunden','Alles, was Kunden bekümmert oder sie von einer Aufgabe abhält – inklusive Risiken und Sorgen','Nur finanzielle Probleme','Die Gewinne des Unternehmens'],correct:1,exp:'Pains beschreiben Hindernisse, Frustrationen, Risiken und Sorgen rund um die Customer Jobs – auch was Kund*innen nachts nicht schlafen lässt.'},
+  ]},
+  {id:'l_pv_5',title:'VPC – Value Map (Products, Pain Relievers, Gain Creators)',icon:'🚀',topic:'persona_vpc',steps:[
+    {type:'title',icon:'🚀',title:'Value Map – Wert schaffen',sub:'Wie reagiert das Angebot auf die Kunden?'},
+    {type:'callout',kind:'def',label:'Products & Services',html:'<p>Eine <strong>Liste aller Angebote</strong>, die Kund*innen bei der Erledigung ihrer Jobs helfen sollen. Können physisch, digital, finanziell oder immateriell sein.</p>'},
+    {type:'callout',kind:'def',label:'Pain Relievers',html:'<p>Beschreiben, <strong>wie genau die Idee auf die Pains der Kund*innen reagiert</strong> und die Schmerzen lindert. Ermöglicht z.B. die Kleinanzeigenseite das von Kund*innen schmerzlich vermisste nachhaltige Konsumieren?</p>'},
+    {type:'callout',kind:'def',label:'Gain Creators',html:'<p>Zeigen, <strong>wie die Idee die Gains der Kunden aufgreift und Gewinne erzeugt</strong>. Beispiel: Ermöglichung eines Austauschs mit Gleichgesinnten über ein Forum.</p>'},
+    {type:'callout',kind:'satz',label:'Merksatz – FIT',html:'<p>Aufgabenerfüllung wird durch <strong>Products &amp; Services</strong> ermöglicht. Pains werden durch <strong>Pain Relievers</strong> gestillt. Gains werden durch <strong>Gain Creators</strong> verstärkt. <strong>Je besser die Passung, desto besser funktioniert die Idee!</strong></p>'},
+    {type:'callout',kind:'info',label:'Herangehensweise',html:'<p>Mit Hilfe der Vorlage kann eine Idee konkretisiert und an die Kundenbedürfnisse angepasst werden. Vorgehen:<br>1. Zunächst die <strong>rechte Seite (Kundenprofil)</strong> ausfüllen.<br>2. Anschließend die <strong>linke Seite (Wertbeitrag / Value Map)</strong> ausfüllen – dabei prüfen, inwieweit das Wertangebot die Jobs, Pains und Gains aufgreift.</p>'},
+    {type:'callout',kind:'warn',label:'Wichtig: Pro Kundensegment eine eigene VPC',html:'<p>Beim Bearbeiten des VPC sollte für <strong>jedes Kundensegment eine eigene Value Proposition Canvas</strong> erstellt werden. Verschiedene Kundensegmente haben unterschiedliche Bedürfnisse und damit unterschiedliche Anforderungen an Produkte.</p>'},
+    {type:'callout',kind:'satz',label:'Kombination mit Persona Map',html:'<p>Die VPC lässt sich gut in Kombination mit der <strong>Persona Map</strong> verwenden. Mit der Persona kann die Kundengruppe personalisiert werden.</p>'},
+    {type:'callout',kind:'info',label:'Quelle',html:'<p>Osterwalder, A. / Pigneur, Y. / Bernarda, G. / Smith, A. (2015): <em>Value Proposition Design.</em> Wiley.</p>'},
+    {type:'mcq',q:'Was beschreiben „Gain Creators" im VPC?',opts:['Nur die Produktionskosten','Wie die Idee die Gains der Kunden aufgreift und Gewinne/Vorteile für sie erzeugt','Nur Marketingmaßnahmen','Den Unternehmensgewinn'],correct:1,exp:'Gain Creators zeigen, wie das Angebot die erwünschten Ergebnisse der Kunden erzeugt und verstärkt.'},
+    {type:'mcq',q:'In welcher Reihenfolge füllt man den VPC aus?',opts:['Erst Value Map, dann Kundenprofil','Erst Kundenprofil (rechts), dann Value Map (links)','Beide Seiten gleichzeitig','Reihenfolge ist irrelevant'],correct:1,exp:'Erst das Kundenprofil (Customer Jobs, Pains, Gains) ausfüllen, dann die Value Map darauf ausrichten – so entsteht FIT.'},
+    {type:'complete',title:'✅ Modul Persona Map & VPC abgeschlossen!',sub:'Persona, Customer Jobs/Pains/Gains, Value Map, FIT und Herangehensweise gemeistert!'},
+  ]},
+ ]},
 ];
 
 // ═══════════════════════════════════════════════
@@ -1184,6 +1311,32 @@ const QUIZ=[
   {t:'innovation1',q:'Was ist der Unterschied zwischen Invention und Innovation?',o:['Es gibt keinen Unterschied','Invention ist die Erfindung, Innovation die erfolgreiche Umsetzung','Innovation ist immer kleiner','Invention betrifft nur Marketing'],c:1,e:'Invention = Idee, Innovation = erfolgreiche Umsetzung.'},
   {t:'innovation2',q:'Was bedeutet Open Innovation?',o:['Innovation ohne Planung','Öffnung des Innovationsprozesses für externe Akteure','Nur interne Entwicklung','Nur die Digitalisierung von Produkten'],c:1,e:'Open Innovation bezieht externe Wissensquellen in den Innovationsprozess ein.'},
 
+  // ── BUSINESS MODEL CANVAS ──
+  {t:'bmc',q:'Was beschreibt ein Geschäftsmodell?',h:'Wert schaffen...',a:'Ein Geschäftsmodell beschreibt, wie ein Unternehmen <code>Wert schafft, liefert und davon profitiert</code>. Die vier Dimensionen: <code>Wer?</code> <code>Was?</code> <code>Wie?</code> <code>Wie viel?</code>'},
+  {t:'bmc',q:'Aus wie vielen Bausteinen besteht der Business Model Canvas?',h:'Osterwalder & Pigneur...',a:'Der BMC hat <code>9 Bausteine</code> in 4 Bereichen: Kunden, Angebot, Infrastruktur, Finanzielle Realisierbarkeit.'},
+  {t:'bmc',q:'Was sind Kundensegmente im BMC?',h:'Zielgruppe...',a:'Die <code>Gruppe an Personen und/oder Organisationen</code>, die ein Unternehmen erreichen und für die es Wert schaffen möchte.'},
+  {t:'bmc',q:'Nenne fünf Arten von Kundensegmenten.',h:'Masse, Nische...',a:'<code>Massenmarkt</code>, <code>Nischenmarkt</code>, <code>Segmente im Markt</code>, <code>Diversifikation</code>, <code>Multi-Sided Märkte</code>.'},
+  {t:'bmc',q:'Was ist der Wertbeitrag im BMC?',h:'Value Proposition...',a:'Ein Bündel aus Produkten/Dienstleistungen, das für ein Kundensegment <code>Wert schafft</code>. Elemente: Neuheit, Performance, Design, Marke, Preis, Kosteneinsparung, Risikoreduktion.'},
+  {t:'bmc',q:'Nenne die Kanalphasen im BMC.',h:'Aufmerksamkeit...',a:'<code>Aufmerksamkeit → Bewertung → Kauf → Zustellung → After-Sales</code>'},
+  {t:'bmc',q:'Welche Kategorien hat der Baustein Kundenbeziehungen?',h:'Persönlich, Self-Service...',a:'<code>Persönlicher Kontakt</code>, <code>fest zugeordneter persönlicher Kontakt</code>, <code>Self-Service</code>, <code>automatisierter Service</code>, <code>Co-Creation</code>, <code>Communities</code>'},
+  {t:'bmc',q:'Nenne mögliche Erlösströme im BMC.',h:'Abo, Lizenz...',a:'<code>Warenverkauf</code>, <code>Nutzungsgebühr</code>, <code>Abonnement</code>, <code>Miete/Leasing</code>, <code>Lizensierung</code>, <code>Provision</code>, <code>Werbung</code>'},
+  {t:'bmc',q:'Was ist der Unterschied zwischen Cost-Driven und Value-Driven Kostenstruktur?',h:'Ryanair vs. Luxushotel...',a:'<code>Cost-Driven</code>: schlanke Kostenstruktur, Fokus Kostenreduktion (z.B. Ryanair). <code>Value-Driven</code>: Fokus auf Wertschöpfung (z.B. Luxushotels).'},
+  {t:'bmc',q:'Welche vier Kategorien von Schlüsselressourcen gibt es?',h:'Physisch, Intellektuell...',a:'<code>Physisch</code> (Maschinen, Gebäude), <code>Intellektuell</code> (Marken, Patente), <code>Personell</code> (Spezialisten), <code>Finanziell</code> (Kapital, Kreditlinien).'},
+  {t:'bmc',q:'Was sind Schlüsselaktivitäten?',h:'Was muss das Unternehmen tun...',a:'Die <code>wichtigsten Aktivitäten</code>, die ein Unternehmen durchführen muss, damit das Geschäftsmodell funktioniert. Typen: Produktion, Problemlösung, Netzwerke.'},
+  {t:'bmc',q:'Welche vier Arten von Partnerschaften gibt es im BMC?',h:'Allianz, Joint Venture...',a:'<code>Buyer-Supplier-Beziehung</code>, <code>Kooperation</code>, <code>Joint Venture</code>, <code>Strategische Allianz</code>.'},
+  {t:'bmc',q:'Was motiviert Unternehmen, Partnerschaften einzugehen?',h:'Kosten, Risiko...',a:'1) <code>Optimierung und Economy of Scale</code>, 2) <code>Risikoreduktion und Unsicherheit</code>, 3) <code>Einkauf spezieller Ressourcen und Services</code>'},
+
+  // ── PERSONA MAP & VPC ──
+  {t:'persona_vpc',q:'Was ist eine Persona?',h:'Fiktive Person...',a:'Eine <code>konkrete, fiktive Person</code>, die stellvertretend für eine Kundengruppe steht. Ziel: eine Lösung für <em>eine</em> Persona entwickeln statt für eine anonyme Masse.'},
+  {t:'persona_vpc',q:'Nenne die Felder der Persona Map.',h:'Name, Alter...',a:'<code>Name</code>, <code>Alter</code>, <code>Beruf</code>, <code>Lebensziele</code>, <code>Zitat</code>, <code>Hintergrund</code>, <code>Schlüsselerlebnisse</code>, <code>Interessen und Hobbies</code>, <code>Aktivitäten und Verhalten</code>'},
+  {t:'persona_vpc',q:'Was ist der Value Proposition Canvas?',h:'Ergänzung des BMC...',a:'Eine Ergänzung des BMC, die die zwei Felder <code>Wertbeitrag</code> und <code>Kundensegmente</code> vertieft. Ziel: <code>FIT</code> zwischen Value Map und Kundenprofil herstellen.'},
+  {t:'persona_vpc',q:'Was sind die drei Felder des Kundenprofils (VPC)?',h:'Jobs, Pains...',a:'<code>Customer Jobs</code> (Aufgaben), <code>Pains</code> (Probleme/Risiken), <code>Gains</code> (Ergebnisse/Nutzen)'},
+  {t:'persona_vpc',q:'Was sind die drei Felder der Value Map (VPC)?',h:'Produkte, Schmerzlinder...',a:'<code>Products & Services</code>, <code>Pain Relievers</code>, <code>Gain Creators</code>'},
+  {t:'persona_vpc',q:'Was sind „Customer Jobs"?',h:'Was versuchen Kunden zu erledigen...',a:'Dinge, die Kund*innen in ihrem Leben zu bewältigen versuchen. Drei Arten: <code>funktionale</code>, <code>soziale</code> und <code>emotionale</code> Jobs.'},
+  {t:'persona_vpc',q:'Was sind „Pains" im VPC?',h:'Was bekümmert Kunden...',a:'Alles, was Kund*innen <code>vor, während oder nach der Erledigung einer Aufgabe bekümmert</code> oder sie davon abhält. Auch Risiken.'},
+  {t:'persona_vpc',q:'Was sind „Gains" im VPC?',h:'Was wünschen Kunden...',a:'Die <code>Ergebnisse und Nutzen, die Kund*innen wirklich brauchen</code>: funktionale Brauchbarkeit, soziale Vorteile, positive Gefühle, Kosteneinsparungen.'},
+  {t:'persona_vpc',q:'Was bedeutet FIT im VPC?',h:'Passung...',a:'<code>FIT</code> = die Passung zwischen Wertangebot (Value Map) und Kundenbedürfnissen (Kundenprofil). Je besser der FIT, desto besser funktioniert die Idee.'},
+
   // ── PRODUKTION I (7 neue) ──
   {t:'produktion1',q:'Was sind die drei klassischen Produktionsfaktoren?',o:['Planung, Steuerung, Kontrolle','Arbeit, Betriebsmittel, Werkstoffe','Kosten, Qualität, Zeit','Einkauf, Produktion, Vertrieb'],c:1,e:'Klassische Produktionsfaktoren: Arbeit, Betriebsmittel und Werkstoffe. Ergänzt durch Informationen und Wissen.'},
   {t:'produktion1',q:'Zwischen welchen Produktionszielen besteht ein typischer Zielkonflikt?',o:['Kosten und Gewinn','Hohe Flexibilität und geringe Kosten','Qualität und Termintreue','Wachstum und Rentabilität'],c:1,e:'Hohe Flexibilität erfordert flexible Strukturen, die oft teurer sind. Klassischer Zielkonflikt.'},
@@ -1281,6 +1434,31 @@ const QUIZ=[
   {t:'innovation2',q:'Was ist der Vorteil von interdisziplinären Teams bei Innovation?',o:['Sie sind billiger','Verschiedene Fachperspektiven erhöhen die Qualität und Kreativität von Lösungen','Sie brauchen weniger Koordination','Nur für Großunternehmen geeignet'],c:1,e:'Interdisziplinarität: Marketing-Know-how + technisches Wissen + Nutzerperspektive führt zu marktfähigeren Innovationen.'},
   {t:'innovation2',q:'Warum ist die Schnittstelle zwischen Marketing und F&E entscheidend?',o:['Wegen niedrigerer Kosten','Weil Kundenbedürfnisse aus dem Markt mit technischem Wissen verbunden werden müssen','Weil F&E immer teurer ist','Weil Marketing die Entwicklung leitet'],c:1,e:'Ohne Marktorientierung entstehen technisch gute, aber unverkäufliche Produkte. Marketing liefert Kundenbedürfnisse, F&E die Lösungen.'},
   {t:'innovation1',q:'Was sind Erfolgsfaktoren für Innovationen?',o:['Nur hohe Investitionen','Kundennähe, schnelle Umsetzung, interdisziplinäre Zusammenarbeit und systematisches Innovationsmanagement','Geheimhaltung und interne Entwicklung','Nur Technologieführerschaft'],c:1,e:'Erfolgreiche Innovationen verbinden Kundennähe, Geschwindigkeit, Teamarbeit und strukturiertes Management.'},
+
+  // ── BUSINESS MODEL CANVAS ──
+  {t:'bmc',q:'Was beschreibt ein Geschäftsmodell?',o:['Nur die Finanzplanung','Wie ein Unternehmen Wert schafft, liefert und davon profitiert','Nur die Organisationsstruktur','Ausschließlich das Marketingkonzept'],c:1,e:'Ein Geschäftsmodell beantwortet die vier Fragen: Wer? Was? Wie? Wie viel?'},
+  {t:'bmc',q:'Aus wie vielen Bausteinen besteht der Business Model Canvas?',o:['5','7','9','12'],c:2,e:'Der BMC nach Osterwalder & Pigneur (2010) hat genau 9 Bausteine in 4 Bereichen: Kunden, Angebot, Infrastruktur, finanzielle Realisierbarkeit.'},
+  {t:'bmc',q:'Welche vier Bereiche strukturieren den Business Model Canvas?',o:['Planung, Steuerung, Kontrolle, Analyse','Kunden, Angebot, Infrastruktur, finanzielle Realisierbarkeit','Marketing, Vertrieb, Produktion, Logistik','Strategie, Organisation, Führung, Controlling'],c:1,e:'Der BMC gliedert sich in Kunden (Kundensegmente, Kundenbeziehungen, Kanäle), Angebot (Wertbeitrag), Infrastruktur (Partner, Aktivitäten, Ressourcen) und finanzielle Realisierbarkeit (Erlöse, Kosten).'},
+  {t:'bmc',q:'Welche fünf Arten von Kundensegmenten gibt es?',o:['Groß, mittel, klein, lokal, global','Massenmarkt, Nischenmarkt, Segmente im Markt, Diversifikation, Multi-Sided Märkte','Privat, gewerblich, öffentlich, international, digital','Demografisch, psychografisch, verhaltensorientiert, geografisch, sozial'],c:1,e:'Diese fünf Typen beschreiben unterschiedliche Marktstrategien.'},
+  {t:'bmc',q:'Welche Elemente können Teil eines Wertbeitrags sein?',o:['Nur Preis und Qualität','Neuheit, Performance, Design, Marke/Status, Preis, Kosteneinsparung, Risikoreduktion','Nur Werbung und Vertrieb','Nur technische Spezifikationen'],c:1,e:'Ein Wertbeitrag kann viele Elemente kombinieren, die für ein Kundensegment relevant sind.'},
+  {t:'bmc',q:'Was sind die Phasen eines Kanals?',o:['Produktion, Lagerung, Lieferung','Aufmerksamkeit, Bewertung, Kauf, Zustellung, After-Sales','Planung, Umsetzung, Kontrolle','Werbung, Rabatt, Abschluss'],c:1,e:'Kanäle begleiten Kunden von der ersten Aufmerksamkeit bis zum After-Sales-Service.'},
+  {t:'bmc',q:'Was ist der Unterschied zwischen Cost-Driven und Value-Driven?',o:['Cost-Driven = teurer','Cost-Driven = Fokus auf schlanke Kostenstruktur; Value-Driven = Fokus auf Wertschöpfung','Kein Unterschied','Value-Driven ist immer profitabler'],c:1,e:'Cost-Driven: z.B. Ryanair – schlanke Struktur, Kostenminimierung. Value-Driven: z.B. Luxushotels – Fokus auf Kundenwert.'},
+  {t:'bmc',q:'Welche vier Arten von Partnerschaften gibt es?',o:['Kauf, Verkauf, Tausch, Leasing','Buyer-Supplier, Kooperation, Joint Venture, Strategische Allianz','Produktion, Vertrieb, Marketing, Service','Formal, informal, kurz, lang'],c:1,e:'Die vier Partnerschaftstypen variieren in Intensität und strategischer Bedeutung.'},
+  {t:'bmc',q:'Warum gehen Unternehmen Partnerschaften ein?',o:['Nur um Kosten zu teilen','Zur Optimierung/Economies of Scale, Risikoreduktion und Einkauf spezieller Ressourcen','Nur aus gesetzlichen Gründen','Nur bei kleinen Unternehmen'],c:1,e:'Die drei Hauptmotivationen: Optimierung, Risikoreduktion, Beschaffung spezieller Ressourcen.'},
+  {t:'bmc',q:'Was sind mögliche Kategorien von Schlüsselressourcen?',o:['Personal, Maschinen, Geld','Physisch, Intellektuell, Personell, Finanziell','Planung, Umsetzung, Kontrolle','Produkte, Preise, Kanäle'],c:1,e:'Schlüsselressourcen werden in vier Kategorien eingeteilt: physisch, intellektuell, personell, finanziell.'},
+
+  // ── PERSONA MAP & VPC ──
+  {t:'persona_vpc',q:'Was ist eine Persona?',o:['Ein realer Kunde','Eine konkrete fiktive Person, die stellvertretend für eine Kundengruppe steht','Nur ein Kundensegment','Ein Marktforschungsbericht'],c:1,e:'Personas machen abstrakte Kundengruppen greifbar – man entwickelt eine Lösung für eine Person, nicht für eine anonyme Masse.'},
+  {t:'persona_vpc',q:'Welche Felder enthält eine Persona Map?',o:['Nur Name und Alter','Name, Alter, Beruf, Lebensziele, Zitat, Hintergrund, Schlüsselerlebnisse, Interessen/Hobbies, Aktivitäten/Verhalten','Nur demografische Daten','Nur Kaufverhalten'],c:1,e:'Die neun Felder der Persona Map machen die Persona so konkret wie eine echte Person.'},
+  {t:'persona_vpc',q:'Welche zwei Seiten hat der Value Proposition Canvas?',o:['Angebot und Nachfrage','Kundenprofil (Customer Segment) und Value Map (Value Proposition)','Kosten und Erlöse','Marketing und Produktion'],c:1,e:'Das Kundenprofil beschreibt den Kunden; die Value Map beschreibt das Wertangebot. FIT = die Passung zwischen beiden.'},
+  {t:'persona_vpc',q:'Welche drei Felder hat das Kundenprofil im VPC?',o:['Name, Alter, Beruf','Customer Jobs, Pains, Gains','Produkt, Preis, Kanal','Kosten, Erlöse, Gewinn'],c:1,e:'Customer Jobs = Aufgaben, Pains = Probleme/Risiken, Gains = erwünschte Ergebnisse/Nutzen.'},
+  {t:'persona_vpc',q:'Welche drei Felder hat die Value Map im VPC?',o:['Strategie, Taktik, Kontrolle','Products & Services, Pain Relievers, Gain Creators','Preis, Qualität, Service','Kunden, Partner, Kanäle'],c:1,e:'Products & Services = Angebote. Pain Relievers = Schmerzlinderer. Gain Creators = Nutzenerzeuger.'},
+  {t:'persona_vpc',q:'Was sind die drei Arten von Customer Jobs?',o:['Pflicht, Wunsch, Notwendigkeit','Funktional, Sozial, Emotional','Kurz-, mittel-, langfristig','Intern, extern, strategisch'],c:1,e:'Funktionale Jobs (praktische Aufgaben), soziale Jobs (Wahrnehmung durch andere), emotionale Jobs (Gefühle).'},
+  {t:'persona_vpc',q:'Was bedeutet FIT im Value Proposition Canvas?',o:['Finanzielles Investitionsziel','Die Passung zwischen Wertangebot (Value Map) und Kundenbedürfnissen (Kundenprofil)','Ein Qualitätszertifikat','Nur technische Kompatibilität'],c:1,e:'Je besser Value Map und Kundenprofil aufeinander abgestimmt sind, desto besser ist der FIT und desto erfolgreicher die Idee.'},
+  {t:'persona_vpc',q:'Womit kombiniert man die Persona Map idealerweise?',o:['Nur mit der SWOT-Analyse','Mit dem Value Proposition Canvas (Wertpassung) und dem AIDA-Modell (Kundenansprache)','Nur mit dem Businessplan','Mit der Kostenrechnung'],c:1,e:'Persona Map + VPC prüft die Wertpassung; Persona Map + AIDA hilft bei der besseren Kundenansprache.'},
+  {t:'persona_vpc',q:'In welcher Reihenfolge füllt man den VPC aus?',o:['Erst Value Map (links), dann Kundenprofil (rechts)','Erst Kundenprofil (rechts), dann Value Map (links)','Beide gleichzeitig','Reihenfolge ist irrelevant'],c:1,e:'Erst das Kundenprofil ausfüllen (Jobs, Pains, Gains), dann die Value Map darauf ausrichten – so entsteht FIT.'},
+  {t:'persona_vpc',q:'Wie viele VPCs sollte man pro Projekt erstellen?',o:['Immer genau eine','Eine pro Kundensegment – verschiedene Segmente haben unterschiedliche Bedürfnisse','Möglichst viele','Nur eine für alle Segmente zusammen'],c:1,e:'Für jedes Kundensegment eine eigene VPC erstellen, da verschiedene Segmente unterschiedliche Jobs, Pains und Gains haben.'},
+  {t:'persona_vpc',q:'Was lässt Kund*innen „nachts nicht schlafen" – zu welchem VPC-Feld gehört das?',o:['Gains – es sind ihre Wünsche','Customer Jobs – es sind ihre Aufgaben','Pains – es sind ihre tiefen Sorgen und Bedenken','Products & Services'],c:2,e:'Tiefe Sorgen und Bedenken gehören zu den Pains – sie beschreiben was Kund*innen bekümmert oder abhält.'},
 ];
 
 // ═══════════════════════════════════════════════
@@ -1304,6 +1482,11 @@ const SR_POOL=[
   {q:'Was ist Open Innovation?',opts:['Innovation ohne Plan','Öffnung des Innovationsprozesses für externe Partner und Wissensquellen','Geheime Produktentwicklung','Nur digitale Innovation'],correct:1,exp:'Open Innovation nutzt externes Wissen von Kunden, Lieferanten und Forschung.'},
   {q:'Was beschreibt Resilienz in Lieferketten?',opts:['Maximale Lagerreduktion','Widerstandsfähigkeit und Anpassungsfähigkeit gegenüber Störungen','Nur lokale Beschaffung','Nur digitale Steuerung'],correct:1,exp:'Resiliente Lieferketten bleiben auch bei Krisen und Störungen funktionsfähig.'},
   {q:'Was ist Digitalisierung im Unternehmenskontext?',opts:['Nur Scannen von Dokumenten','Nutzung digitaler Technologien zur Verbesserung und Transformation betrieblicher Prozesse','Nur Online-Werbung','Nur E-Mail-Kommunikation'],correct:1,exp:'Digitalisierung verändert grundlegend wie Leistungen geplant und erstellt werden.'},
+  {q:'Was beschreibt ein Geschäftsmodell?',opts:['Nur die Finanzplanung','Wie ein Unternehmen Wert schafft, liefert und davon profitiert','Nur die Organisationsstruktur','Ausschließlich das Marketingkonzept'],correct:1,exp:'Ein Geschäftsmodell beantwortet: Wer? Was? Wie? Wie viel?'},
+  {q:'Aus wie vielen Bausteinen besteht der Business Model Canvas?',opts:['5','7','9','12'],correct:2,exp:'Der BMC nach Osterwalder & Pigneur hat 9 Bausteine in 4 Bereichen.'},
+  {q:'Was ist eine Persona?',opts:['Ein realer Kunde','Eine konkrete fiktive Person stellvertretend für eine Kundengruppe','Nur ein Kundensegment','Ein Marktforschungsbericht'],correct:1,exp:'Personas machen abstrakte Kundengruppen greifbar – man entwickelt eine Lösung für eine Person.'},
+  {q:'Was bedeutet FIT im Value Proposition Canvas?',opts:['Finanzielles Investitionsziel','Die Passung zwischen Wertangebot und Kundenbedürfnissen','Ein Qualitätszertifikat','Nur technische Kompatibilität'],correct:1,exp:'Je besser Value Map und Kundenprofil übereinstimmen, desto besser der FIT.'},
+  {q:'Welche drei Felder hat das Kundenprofil im VPC?',opts:['Name, Alter, Beruf','Customer Jobs, Pains, Gains','Produkt, Preis, Kanal','Kosten, Erlöse, Gewinn'],correct:1,exp:'Customer Jobs = Aufgaben, Pains = Probleme/Risiken, Gains = erwünschte Ergebnisse.'},
 ];
 
 // ═══════════════════════════════════════════════
@@ -1407,6 +1590,14 @@ const THINK_QS={
   ],
   innovation2:[
     {q:'Was könnte schiefgehen, wenn ein Unternehmen den Stage-Gate-Ansatz zu streng anwendet?',hint:'Tipp: Kreativität, Risikobereitschaft, schnelle Märkte.'},
+  ],
+  bmc:[
+    {q:'Warum kann ein Unternehmen nicht einfach alle neun Bausteine des BMC gleichzeitig optimieren?',hint:'Tipp: Denke an Zielkonflikte – z.B. maximale Kundennähe vs. Kostenminimierung.'},
+    {q:'Überlege: Welchen Wertbeitrag bietet deine Lieblingsmarke? Welches Kundensegment spricht sie an?',hint:'Tipp: Nenne mindestens zwei Elemente des Wertbeitrags (Neuheit, Design, Marke, Preis…).'},
+  ],
+  persona_vpc:[
+    {q:'Warum reicht es nicht, nur die demografischen Merkmale einer Kundengruppe zu kennen?',hint:'Tipp: Was verraten Verhaltens- und psychografische Merkmale, was Alter/Einkommen nicht zeigen?'},
+    {q:'Ein Startup entwickelt eine App für ältere Nutzer. Welche „Pains" könnten diese Zielgruppe besonders belasten?',hint:'Tipp: Denke an technische Unsicherheit, Angst vor Fehlbedienung, Datenschutzbedenken.'},
   ],
 };
 
