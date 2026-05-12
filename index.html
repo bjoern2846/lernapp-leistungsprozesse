@@ -625,7 +625,7 @@ padding:26px;text-align:center;display:none;animation:fadeUp 0.3s}
 <div class="screen" id="s-kurs">
   <div class="kurs-header">
     <h2>Leistungsprozesse BWL</h2>
-    <p>8 Module · 47 Lektionen · von Grund auf aufbauend</p>
+    <p>10 Module · 57 Lektionen · von Grund auf aufbauend</p>
     <div class="pbar-wrap"><div class="pbar" style="background:linear-gradient(90deg,var(--violet),var(--pink))" id="courseBar"></div></div>
   </div>
   <div class="mod-list" id="modList"></div>
@@ -734,6 +734,8 @@ const TOPICS=[
   {id:'innovation2',name:'Innovation II',color:'#e879f9'},
   {id:'bmc',name:'Business Model Canvas',color:'#06b6d4'},
   {id:'persona_vpc',name:'Persona Map & VPC',color:'#a855f7'},
+  {id:'preiselastizitaet',name:'Preiselastizität & PAF',color:'#f59e4d'},
+  {id:'strategie_analyse',name:'Strategie & Analyse',color:'#34d399'},
 ];
 
 // ═══════════════════════════════════════════════
@@ -1040,44 +1042,73 @@ const MODULES=[
     {type:'complete',title:'✅ Modul Ziele, Strategien & Geschäftsmodelle abgeschlossen!',sub:'Ziele, Porter, Hidden Champions, SWOT, Geschäftsmodellinnovation gemeistert!'},
   ]},
  ]},
-{id:'m_mkt',title:'Marketing',color:'#fb923c',icon:'📣',
- desc:'Grundlagen, Segmentierung, Marketing-Mix',
+{id:'m_mkt',title:'Marketing I',color:'#fb923c',icon:'📣',
+ desc:'Marketingstrategie, Marktforschung, Kaufentscheidungen, Marke',
  lessons:[
-  {id:'l_m_1',title:'Grundlagen des Marketing',icon:'📣',topic:'marketing1',steps:[
-    {type:'title',icon:'📣',title:'Grundlagen des Marketing',sub:'Marketing bedeutet marktorientierte Unternehmensführung.'},
-    {type:'callout',kind:'def',label:'Marketing',html:'<p>Ausgangspunkt sind <strong>Kundenbedürfnisse, Marktchancen und Wettbewerber</strong>. Unternehmen sollen ihre Leistungen so gestalten, dass sie für bestimmte Zielgruppen attraktiv sind.</p>'},
-    {type:'mcq',q:'Was ist Marketing?',opts:['Nur Werbung','Marktorientierte Unternehmensführung auf Basis von Kundenbedürfnissen und Wettbewerb','Ausschließlich Preisfestlegung','Nur Produktdesign'],correct:1,exp:'Marketing umfasst weit mehr als Werbung. Es richtet das Unternehmen an Markt, Kunden und Wettbewerb aus.'},
+  {id:'l_m_1',title:'Übersicht Marketing & Zielgrößen',icon:'📣',topic:'marketing1',steps:[
+    {type:'title',icon:'📣',title:'Übersicht Marketing',sub:'Peter Drucker (1954): „Marketing and innovation create value, all the rest are costs."'},
+    {type:'callout',kind:'def',label:'Marketing – mehr als Absatz',html:'<p>Marketing geht weit über den traditionellen Begriff des Absatzes hinaus. Es umfasst:<br><strong>Anwenderverständnis</strong> (Erkennung von Kundenbedürfnissen/-gruppen) + <strong>Vermarktung</strong> (Marketing-Mix) + <strong>Käuferverhalten &amp; Marktforschung</strong> + <strong>Produktpositionierung</strong>.</p>'},
+    {type:'callout',kind:'info',label:'Marketing-Konzeptionierungsprozess',html:'<p>Verständnis des Kunden im Zentrum. Datengewinnung und -analyse als Basis. Schritte:<br><strong>Vision/Mission/Segmentierung → Situationsanalyse → Ziele → Strategien → Instrumente → Implementierung → Controlling</strong></p>'},
+    {type:'callout',kind:'info',label:'Psychografische und ökonomische Zielgrößen',html:'<p><strong>Psychografische Zielgrößen:</strong> Image, Bekanntheit, Präferenz, Zufriedenheit, Kundenbindung<br><strong>Ökonomische Zielgrößen:</strong> Umsatz, Marktanteil, Deckungsbeitrag, Gewinn, Rendite, Unternehmenswert (z.B. abgezinster Cash-Flow)</p><p>Kaufverhalten ist die Verbindung: Präferenz → Kaufabsicht → Kauf → Wiederkauf.</p>'},
+    {type:'mcq',q:'Welche zwei Arten von Zielgrößen unterscheidet das Marketing?',opts:['Kurz- und langfristige Ziele','Psychografische (Image, Präferenz, Bindung) und ökonomische (Umsatz, Gewinn, Marktanteil)','Interne und externe Ziele','Qualitative und strategische Ziele'],correct:1,exp:'Psychografische Zielgrößen wirken auf Einstellungen (Image, Präferenz, Zufriedenheit); ökonomische auf Ergebnisse (Umsatz, Gewinn, Marktanteil).'},
   ]},
-  {id:'l_m_2',title:'Bedürfnis, Bedarf & Nachfrage',icon:'💭',topic:'marketing1',steps:[
-    {type:'title',icon:'💭',title:'Bedürfnis, Bedarf & Nachfrage',sub:'Drei Stufen auf dem Weg zum Markt.'},
-    {type:'reveal-steps',steps:[
-      {num:'1',title:'Bedürfnis',body:'Ein <strong>Mangel- oder Wunschzustand</strong>.',done:false},
-      {num:'2',title:'Bedarf',body:'Bedürfnis + <strong>Kaufkraft</strong>.',done:false},
-      {num:'3',title:'Nachfrage',body:'Bedarf, der am <strong>Markt konkret wirksam</strong> wird.',done:false},
-    ]},
-    {type:'mcq',q:'Was ist der Unterschied zwischen Bedürfnis, Bedarf und Nachfrage?',opts:['Es gibt keinen Unterschied','Bedürfnis ist ein Wunsch, Bedarf hat Kaufkraft, Nachfrage ist marktaktiver Bedarf','Bedarf ist stärker als Nachfrage','Nachfrage existiert ohne Kaufkraft'],correct:1,exp:'Die drei Stufen bauen aufeinander auf: Wunsch → Kaufkraft → Markthandlung.'},
+  {id:'l_m_2',title:'Allgemeines Marketing vs. Start-up Marketing',icon:'🚀',topic:'marketing1',steps:[
+    {type:'title',icon:'🚀',title:'Allgemeines vs. Start-up Marketing',sub:'Top-Down vs. Bottom-Up Ansatz.'},
+    {type:'callout',kind:'info',label:'Unterschiede im Überblick',html:'<table style="width:100%;border-collapse:collapse"><tr><th style="padding:4px 8px;text-align:left"></th><th style="padding:4px 8px">Allgemeines Marketing</th><th style="padding:4px 8px">Start-up Marketing</th></tr><tr><td style="padding:4px 8px"><strong>Fokus</strong></td><td style="padding:4px 8px">Kundenfokus</td><td style="padding:4px 8px">Produktfokus</td></tr><tr><td style="padding:4px 8px"><strong>Strategie</strong></td><td style="padding:4px 8px">Top-Down</td><td style="padding:4px 8px">Bottom-Up</td></tr><tr><td style="padding:4px 8px"><strong>Mix</strong></td><td style="padding:4px 8px">Produkt, Preis, Distribution, Kommunikation</td><td style="padding:4px 8px">Pers. Verkauf, Beziehungen, Mund-zu-Mund</td></tr><tr><td style="padding:4px 8px"><strong>Marktforschung</strong></td><td style="padding:4px 8px">Systematisch, quantitativ</td><td style="padding:4px 8px">Qualitativ, persönl. Beobachtung, Netzwerke</td></tr></table>'},
+    {type:'callout',kind:'info',label:'Top-Down Ansatz (etablierte Unternehmen)',html:'<ol><li>Marktsegmentierung (demografisch, psychologisch, verhaltensbasiert)</li><li>Zielkundenbestimmung (Bewertung &amp; Auswahl eines Segments)</li><li>Positionierung (Kommunikation der Marktposition)</li></ol>'},
+    {type:'callout',kind:'info',label:'Bottom-Up Ansatz (Gründungsunternehmen)',html:'<ol><li>Identifikation/Bewertung marktlicher Gelegenheiten (Trial-and-Error, Intuition)</li><li>Aufbau einer ersten Kundenbasis (von deren Präferenzen lernen)</li><li>Ausweitung der Kundenbasis durch Mund-zu-Mund-Werbung</li></ol>'},
+    {type:'mcq',q:'Was ist der wesentliche Unterschied zwischen Top-Down und Bottom-Up Marketingstrategie?',opts:['Kein Unterschied','Top-Down: systematische Segmentierung → Zielgruppe → Positionierung; Bottom-Up: Trial-and-Error, Lernen von ersten Kunden','Top-Down ist für Nischenanbieter, Bottom-Up für Großkonzerne','Top-Down ist billiger'],correct:1,exp:'Etablierte Unternehmen planen systematisch (Top-Down); Gründungsunternehmen starten experimentell und lernen von frühen Kunden (Bottom-Up).'},
   ]},
-  {id:'l_m_3',title:'Marktsegmentierung & Positionierung',icon:'🎯',topic:'marketing1',steps:[
-    {type:'title',icon:'🎯',title:'Marktsegmentierung & Positionierung',sub:'Den Markt verstehen und sich darin platzieren.'},
-    {type:'callout',kind:'def',label:'Marktsegmentierung',html:'<p>Der Gesamtmarkt wird in <strong>Teilmärkte oder Segmente</strong> aufgeteilt. Kriterien: demografische, geografische, psychografische oder verhaltensorientierte Merkmale.</p>'},
-    {type:'callout',kind:'def',label:'Positionierung',html:'<p>Wie soll ein Produkt oder Unternehmen im Vergleich zum Wettbewerb im <strong>Kopf der Kunden</strong> wahrgenommen werden?</p>'},
-    {type:'mcq',q:'Was ist Marktsegmentierung?',opts:['Die Aufteilung eines Marktes in unterschiedliche Kundengruppen','Die Verkleinerung eines Unternehmens','Die Zusammenlegung aller Produkte','Die reine Preisgestaltung'],correct:0,exp:'Marktsegmentierung teilt einen Gesamtmarkt in Gruppen mit ähnlichen Merkmalen oder Bedürfnissen.'},
+  {id:'l_m_3',title:'Qualitative vs. Quantitative Marktforschung',icon:'🔬',topic:'marketing1',steps:[
+    {type:'title',icon:'🔬',title:'Qualitative vs. Quantitative Marktforschung',sub:'Zwei Wege, den Markt zu verstehen.'},
+    {type:'callout',kind:'def',label:'Qualitative Marktforschung',html:'<p>Tiefgehende Erforschung dessen, was Menschen <strong>denken, fühlen oder tun – und warum</strong>. Keine statistisch robusten Befunde. Methoden: <strong>persönliche Interviews, Fokusgruppen, teilnehmende Beobachtung</strong>.</p>'},
+    {type:'callout',kind:'def',label:'Quantitative Marktforschung',html:'<p>Ermittlung eines <strong>quantitativen Maßes</strong> darüber, wie Menschen denken, fühlen oder sich verhalten. Nutzung von <strong>statistischen Analysen</strong>. Methoden: <strong>Regression, Cluster-Analyse, Conjoint-Analysen</strong>.</p>'},
+    {type:'callout',kind:'info',label:'Wofür kann Marktforschung genutzt werden?',html:'<ul><li>Marktvalidierung &amp; Marktsegmentierung</li><li>Pain-Point-Artikulation &amp; Zielmarktpriorisierung</li><li>Marketingplanung &amp; Wettbewerbsanalyse</li><li>Preisanalyse &amp; Kundenresonanz</li><li>Produktentwicklung &amp; Trendidentifikation</li><li>Beeinflusser &amp; Medienlandschaft</li></ul>'},
+    {type:'mcq',q:'Was ist das Hauptmerkmal qualitativer Marktforschung?',opts:['Statistische Robustheit durch große Stichproben','Tiefgehende Erforschung von Gedanken, Gefühlen und Verhalten – und dem Warum dahinter','Nur Zahlen und Kennzahlen','Ausschließlich Online-Umfragen'],correct:1,exp:'Qualitativ = Tiefenverständnis (Warum?), keine statistisch robusten Befunde. Quantitativ = Zahlen und statistische Auswertungen.'},
   ]},
-  {id:'l_m_4',title:'Der Marketing-Mix (4 Ps)',icon:'🔧',topic:'marketing2',steps:[
-    {type:'title',icon:'🔧',title:'Der Marketing-Mix',sub:'Die vier Instrumente der Marktbearbeitung.'},
-    {type:'reveal-steps',steps:[
-      {num:'P1',title:'Produktpolitik',body:'Gestaltung des Leistungsangebots: Qualität, Design, Marke, Verpackung.',done:false},
-      {num:'P2',title:'Preispolitik',body:'Preisniveau, Rabatte, Preisstaffelungen, Preisdifferenzierung.',done:false},
-      {num:'P3',title:'Distributionspolitik',body:'Wie gelangt das Angebot zum Kunden? Direkt oder über Zwischenhändler.',done:false},
-      {num:'P4',title:'Kommunikationspolitik',body:'Werbung, Social Media, PR, Verkaufsförderung.',done:false},
-    ]},
-    {type:'mcq',q:'Welche vier Bereiche gehören klassisch zum Marketing-Mix?',opts:['Produktion, Personal, Finanzierung, Steuern','Produktpolitik, Preispolitik, Distributionspolitik, Kommunikationspolitik','Innovation, Nachhaltigkeit, Logistik, Controlling','Strategie, Organisation, Führung, Bilanzierung'],correct:1,exp:'Die klassischen 4 Ps sind Produkt, Preis, Place und Promotion.'},
+  {id:'l_m_4',title:'Marktabgrenzung & Marktsegmentierung',icon:'🗺️',topic:'marketing1',steps:[
+    {type:'title',icon:'🗺️',title:'Marktabgrenzung & Marktsegmentierung',sub:'Welcher Markt ist relevant – und wie teilt man ihn auf?'},
+    {type:'callout',kind:'def',label:'Kriterien zur Marktabgrenzung',html:'<ul><li><strong>Unternehmen</strong> – alle Unternehmen einer Branche</li><li><strong>Produkte/Dienstleistungen</strong> – alle Angebote eines Bereichs</li><li><strong>Käufer</strong> – z.B. wohlhabende Privatkunden</li><li><strong>Bedürfnisse</strong> – z.B. „Markt für Mobilität" (Auto, Zug, Fahrrad…)</li></ul><p>Die Definition des <strong>relevanten Markts</strong> ist ein wesentlicher erster Schritt zur Wettbewerbsanalyse.</p>'},
+    {type:'callout',kind:'info',label:'Kriterien der Relevanter-Markt-Definition',html:'<ul><li>Produkte/Dienstleistungen</li><li>Kundenbedürfnisse</li><li>Kundengruppen/Marktsegment</li><li>Geographische Grenzen</li><li>Technologien</li></ul><p>Beispiel: Google sieht seinen relevanten Markt als <em>„companies that seek to connect people with information on the web."</em></p>'},
+    {type:'callout',kind:'def',label:'Marktsegmentierung',html:'<p>Aufteilung des Gesamtmarkts in sinnvolle Teilbereiche:</p><p><strong>Nach Produkten:</strong> Branchen, Produkt-/Dienstleistungsklassen, Anwendungen, Technologien<br><strong>Nach Kunden:</strong> räumlich-geografisch, demografisch, Lebensstile/Persönlichkeit, Verhaltensmerkmale, Kundenart (B2C, B2B, B2G)</p>'},
+    {type:'callout',kind:'info',label:'Marktgrößen im Überblick',html:'<ul><li><strong>Marktvolumen:</strong> Wie viel wird aktuell durch vergleichbare Produkte gedeckt? (Wachstum durch Verdrängung)</li><li><strong>Marktpotenzial:</strong> Wie viel kann theoretisch verkauft werden? (bei Marktwachstum)</li><li><strong>Marktkapazität:</strong> Maximale Aufnahmefähigkeit des Marktes</li><li><strong>Marktanteil:</strong> Anteil des eigenen Unternehmens am Marktvolumen</li></ul>'},
+    {type:'mcq',q:'Was beschreibt das „Marktpotenzial"?',opts:['Der aktuelle Umsatz eines Unternehmens','Wie viel theoretisch auf dem Markt verkauft werden kann (unter Annahme von Wachstum)','Nur der eigene Marktanteil','Die Anzahl der Wettbewerber'],correct:1,exp:'Marktpotenzial = theoretisch maximal erzielbares Volumen. Marktvolumen = aktuell tatsächlich gedeckte Nachfrage.'},
   ]},
-  {id:'l_m_5',title:'Zusammenhang der Marketinginstrumente',icon:'🔗',topic:'marketing2',steps:[
-    {type:'title',icon:'🔗',title:'Zusammenhang der Marketinginstrumente',sub:'Die 4 Ps müssen zusammenpassen.'},
-    {type:'callout',kind:'warn',label:'Achtung: Konsistenz',html:'<p>Produkt, Preis, Distribution und Kommunikation müssen <strong>zueinander passen und auf die Zielgruppe abgestimmt</strong> sein.</p><p>Ein hochwertig positioniertes Produkt benötigt meist eine andere Preis- und Kommunikationsstrategie als ein standardisiertes Massenprodukt.</p>'},
-    {type:'mcq',q:'Was regelt die Distributionspolitik?',opts:['Wie ein Angebot zum Kunden gelangt','Wie Mitarbeitende eingestellt werden','Wie ein Unternehmen besteuert wird','Wie Gewinne intern verteilt werden'],correct:0,exp:'Distributionspolitik gestaltet die Absatzwege und den Vertrieb zum Kunden.'},
-    {type:'complete',title:'✅ Modul Marketing abgeschlossen!',sub:'Grundlagen, Segmentierung, Marketing-Mix gemeistert!'},
+  {id:'l_m_5',title:'Massen- vs. Zielgruppenmarketing & Ansoff',icon:'🎯',topic:'marketing1',steps:[
+    {type:'title',icon:'🎯',title:'Massenmarketing vs. Zielgruppenmarketing & Ansoff',sub:'Schrotflinte oder Scharfschütze – und wohin wachsen?'},
+    {type:'callout',kind:'info',label:'Massenmarktmarketing (Schrotflintenkonzept)',html:'<p><strong>Vorteile:</strong> Kostenvorteile durch Massenproduktion, Abdeckung des Gesamtmarkts, einfacherer Marketing-Mix<br><strong>Nachteile:</strong> Je nach Marktstruktur keine volle Erfüllung der Käuferwünsche, begrenzte Preisspielräume, Gefahr von Preiswettbewerb</p>'},
+    {type:'callout',kind:'info',label:'Zielgruppenorientiertes Marketing (Scharfschützenkonzept)',html:'<p><strong>Vorteile:</strong> Hohe Bedarfsentsprechung, überdurchschnittliche Preisspielräume, Qualitätswettbewerb statt Preiswettbewerb, gute Marktsteuerung<br><strong>Nachteile:</strong> Verzicht auf Massenproduktion, hoher Know-how-Bedarf, Komplizierungen im Marketing-Mix, eingeschränkte Segmentstabilität</p>'},
+    {type:'callout',kind:'def',label:'Produkt-Markt-Strategien nach Ansoff',html:'<table style="width:100%;border-collapse:collapse"><tr><th style="padding:4px 8px"></th><th style="padding:4px 8px">Bisherige Produkte</th><th style="padding:4px 8px">Neue Produkte</th></tr><tr><td style="padding:4px 8px"><strong>Bisherige Märkte</strong></td><td style="padding:4px 8px">Marktdurchdringung</td><td style="padding:4px 8px">Produktentwicklung</td></tr><tr><td style="padding:4px 8px"><strong>Neue Märkte</strong></td><td style="padding:4px 8px">Marktentwicklung</td><td style="padding:4px 8px">Diversifikation</td></tr></table>'},
+    {type:'mcq',q:'Was beschreibt die Ansoff-Matrix?',opts:['Die 4 Ps des Marketing-Mix','Vier Wachstumsstrategien je nach Produkt- und Marktkombination (Durchdringung, Produktentwicklung, Marktentwicklung, Diversifikation)','Porters generische Strategien','Die SWOT-Analyse'],correct:1,exp:'Ansoff-Matrix: Bisherige/Neue Produkte × Bisherige/Neue Märkte = 4 Wachstumsstrategien.'},
+    {type:'mcq',q:'Welche Ansoff-Strategie bedeutet: neues Produkt in bestehenden Märkten?',opts:['Marktdurchdringung','Marktentwicklung','Produktentwicklung','Diversifikation'],correct:2,exp:'Produktentwicklung = neue Produkte für bestehende Märkte. Diversifikation = beides neu.'},
+  ]},
+  {id:'l_m_6',title:"Porter's Five Forces & Konkurrenzanalyse",icon:'⚔️',topic:'marketing1',steps:[
+    {type:'title',icon:'⚔️',title:"Porter's Five Forces",sub:'Welche Kräfte bestimmen die Profitabilität einer Branche?'},
+    {type:'callout',kind:'def',label:"Porter's Five Forces (Branchenstrukturanalyse)",html:'<p>Mithilfe der Analyse der fünf Wettbewerbskräfte lässt sich ein vollständiges Bild der Faktoren gewinnen, die die Profitabilität einer Branche beeinflussen:</p><ol><li><strong>Rivalität bestehender Mitbewerber</strong></li><li><strong>Bedrohung durch potenzielle neue Mitbewerber</strong> (Markteintrittsbarrieren)</li><li><strong>Bedrohung durch Ersatzprodukte</strong> (Substitutionsprodukte)</li><li><strong>Verhandlungsstärke der Zulieferer</strong></li><li><strong>Verhandlungsstärke der Kunden</strong></li></ol>'},
+    {type:'callout',kind:'info',label:'Konkurrenzanalyse',html:'<p>Zwei Methoden:<br><strong>1. Vereinfachte Stärken-Schwächen-Analyse:</strong> eigenes Unternehmen vs. Wettbewerber 1, 2, 3… (+++, ++, +)<br><strong>2. Konkurrenzbenchmarkanalyse:</strong> Bewertung auf Skala 1–9 nach Qualität, Preis, Leistung, Prestige, Design, Funktionalität.</p>'},
+    {type:'callout',kind:'info',label:'Marktattraktivität – Zusammenfassung',html:'<p>Marktattraktivität ergibt sich aus: <strong>Marktkapazität + Branchenstruktur (5 Forces) + Rentabilität des Marktes + Trends im globalen Umfeld</strong>.</p>'},
+    {type:'mcq',q:'Was ist die Grundidee von Porters Five Forces?',opts:['Bewertung einzelner Produkte','Analyse der fünf Wettbewerbskräfte zur Beurteilung der Profitabilität einer Branche','Berechnung des Marktanteils','Analyse der Kostenstruktur'],correct:1,exp:'Porters 5 Forces analysiert Rivalität, neue Mitbewerber, Substitution, Zulieferermacht und Kundenmacht – um Branchenprofitabilität zu erklären.'},
+    {type:'mcq',q:'Welche der folgenden ist KEINE der fünf Wettbewerbskräfte nach Porter?',opts:['Rivalität bestehender Mitbewerber','Bedrohung durch Substitutionsprodukte','Verhandlungsstärke der Zulieferer','SWOT-Analyse des Unternehmens'],correct:3,exp:'Die 5 Forces: Rivalität, neue Mitbewerber, Substitution, Zulieferermacht, Kundenmacht. Die SWOT-Analyse ist ein separates Werkzeug.'},
+  ]},
+  {id:'l_m_7',title:'Kaufentscheidungen & SR/SOR-Modell',icon:'🧠',topic:'marketing1',steps:[
+    {type:'title',icon:'🧠',title:'Kaufentscheidungen & SR/SOR-Modell',sub:'B2C vs. B2B und was in der Black Box passiert.'},
+    {type:'callout',kind:'info',label:'B2C vs. B2B Kaufentscheidungen',html:'<table style="width:100%;border-collapse:collapse"><tr><th style="padding:4px 8px">B2C (privat)</th><th style="padding:4px 8px">B2B (organisational)</th></tr><tr><td style="padding:4px 8px">Anonyme Märkte</td><td style="padding:4px 8px">(Eher) transparente Märkte</td></tr><tr><td style="padding:4px 8px">Kurzfristiges Beziehungsgefüge</td><td style="padding:4px 8px">Langfristiges Beziehungsgefüge</td></tr><tr><td style="padding:4px 8px">Geringer Formalisierungsgrad</td><td style="padding:4px 8px">Hoher Formalisierungsgrad</td></tr><tr><td style="padding:4px 8px">Individuelle Entscheidungen</td><td style="padding:4px 8px">Multipersonalität/-organisationalität</td></tr><tr><td style="padding:4px 8px">Kein Automatisierungsgrad</td><td style="padding:4px 8px">EDV-Unterstützung (Automatisierung)</td></tr></table>'},
+    {type:'callout',kind:'def',label:'Grundtypen von Kaufentscheidungen',html:'<table style="width:100%;border-collapse:collapse"><tr><th style="padding:4px 8px"></th><th style="padding:4px 8px">Individuell</th><th style="padding:4px 8px">Kollektiv</th></tr><tr><td style="padding:4px 8px"><strong>Konsument</strong></td><td style="padding:4px 8px">Individuelle Kaufentscheidungen</td><td style="padding:4px 8px">Familienentscheidungen</td></tr><tr><td style="padding:4px 8px"><strong>Organisation</strong></td><td style="padding:4px 8px">Einkäuferentscheidungen</td><td style="padding:4px 8px">Gremienentscheidungen</td></tr></table>'},
+    {type:'callout',kind:'def',label:'SR- und SOR-Modell des Käuferverhaltens',html:'<p><strong>SR-Modell (Black Box):</strong> Stimulus → Response (direkt beobachtbar, Inneres unbekannt)<br><strong>SOR-Modell:</strong> Stimulus → Organismus → Response</p><p><strong>Stimuli:</strong> Marketing (Produkt, Preis, Kommunikation, Distribution) + Umfeld (sozioökonomisch, politisch-rechtlich, technologisch)<br><strong>Organismus (nicht direkt beobachtbar):</strong> Aktivierende Prozesse (Aktivierung, Emotionen, Motivationen) + Kognitive Prozesse (Wahrnehmung, Lernen, Gedächtnis) → Einstellungen<br><strong>Response:</strong> Markenwahl, Einkaufsstättenbesuch, Kaufmenge, Ausgabenbetrag</p>'},
+    {type:'callout',kind:'info',label:'Wie entsteht eine Einstellung?',html:'<p>Aktivierung → + Interpretation → <strong>Emotion</strong><br>Emotion → + Zielorientierung → <strong>Motivation</strong><br>Motivation → + Objektbeurteilung → <strong>Einstellung</strong><br><br><em>Einstellung = subjektiv wahrgenommene Eignung eines Produkts zur Befriedigung einer Motivation/eines Bedürfnisses.</em></p>'},
+    {type:'mcq',q:'Was ist der Unterschied zwischen SR- und SOR-Modell?',opts:['Kein Unterschied','SR-Modell ignoriert das Innere (Black Box); SOR-Modell berücksichtigt den Organismus (aktivierende & kognitive Prozesse, Einstellungen)','SR ist für B2B, SOR für B2C','SOR ist veraltet'],correct:1,exp:'SR = Stimulus → Response (Black Box). SOR = Stimulus → Organismus (Prozesse im Inneren) → Response.'},
+    {type:'mcq',q:'Was sind aktivierende Prozesse im SOR-Modell?',opts:['Wahrnehmung und Lernen','Aktivierung, Emotionen, Motivationen','Markenwahl und Kaufmenge','Preisvergleich und Produkttest'],correct:1,exp:'Aktivierende Prozesse: Aktivierung, Emotionen, Motivationen. Kognitive Prozesse: Wahrnehmung, Lernen, Gedächtnis.'},
+  ]},
+  {id:'l_m_8',title:'Positionierungsanalyse & Markenstrategien',icon:'🏷️',topic:'marketing1',steps:[
+    {type:'title',icon:'🏷️',title:'Positionierungsanalyse & Markenstrategien',sub:'Wie positioniert man ein Produkt – und wie schützt man eine Marke?'},
+    {type:'callout',kind:'def',label:'Positionierungsanalyse',html:'<p>Tool zur erfolgreichen Produktpositionierung. <strong>Produktposition</strong> = die Vorstellung, die der Nachfrager mit dem Produkt verbindet. Die Idee: Das Produkt sollte Eigenschaften haben, die sich viele wünschen, aber noch von keinem Anbieter befriedigt werden. Außerdem: erreichbar und rechtlich schützbar.</p><p>Instrumente: <strong>Polaritätenprofil / Semantisches Differential</strong> und <strong>Positionierungsdiagramm</strong> (Ist- vs. Soll-Positionierung).</p>'},
+    {type:'callout',kind:'def',label:'Markenwertmodell',html:'<p><strong>Markenwissen</strong> besteht aus:<br>→ <strong>Markenbekanntheit:</strong> Markenrecall* + Markenrecognition**<br>→ <strong>Markenimage:</strong> Vorteilhaftigkeit, Stärke und Einzigartigkeit von Markenassoziationen</p><p><small>*Recall: Konsument nennt Marke aus dem Gedächtnis. **Recognition: Konsument erkennt Marke wieder.</small></p>'},
+    {type:'callout',kind:'info',label:'Drei Markenstrategien',html:'<p><strong>Dachmarkenstrategie:</strong> Alle Märkte mit einer Marke. Vorteil: neue Zielgruppen, geringeres Floprisiko. Nachteil: neg. Ausstrahlungseffekte möglich.<br><br><strong>Einzelmarkenstrategie:</strong> Je Markt eine eigene Marke. Vorteil: unverwechselbare Persönlichkeit, kein Imagetransfer. Nachteil: hohe Einführungskosten, keine Synergien.<br><br><strong>Mehrmarkenstrategie:</strong> Ein Markt mit mehreren Marken. Vorteil: bessere Marktausschöpfung, breitere Regalfläche. Nachteil: Kannibalisierung, Ressourcenverteilung.</p>'},
+    {type:'callout',kind:'info',label:'Markenschutz',html:'<p>Marke = <strong>nationales geistiges Eigentumsrecht</strong>. Markeninhaber haben das ausschließliche Recht. Bei Verletzung: Schadensersatz + Unterlassung. Anmeldung beim Patentamt.<br>Formen: <strong>Wortmarken, Wort-Bild-Marken, Bildmarken</strong> (auch Buchstaben, Zahlen, Hörzeichen).</p>'},
+    {type:'mcq',q:'Was ist die Dachmarkenstrategie?',opts:['Jede Marke hat ihren eigenen Markt','Alle Märkte werden mit derselben (Dach-)Marke bearbeitet','Ein Markt wird mit mehreren Marken bearbeitet','Nur für Start-ups geeignet'],correct:1,exp:'Dachmarkenstrategie: eine Marke für alle Märkte. Vorteil: Reichweite. Nachteil: neg. Ausstrahlungseffekte bei Problemen.'},
+    {type:'mcq',q:'Aus welchen zwei Komponenten besteht Markenwissen?',opts:['Markenname und Markenfarbe','Markenbekanntheit (Recall + Recognition) und Markenimage (Assoziationen)','Marktanteil und Markenpreis','Werbungsausgaben und Umsatz'],correct:1,exp:'Markenwissen = Markenbekanntheit (Recall: aktiv nennen; Recognition: wiedererkennen) + Markenimage (Vorteilhaftigkeit, Stärke, Einzigartigkeit der Assoziationen).'},
+    {type:'mcq',q:'Was ist eine Einzelmarkenstrategie?',opts:['Eine Marke für alle Märkte','Mehrere Marken für einen Markt','Je Markt eine eigene, unabhängige Marke','Nur globale Marken'],correct:2,exp:'Einzelmarkenstrategie: jeder Markt erhält eine eigene Marke. Vorteil: klare Persönlichkeit, kein negativer Imagetransfer. Nachteil: hohe Einführungskosten.'},
+    {type:'complete',title:'✅ Modul Marketing I abgeschlossen!',sub:'Strategie, Marktforschung, Segmentierung, Porter, Kaufverhalten, Marke gemeistert!'},
   ]},
  ]},
 {id:'m_innov',title:'Innovation',color:'#60a5fa',icon:'💡',
@@ -1249,6 +1280,102 @@ const MODULES=[
     {type:'complete',title:'✅ Modul Persona Map & VPC abgeschlossen!',sub:'Persona, Customer Jobs/Pains/Gains, Value Map, FIT und Herangehensweise gemeistert!'},
   ]},
  ]},
+{id:'m_preis',title:'Preiselastizität & PAF',color:'#f59e4d',icon:'📈',
+ desc:'Preiselastizität, doppelt geknickte PAF und Gewinnmaximum',
+ lessons:[
+  {id:'l_pe_1',title:'Preiselastizität der Nachfrage',icon:'📉',topic:'preiselastizitaet',steps:[
+    {type:'title',icon:'📉',title:'Preiselastizität der Nachfrage',sub:'Wie stark reagiert die Nachfrage auf eine Preisänderung?'},
+    {type:'callout',kind:'def',label:'Definition: Preiselastizität',html:'<p>Die <strong>Preiselastizität der Nachfrage</strong> ist das Verhältnis einer <strong>relativen Nachfrageänderung (Wirkungsgröße)</strong> zur verursachenden <strong>prozentualen Preisänderung (Einflussgröße)</strong>.</p>'},
+    {type:'callout',kind:'satz',label:'Formel',html:'<p>ε = (Δx / x) / (Δp / p)</p><p>x = Ausgangsmenge &nbsp;|&nbsp; p = Ausgangspreis<br>Δx = Mengenänderung &nbsp;|&nbsp; Δp = Preisänderung</p>'},
+    {type:'prose',html:'Der Elastizitätskoeffizient (ε) ist <strong>i.d.R. negativ</strong>, da Preiserhöhungen die Nachfragemenge senken und Preissenkungen sie erhöhen. Zur einfachen Handhabung wird er mit –1 multipliziert und als positiver Wert angegeben.'},
+    {type:'callout',kind:'info',label:'Rechenbeispiel',html:'<p>Preiserhöhung von 9€ auf 10€, Menge sinkt von 4.000 auf 3.800 Stück:<br>ε = (–200/4000) / (1/9) = –0,05 / 0,11 = <strong>–0,45</strong></p>'},
+    {type:'mcq',q:'Was misst die Preiselastizität der Nachfrage?',opts:['Den absoluten Preisunterschied','Das Verhältnis von relativer Nachfrageänderung zu prozentualer Preisänderung','Den Gewinn bei einem bestimmten Preis','Die Fixkosten pro Einheit'],correct:1,exp:'Preiselastizität = prozentuale Mengenänderung / prozentuale Preisänderung (ε = Δx/x ÷ Δp/p).'},
+  ]},
+  {id:'l_pe_2',title:'Elastizitätswerte & Ausprägungen',icon:'📊',topic:'preiselastizitaet',steps:[
+    {type:'title',icon:'📊',title:'Elastizitätswerte & Ausprägungen',sub:'Was bedeuten die verschiedenen ε-Werte?'},
+    {type:'callout',kind:'def',label:'Wichtige Ausprägungen',html:'<ul><li><strong>|ε| = 0</strong> – vollkommen unelastisch: Preisänderung bewirkt keine Mengenänderung</li><li><strong>|ε| = ∞</strong> – vollkommen elastisch: kleinste Preisänderung → extreme Mengenänderung</li><li><strong>|ε| = 1</strong> – isoelastisch: Preis- und Mengenänderung gleich stark</li><li><strong>|ε| &gt; 1</strong> – elastisch: Mengenänderung stärker als Preisänderung</li><li><strong>|ε| &lt; 1</strong> – unelastisch: Mengenänderung schwächer als Preisänderung</li></ul>'},
+    {type:'callout',kind:'warn',label:'Auswirkung auf Umsatz',html:'<table class="tt" style="margin-top:6px"><thead><tr><th>Preisänderung</th><th>|ε| &gt; 1</th><th>|ε| = 1</th><th>|ε| &lt; 1</th></tr></thead><tbody><tr><td>Erhöhung</td><td class="lo">Umsatz ↓</td><td>konstant</td><td class="hi">Umsatz ↑</td></tr><tr><td>Senkung</td><td class="hi">Umsatz ↑</td><td>konstant</td><td class="lo">Umsatz ↓</td></tr></tbody></table>'},
+    {type:'mcq',q:'Bei welchem ε-Wert führt eine Preiserhöhung zu einem Umsatzanstieg?',opts:['|ε| > 1','|ε| = 1','|ε| < 1','|ε| = ∞'],correct:2,exp:'Bei unelastischer Nachfrage (|ε| < 1) sinkt die Menge weniger stark als der Preis steigt – der Umsatz steigt.'},
+    {type:'mcq',q:'Welche Aussage zur Preiselastizität ist richtig?',opts:['Der Koeffizient ist immer positiv','Je höher |ε|, desto stärker reagiert die Menge auf Preisänderungen','Bei |ε| = 0 ist die Nachfrage vollkommen elastisch','|ε| betrifft nur Preissenkungen'],correct:1,exp:'Ein höherer |ε|-Wert bedeutet größere Mengenreaktionen auf Preisänderungen.'},
+  ]},
+  {id:'l_pe_3',title:'Lineare PAF & Elastizität',icon:'📐',topic:'preiselastizitaet',steps:[
+    {type:'title',icon:'📐',title:'Lineare PAF & Elastizität entlang der Kurve',sub:'An verschiedenen Punkten einer linearen Nachfragekurve ändert sich ε.'},
+    {type:'prose',html:'Bei einer linearen Preis-Absatz-Funktion (PAF) gilt: Je weiter oben (hoher Preis, kleine Menge), desto <strong>elastischer</strong> die Nachfrage (|ε| > 1). Je weiter unten (niedriger Preis, große Menge), desto <strong>unelastischer</strong> (|ε| < 1).'},
+    {type:'callout',kind:'info',label:'Wichtige Punkte auf der linearen PAF',html:'<ul><li><strong>Prohibitivpreis</strong> (oben links): Preis so hoch, dass kein Stück abgesetzt wird → ε = ∞</li><li><strong>Mitte der Kurve</strong>: ε = 1 → maximaler Umsatz (U<sub>max</sub>)</li><li><strong>Sättigungsmenge</strong> (unten rechts): Preis = 0, maximale Menge → ε = 0</li></ul>'},
+    {type:'callout',kind:'satz',label:'Merksatz',html:'<p>Der maximale Umsatz liegt bei einer linearen PAF immer in der Mitte der Kurve, wo ε = 1 gilt.</p>'},
+    {type:'mcq',q:'Wo liegt der maximale Umsatz auf einer linearen PAF?',opts:['Am Prohibitivpreis (ε = ∞)','Bei der Sättigungsmenge (ε = 0)','In der Mitte der Kurve, wo ε = 1','Immer am unteren Ende der Kurve'],correct:2,exp:'Der Umsatz ist maximal, wenn ε = 1 – in der Mitte der linearen Nachfragekurve.'},
+  ]},
+  {id:'l_pe_4',title:'Doppelt geknickte PAF (Gutenberg)',icon:'📉',topic:'preiselastizitaet',steps:[
+    {type:'title',icon:'📉',title:'Doppelt geknickte PAF nach Gutenberg',sub:'Die realistische Preis-Absatz-Funktion auf unvollkommenen Märkten.'},
+    {type:'callout',kind:'def',label:'Grundlage: Unvollkommener Markt',html:'<p>Auf <strong>vollkommenen Märkten</strong> gibt es vollständige Markttransparenz, homogene Produkte und sofortige Reaktion. In der Praxis sind <strong>unvollkommene Märkte</strong> die Regel (fehlende Transparenz, heterogene Produkte, Präferenzen).</p>'},
+    {type:'callout',kind:'info',label:'Marktstrukturen',html:'<ul><li><strong>Monopol</strong>: ein Anbieter (z.B. Bahnnetz)</li><li><strong>Oligopol</strong>: wenige Anbieter (z.B. Telekommunikation)</li><li><strong>Polypol</strong>: viele Anbieter (z.B. Lebensmittelhandel)</li></ul>'},
+    {type:'callout',kind:'def',label:'Doppelt geknickte PAF (Gutenberg)',html:'<p>Basiert auf polypolistischer/monopolistischer Konkurrenz. Die PAF hat <strong>drei Bereiche</strong>:<br><strong>I (atomistisch)</strong>: Hohe Elastizität – Preiserhöhung → starke Abwanderung<br><strong>II (monopolistisch)</strong>: Geringe Elastizität – Preisspielraum durch Kundenbindung (akquisitorisches Potenzial)<br><strong>III (atomistisch)</strong>: Hohe Elastizität – Preissenkung → Massenabwanderung zur Konkurrenz</p>'},
+    {type:'callout',kind:'satz',label:'Preis-Obergrenze & Untergrenze',html:'<p>P<sub>O</sub> = Preisobergrenze (atomistischer Bereich beginnt oben)<br>P<sub>U</sub> = Preisuntergrenze (atomistischer Bereich beginnt unten)</p>'},
+    {type:'mcq',q:'Was kennzeichnet den monopolistischen Bereich (Bereich II) der doppelt geknickten PAF?',opts:['Sehr hohe Preiselastizität','Kein nennenswerter Preiswettbewerb – Unternehmen hat Preisspielraum durch Kundenbindung','Prohibitivpreis = unendlich','Vollständige Markttransparenz'],correct:1,exp:'Im monopolistischen Bereich haben Unternehmen durch sachliche und persönliche Präferenzen Spielraum – das akquisitorische Potenzial.'},
+    {type:'mcq',q:'Worauf basiert die doppelt geknickte PAF?',opts:['Vollkommenem Markt mit homogenen Produkten','Polypolistischer bzw. monopolistischer Konkurrenz auf unvollkommenen Märkten','Ausschließlich staatlichen Preisfestsetzungen','Nur auf dem Monopol'],correct:1,exp:'Die doppelt geknickte PAF (Gutenberg) gilt für unvollkommene Märkte mit Produktdifferenzierung und Kundenpräferenzen.'},
+  ]},
+  {id:'l_pe_5',title:'Gewinnmaximum bei der doppelt geknickten PAF',icon:'🏆',topic:'preiselastizitaet',steps:[
+    {type:'title',icon:'🏆',title:'Gewinnmaximum bei der doppelt geknickten PAF',sub:'In welchem Bereich und bei welchem Preis ist der Gewinn maximal?'},
+    {type:'callout',kind:'def',label:'Gewinnmaximierungsbedingung',html:'<p>Der Gewinn ist maximal, wenn die <strong>Grenzkosten K′ gleich dem Grenzerlös E′</strong> sind:<br><strong>K′ = E′</strong></p>'},
+    {type:'callout',kind:'info',label:'Vorgehen (4 Schritte)',html:'<ol style="padding-left:16px;font-size:0.83rem;color:var(--dim);margin-top:6px"><li style="margin-bottom:5px">Erlösfunktion E = P(x) · x für jeden Bereich berechnen</li><li style="margin-bottom:5px">Grenzerlös E′ (erste Ableitung von E) bestimmen</li><li style="margin-bottom:5px">Grenzkosten K′ (erste Ableitung von K) bestimmen</li><li style="margin-bottom:5px">K′ = E′ in jedem Bereich lösen & Intervall prüfen</li></ol>'},
+    {type:'callout',kind:'example',label:'Beispiel',html:'<p>Gegeben: P₂(x) = 10 – 2x (für 2 &lt; x ≤ 4), K = 5 + 1,5x<br>E₂ = 10x – 2x² → E′₂ = 10 – 4x<br>K′ = 1,5<br>10 – 4x = 1,5 → x = <strong>2,125</strong> ✓ (liegt in Intervall 2 &lt; x ≤ 4)<br>P₂(2,125) = 10 – 2·2,125 = <strong>5,75€</strong></p>'},
+    {type:'callout',kind:'warn',label:'Mehrere Maxima?',html:'<p>Wenn in mehreren Bereichen ein gültiges Maximum existiert, werden alle verglichen – <strong>das höchste Gewinnmaximum gewinnt</strong>.</p>'},
+    {type:'mcq',q:'Wann ist der Gewinn bei der doppelt geknickten PAF maximal?',opts:['Wenn Erlös maximal ist','Wenn K′ = E′ gilt und das Ergebnis im richtigen Intervall liegt','Wenn Menge maximal ist','Wenn Preis maximal ist'],correct:1,exp:'Gewinnmaximum: K′ = E′, und der berechnete x-Wert muss im jeweiligen Intervall der PAF liegen.'},
+    {type:'fillin',q:'Welche Bedingung muss für das Gewinnmaximum erfüllt sein? (Kurzformel)',answer:'K\'=E\'',exp:'Grenzkosten = Grenzerlös – der Gewinn ist maximal, wenn eine zusätzliche Einheit genauso viel kostet wie sie einbringt.'},
+    {type:'complete',title:'✅ Modul Preiselastizität & PAF abgeschlossen!',sub:'Preiselastizität, lineare PAF, Gutenberg-PAF und Gewinnmaximum gemeistert!'},
+  ]},
+ ]},
+{id:'m_strat',title:'Strategie & Externe/Interne Analyse',color:'#34d399',icon:'🔭',
+ desc:'PESTLE, Porters Five Forces, VRIO-Framework und SWOT-Analyse',
+ lessons:[
+  {id:'l_st_1',title:'PESTLE-Analyse',icon:'🌍',topic:'strategie_analyse',steps:[
+    {type:'title',icon:'🌍',title:'PESTLE-Analyse',sub:'Makroökonomische Einflussfaktoren systematisch erfassen.'},
+    {type:'callout',kind:'def',label:'PESTLE – Definition',html:'<p>Die PESTLE-Analyse identifiziert und bewertet externe Einflussfaktoren, die auf eine Idee, ein Produkt oder ein Unternehmen einwirken. Die sechs Dimensionen: <strong>P</strong>olitical, <strong>E</strong>conomic, <strong>S</strong>ocial, <strong>T</strong>echnological, <strong>L</strong>egal, <strong>E</strong>nvironmental.</p>'},
+    {type:'reveal-steps',steps:[
+      {num:'P',title:'Politisch',body:'Regierungsform, Stabilität, Steuer- und Arbeitsmarktpolitik, Privatisierungen und Deregulierungen.',done:false},
+      {num:'E',title:'Wirtschaftlich',body:'Wirtschaftswachstum, Zinsen, Arbeitslosenrate, Konsumneigung – beeinflussen die Nachfrage.',done:false},
+      {num:'S',title:'Sozial',body:'Demographischer Wandel, Konsumentenverhalten, Kundenpräferenzen, Wertewandel, Freizeitverhalten.',done:false},
+      {num:'T',title:'Technologisch',body:'State-of-the-Art-Technologien, Prozess- und Produktinnovationen, Substitutionstechnologien.',done:false},
+      {num:'L',title:'Rechtlich',body:'Betriebs- und Unternehmensverfassung, Wettbewerbsrecht, Steuerrecht, Patentrecht.',done:false},
+      {num:'E',title:'Ökologisch',body:'Verfügbarkeit von Rohstoffen, Umweltbewusstsein, CO₂-Emissionen, Aktivitäten von Umweltschutzorganisationen.',done:false},
+    ]},
+    {type:'callout',kind:'info',label:'Bewertungsraster (Praxis)',html:'<p>Für jede Dimension werden typischerweise bewertet: <strong>Auswirkung</strong> (gering/mittel/hoch), <strong>Zeitrahmen</strong> (0–12/12–24/24+ Monate), <strong>Art/Richtung</strong> (positiv/negativ/unbekannt) und <strong>Entwicklung</strong> (steigend/fallend/unverändert).</p>'},
+    {type:'mcq',q:'Was analysiert die PESTLE-Analyse?',opts:['Die interne Ressourcenausstattung eines Unternehmens','Makroökonomische externe Einflussfaktoren auf ein Unternehmen oder eine Idee','Ausschließlich rechtliche Rahmenbedingungen','Nur technologische Trends'],correct:1,exp:'PESTLE = systematische Analyse externer Makrofaktoren: Political, Economic, Social, Technological, Legal, Environmental.'},
+    {type:'mcq',q:'Welcher Faktor gehört zur wirtschaftlichen Dimension (E) der PESTLE-Analyse?',opts:['Patentrecht','CO₂-Emissionen','Wirtschaftswachstum und Konsumneigung','Social-Media-Trends'],correct:2,exp:'Economic = wirtschaftliche Faktoren wie Zinsen, Arbeitslosigkeit, Wachstum und Konsumneigung.'},
+  ]},
+  {id:'l_st_2',title:"Porter's Five Forces",icon:'⚔️',topic:'strategie_analyse',steps:[
+    {type:'title',icon:'⚔️',title:"Porter's Five Forces",sub:'Die fünf Wettbewerbskräfte bestimmen die Profitabilität einer Branche.'},
+    {type:'callout',kind:'def',label:"Porter's Five Forces – Grundidee",html:'<p>Mithilfe der Analyse der <strong>fünf Wettbewerbskräfte</strong> lässt sich ein vollständiges Bild verschaffen, was die Profitabilität einer Branche beeinflusst. Porter (1979).</p>'},
+    {type:'reveal-steps',steps:[
+      {num:'1',title:'Rivalität bestehender Mitbewerber',body:'Intensität des Wettbewerbs: Branchenwachstum, Markenidentität, Konzentrationsgrad, Austrittsbarrieren.',done:false},
+      {num:'2',title:'Bedrohung durch neue Mitbewerber',body:'Eintrittsbarrieren: Economies of Scale, Kapitalbedarf, Markenidentität, staatliche Regulierung, Lernkurven.',done:false},
+      {num:'3',title:'Bedrohung durch Substitutionsprodukte',body:'Relative Preisleistung von Ersatzprodukten, Umstellungskosten, Substitutionsneigung.',done:false},
+      {num:'4',title:'Verhandlungsstärke der Zulieferer',body:'Lieferantenkonzentration, Differenzierung der Inputs, Bedeutung des Auftragsvolumens, Gefahr der Vorwärtsintegration.',done:false},
+      {num:'5',title:'Verhandlungsstärke der Kunden',body:'Abnehmerkonzentration, Informationsstand, Fähigkeit zur Rückwärtsintegration, Preisempfindlichkeit.',done:false},
+    ]},
+    {type:'callout',kind:'example',label:'Beispiel Pharmabranche',html:'<ul><li><strong>Neue Mitbewerber</strong>: Hohe Eintrittsbarrieren (Patentschutz, Zulassung, lange F&amp;E-Zeiten)</li><li><strong>Substitution</strong>: Generika und biotechnologische Produkte als Ersatzprodukte</li><li><strong>Kundenmacht</strong>: Konzentrierter Großhandel und Krankenhäuser mit Verhandlungsmacht</li></ul>'},
+    {type:'mcq',q:'Was ist die Grundidee von Porters Five Forces?',opts:['Die interne Stärken-Schwächen-Analyse','Analyse von fünf Wettbewerbskräften zur Beurteilung der Branchenprofitabilität','Die Berechnung des optimalen Preises','Eine Methode zur Produktentwicklung'],correct:1,exp:"Porter's Five Forces analysiert Rivalität, neue Mitbewerber, Substitution, Zulieferer- und Kundenmacht."},
+    {type:'mcq',q:'Welche Kraft beschreibt die Gefahr, dass Kunden selbst zu Produzenten werden?',opts:['Rivalität bestehender Mitbewerber','Bedrohung durch Substitution','Verhandlungsstärke der Kunden (Rückwärtsintegration)','Bedrohung durch neue Mitbewerber'],correct:2,exp:'Kunden können durch Rückwärtsintegration selbst produzieren – das erhöht ihre Verhandlungsmacht.'},
+  ]},
+  {id:'l_st_3',title:'VRIO-Framework',icon:'💎',topic:'strategie_analyse',steps:[
+    {type:'title',icon:'💎',title:'VRIO-Framework',sub:'Welche Ressourcen schaffen nachhaltigen Wettbewerbsvorteil?'},
+    {type:'callout',kind:'def',label:'VRIO – Definition',html:'<p>VRIO ist ein 4-Fragen-Modell zur Analyse von Ressourcen und Fähigkeiten:<br><strong>V</strong>aluable – Ist die Ressource wertvoll?<br><strong>R</strong>are – Ist sie selten?<br><strong>I</strong>mitable – Ist sie schwer zu imitieren?<br><strong>O</strong>rganized – Ist das Unternehmen so organisiert, dass es sie nutzen kann?</p>'},
+    {type:'callout',kind:'info',label:'VRIO-Auswertungsmatrix',html:'<table class="tt"><thead><tr><th>V</th><th>R</th><th>I</th><th>O</th><th>Implikation</th></tr></thead><tbody><tr><td class="lo">Nein</td><td>—</td><td>—</td><td>—</td><td>Wettbewerbsnachteil</td></tr><tr><td class="hi">Ja</td><td class="lo">Nein</td><td>—</td><td>—</td><td>Wettbewerbsparität</td></tr><tr><td class="hi">Ja</td><td class="hi">Ja</td><td class="lo">Nein</td><td>—</td><td>Temp. Vorteil</td></tr><tr><td class="hi">Ja</td><td class="hi">Ja</td><td class="hi">Ja</td><td class="hi">Ja</td><td class="hl">Nachhalt. Vorteil</td></tr></tbody></table>'},
+    {type:'callout',kind:'example',label:'Starbucks Beispiel',html:'<ul><li><strong>Starkes Markenimage</strong> → V✓ R✓ I✓ O✓ → Nachhaltiger Wettbewerbsvorteil</li><li><strong>Spezielle Kaffeevariationen</strong> → V✓ R✗ → Wettbewerbsparität (leicht imitierbar)</li><li><strong>Standorte in frequentierten Lagen</strong> → V✓ R✓ I✗ → Temporärer Vorteil</li></ul>'},
+    {type:'mcq',q:'Welche Bedingungen müssen alle erfüllt sein, damit eine Ressource einen nachhaltigen Wettbewerbsvorteil schafft?',opts:['Nur Valuable und Rare','Valuable, Rare, Imitable (schwer) und Organized','Nur Organized und Valuable','Rare und Organized reichen aus'],correct:1,exp:'Alle vier VRIO-Kriterien müssen erfüllt sein: wertvoll, selten, schwer imitierbar, und das Unternehmen muss es nutzen können.'},
+    {type:'mcq',q:'Was bedeutet „Competitive Parity" im VRIO-Framework?',opts:['Nachhaltiger Wettbewerbsvorteil','Die Ressource ist selten und schwer imitierbar','Kein Vorteil, aber auch kein Nachteil – Ressource ist wertvoll, aber nicht selten','Dauerhafter Wettbewerbsvorteil'],correct:2,exp:'Competitive Parity: Ressource ist wertvoll (V=ja), aber nicht selten (R=nein) → kein Vorteil, aber kein Nachteil gegenüber Wettbewerbern.'},
+  ]},
+  {id:'l_st_4',title:'SWOT-Analyse & Strategieentwicklung',icon:'🎯',topic:'strategie_analyse',steps:[
+    {type:'title',icon:'🎯',title:'SWOT-Analyse & Strategieentwicklung',sub:'Stärken, Schwächen, Chancen und Risiken systematisch zu Strategien verknüpfen.'},
+    {type:'callout',kind:'def',label:'SWOT-Analyse',html:'<p>Die SWOT-Analyse verbindet <strong>interne Analyse</strong> (Strengths/Weaknesses) mit <strong>externer Analyse</strong> (Opportunities/Threats) und leitet daraus Strategien ab.</p>'},
+    {type:'callout',kind:'info',label:'Die vier SWOT-Strategien',html:'<ul><li><strong>SO – „Maxi-Maxi"</strong>: Stärken nutzen, um Chancen zu maximieren</li><li><strong>WO – „Mini-Maxi"</strong>: Schwächen durch Chancen minimieren</li><li><strong>ST – „Maxi-Mini"</strong>: Stärken nutzen, um Risiken zu minimieren</li><li><strong>WT – „Mini-Mini"</strong>: Schwächen und Risiken gleichzeitig minimieren</li></ul>'},
+    {type:'callout',kind:'example',label:'IKEA-Beispiel',html:'<p><strong>Stärken</strong>: Starkes Markenimage, diversifiziertes Produktportfolio, Supply-Chain-Verflechtung<br><strong>Schwächen</strong>: Ähnliches Design in allen Ländern, negative Publizität (Produktsicherheit)<br><strong>Chancen</strong>: Online-Handel, steigende Nachfrage nach günstigen/umweltfreundlichen Produkten<br><strong>Risiken</strong>: Steigender Wettbewerb, sinkende Erstkäufer</p>'},
+    {type:'callout',kind:'satz',label:'Zusammenhang der Analysetools',html:'<p>PESTLE + Five Forces → externe Analyse (Opportunities & Threats)<br>VRIO → interne Analyse (Strengths & Weaknesses)<br>SWOT → Syntheseschritt → Strategieentwicklung</p>'},
+    {type:'mcq',q:'Welche Strategie verfolgt der „SO"-Ansatz in der SWOT-Analyse?',opts:['Schwächen durch Chancen ausgleichen','Stärken nutzen, um Risiken zu minimieren','Stärken einsetzen, um Chancen zu maximieren','Schwächen und Risiken gemeinsam minimieren'],correct:2,exp:'SO = Maxi-Maxi: vorhandene Stärken aktiv nutzen, um Marktchancen optimal zu ergreifen.'},
+    {type:'mcq',q:'Welche Analysemethoden liefern primär externe Informationen für eine SWOT-Analyse?',opts:['VRIO und Kernkompetenzanalyse','PESTLE und Porters Five Forces','Balanced Scorecard und VRIO','Nur Benchmarking'],correct:1,exp:'PESTLE analysiert das Makroumfeld, Five Forces die Branchenstruktur – beide sind externe Analysemethoden.'},
+    {type:'complete',title:'✅ Modul Strategie & Analyse abgeschlossen!',sub:'PESTLE, Five Forces, VRIO und SWOT gemeistert!'},
+  ]},
+ ]},
 ];
 
 // ═══════════════════════════════════════════════
@@ -1302,9 +1429,24 @@ const CARDS=[
   {t:'ziele_strategie',q:'Nenne die drei Kreise der Hidden Champion Strategie.',h:'Fokus, Global...',a:'<code>Fokus</code> (Nischen), <code>Globalisierung</code>, <code>Wettbewerbsvorteile</code> (Kundennähe, Hochleistungsmitarbeiter, starke Führung mit ambitiösen Zielen). Quelle: Simon (2019)'},
   {t:'ziele_strategie',q:'Was ist ein Geschäftsmodell?',h:'Wert schaffen...',a:'Beschreibt, wie ein Unternehmen <code>Wert schafft, liefert und davon profitiert</code>. Kein Ertragsmodell, keine Strategie, kein Businessplan.'},
   // Marketing I & II
-  {t:'marketing1',q:'Was ist der Unterschied zwischen Bedürfnis, Bedarf und Nachfrage?',h:'Wunsch, Kaufkraft...',a:'Bedürfnis ist ein Wunsch. Bedarf ist ein Bedürfnis mit <code>Kaufkraft</code>. Nachfrage ist am Markt tatsächlich wirksamer Bedarf.'},
-  {t:'marketing1',q:'Was ist Marktsegmentierung?',h:'Märkte aufteilen...',a:'Die Aufteilung eines Gesamtmarktes in Teilmärkte mit ähnlichen <code>Kundenmerkmalen oder Bedürfnissen</code>.'},
-  {t:'marketing1',q:'Was bedeutet Positionierung?',h:'Im Kopf der Kunden...',a:'Die bewusste Gestaltung der Wahrnehmung eines Angebots im Kopf der <code>Zielgruppe</code>.'},
+  {t:'marketing1',q:'Was sagte Peter Drucker über Marketing?',h:'Zwei Funktionen...',a:'„The business has two – and only two – functions: <code>marketing</code> and <code>innovation</code>. Marketing and innovation create value, all the rest are costs." (Drucker, 1954)'},
+  {t:'marketing1',q:'Was sind psychografische Zielgrößen im Marketing?',h:'Image, Präferenz...',a:'<code>Image</code>, <code>Bekanntheit</code>, <code>Präferenz</code>, <code>Zufriedenheit</code>, <code>Kundenbindung</code>. Wirken auf Einstellungen und Verhalten.'},
+  {t:'marketing1',q:'Was sind ökonomische Zielgrößen im Marketing?',h:'Umsatz, Gewinn...',a:'<code>Umsatz</code>, <code>Marktanteil</code>, <code>Deckungsbeitrag</code>, <code>Gewinn</code>, <code>Rendite</code>, <code>Unternehmenswert</code> (z.B. abgezinster Cash-Flow).'},
+  {t:'marketing1',q:'Was ist der Unterschied zwischen Top-Down und Bottom-Up Marketingstrategie?',h:'Etabliert vs. Start-up...',a:'<code>Top-Down</code>: Segmentierung → Zielkunde → Positionierung (etablierte Unternehmen). <code>Bottom-Up</code>: Trial-and-Error, erste Kunden gewinnen, von deren Präferenzen lernen (Gründungsunternehmen).'},
+  {t:'marketing1',q:'Was ist qualitative Marktforschung?',h:'Warum...',a:'Tiefgehende Erforschung, was Menschen <code>denken, fühlen oder tun – und warum</code>. Keine statistisch robusten Befunde. Methoden: persönliche Interviews, Fokusgruppen, teilnehmende Beobachtung.'},
+  {t:'marketing1',q:'Was ist quantitative Marktforschung?',h:'Wie viele...',a:'Ermittlung eines <code>quantitativen Maßes</code> über Verhalten/Meinungen. Nutzung statistischer Analysen: Regression, Cluster-Analyse, Conjoint-Analysen.'},
+  {t:'marketing1',q:'Nach welchen vier Kriterien kann ein Markt abgegrenzt werden?',h:'Unternehmen, Produkte...',a:'Nach <code>Unternehmen</code>, <code>Produkten/Dienstleistungen</code>, <code>Käufern</code> und <code>Bedürfnissen</code>.'},
+  {t:'marketing1',q:'Was ist der relevante Markt?',h:'Abgrenzung...',a:'Ergibt sich aus Kombination von <code>Produkten/DL, Kundenbedürfnissen, Kundengruppen, geografischen Grenzen und Technologien</code>. Wesentlicher erster Schritt zur Wettbewerbsanalyse.'},
+  {t:'marketing1',q:'Was sind die vier Felder der Ansoff-Matrix?',h:'Produkt × Markt...',a:'<code>Marktdurchdringung</code> (bestehend/bestehend), <code>Produktentwicklung</code> (neu/bestehend), <code>Marktentwicklung</code> (bestehend/neu), <code>Diversifikation</code> (neu/neu).'},
+  {t:'marketing1',q:'Nenne die fünf Kräfte nach Porter.',h:'Rivalität, Neue...',a:'1. Rivalität bestehender Mitbewerber, 2. Bedrohung durch neue Mitbewerber, 3. Bedrohung durch Ersatzprodukte, 4. Verhandlungsstärke der Zulieferer, 5. Verhandlungsstärke der Kunden.'},
+  {t:'marketing1',q:'Was ist das SR-Modell des Käuferverhaltens?',h:'Black Box...',a:'<code>Stimulus → Response</code>. Das Innere (Organismus) ist unbekannt (Black Box). Stimuli: Marketing-Mix + Umfeld. Response: Markenwahl, Kaufmenge, Ausgaben.'},
+  {t:'marketing1',q:'Was ist das SOR-Modell?',h:'Stimulus, Organismus...',a:'<code>Stimulus → Organismus → Response</code>. Der Organismus umfasst aktivierende Prozesse (Aktivierung, Emotionen, Motivationen) und kognitive Prozesse (Wahrnehmung, Lernen, Gedächtnis) → Einstellungen.'},
+  {t:'marketing1',q:'Wie entsteht eine Einstellung laut SOR-Modell?',h:'Aktivierung...',a:'Aktivierung → Emotion (+ Interpretation) → Motivation (+ Zielorientierung) → <code>Einstellung</code> (+ Objektbeurteilung). Einstellung = subjektiv wahrgenommene Eignung eines Produkts.'},
+  {t:'marketing1',q:'Was ist die Positionierungsanalyse?',h:'Ist vs. Soll...',a:'Tool zur erfolgreichen Produktpositionierung. Zeigt, wie das Produkt wahrgenommen wird. Instrumente: <code>Polaritätenprofil/Semantisches Differential</code> und <code>Positionierungsdiagramm</code>.'},
+  {t:'marketing1',q:'Nenne die drei Markenstrategien.',h:'Dach, Einzel, Mehr...',a:'<code>Dachmarkenstrategie</code> (eine Marke für alle Märkte), <code>Einzelmarkenstrategie</code> (je Markt eine Marke), <code>Mehrmarkenstrategie</code> (ein Markt, mehrere Marken).'},
+  {t:'marketing1',q:'Aus welchen zwei Komponenten besteht Markenwissen?',h:'Bekanntheit, Image...',a:'<code>Markenbekanntheit</code> (Recall + Recognition) + <code>Markenimage</code> (Vorteilhaftigkeit, Stärke, Einzigartigkeit von Assoziationen).'},
+  {t:'marketing1',q:'Was ist eine Marke im juristischen Sinne?',h:'Geistiges Eigentum...',a:'Ein <code>nationales geistiges Eigentumsrecht</code>: Zeichen zur Unterscheidung von Produkten/DL eines Unternehmens von anderen. Formen: Wortmarken, Wort-Bild-Marken, Bildmarken.'},
+  {t:'marketing1',q:'Was unterscheidet B2C- und B2B-Kaufentscheidungen?',h:'Privat vs. organisational...',a:'B2C: <code>anonym, kurzfristig, geringer Formalisierungsgrad, individuelle Entscheidungen</code>. B2B: <code>transparent, langfristig, hoher Formalisierungsgrad, Multipersonalität, EDV-Unterstützung</code>.'},
   {t:'marketing2',q:'Was ist der Marketing-Mix?',h:'4 Ps...',a:'Die Gesamtheit der wichtigsten Instrumente zur Marktbearbeitung: <code>Produkt-, Preis-, Distributions- und Kommunikationspolitik</code>.'},
   {t:'marketing2',q:'Was gehört zur Produktpolitik?',h:'Design, Marke...',a:'Qualität, <code>Design</code>, <code>Marke</code>, Verpackung, Sortiment und Serviceleistungen.'},
   {t:'marketing2',q:'Was umfasst die Kommunikationspolitik?',h:'Werbung, Social Media...',a:'Alle Maßnahmen zur Information und Bindung von Kunden: <code>Werbung</code>, Social Media, PR und Verkaufsförderung.'},
@@ -1315,6 +1457,20 @@ const CARDS=[
   {t:'innovation2',q:'Was ist ein Innovationsprozess?',h:'Idee bis Markt...',a:'Ein strukturierter Ablauf von der Ideengewinnung über Entwicklung und Test bis zur <code>Markteinführung</code>.'},
   {t:'innovation2',q:'Was ist der Stage-Gate-Ansatz?',h:'Phasen und Gates...',a:'Ein Modell, das den Innovationsprozess in <code>Phasen und Entscheidungspunkte</code> gliedert.'},
   {t:'innovation2',q:'Warum ist die Schnittstelle zwischen Marketing und F&E wichtig?',h:'Kundenbedürfnisse...',a:'Weil <code>Kundenbedürfnisse</code> aus dem Markt mit technischem Wissen verbunden werden müssen, damit marktfähige Innovationen entstehen.'},
+  // Preiselastizität & PAF
+  {t:'preiselastizitaet',q:'Wie lautet die Formel der Preiselastizität der Nachfrage?',h:'Δx/x geteilt durch...',a:'ε = <code>(Δx/x) / (Δp/p)</code> – Verhältnis von prozentualer Mengenänderung zu prozentualer Preisänderung.'},
+  {t:'preiselastizitaet',q:'Was bedeutet |ε| > 1?',h:'Elastisch...',a:'Die Nachfrage ist <code>elastisch</code>: Die Mengenänderung ist prozentual stärker als die Preisänderung. Preiserhöhung → Umsatz sinkt.'},
+  {t:'preiselastizitaet',q:'Was bedeutet |ε| < 1?',h:'Unelastisch...',a:'Die Nachfrage ist <code>unelastisch</code>: Die Mengenänderung ist schwächer als die Preisänderung. Preiserhöhung → Umsatz steigt.'},
+  {t:'preiselastizitaet',q:'Was ist der Prohibitivpreis?',h:'Kein Absatz...',a:'Der Preis, zu dem <code>kein einziges Stück</code> abgesetzt wird – entspricht ε = ∞ auf der PAF.'},
+  {t:'preiselastizitaet',q:'Was ist die doppelt geknickte PAF nach Gutenberg?',h:'Drei Bereiche...',a:'Eine PAF für unvollkommene Märkte mit <code>drei Bereichen</code>: I (atomistisch, hohe Elastizität), II (monopolistisch, Preisspielraum), III (atomistisch, hohe Elastizität).'},
+  {t:'preiselastizitaet',q:'Was ist das akquisitorische Potenzial?',h:'Kundenbindung...',a:'Der Preisspielraum im monopolistischen Bereich der PAF, entstanden durch <code>sachliche Präferenzen</code> (Qualität, Marke) und <code>persönliche Präferenzen</code> (Service, Kontakt).'},
+  {t:'preiselastizitaet',q:'Wie wird das Gewinnmaximum bei der doppelt geknickten PAF ermittelt?',h:'K′ = E′...',a:'In jedem Bereich gilt: <code>K′ = E′</code> (Grenzkosten = Grenzerlös). Ergebnis im Intervall prüfen; bei mehreren Maxima das höchste wählen.'},
+  // Strategie & Analyse
+  {t:'strategie_analyse',q:'Wofür steht PESTLE?',h:'Sechs Dimensionen...',a:'<code>P</code>olitical, <code>E</code>conomic, <code>S</code>ocial, <code>T</code>echnological, <code>L</code>egal, <code>E</code>nvironmental – externe Makrofaktoren.'},
+  {t:'strategie_analyse',q:'Was analysiert Porters Five Forces?',h:'Branchenprofitabilität...',a:'Die fünf Wettbewerbskräfte: Rivalität, Bedrohung durch Neue, Substitutionsgefahr, Zulieferermacht, <code>Kundenmacht</code> – zur Bewertung der Branchenprofitabilität.'},
+  {t:'strategie_analyse',q:'Was sind die vier VRIO-Kriterien?',h:'V-R-I-O...',a:'<code>Valuable</code> (wertvoll), <code>Rare</code> (selten), <code>Imitable</code> (schwer imitierbar), <code>Organized</code> (Unternehmen kann es nutzen). Nur wenn alle vier erfüllt → nachhaltiger Wettbewerbsvorteil.'},
+  {t:'strategie_analyse',q:'Was bedeutet SO-Strategie in der SWOT-Analyse?',h:'Maxi-Maxi...',a:'<code>Maxi-Maxi</code>: Stärken einsetzen, um Chancen zu maximieren – offensive Wachstumsstrategie.'},
+  {t:'strategie_analyse',q:'Wie hängen PESTLE, Five Forces, VRIO und SWOT zusammen?',h:'Extern/intern...',a:'PESTLE + Five Forces → externe Analyse (Opportunities/Threats). VRIO → interne Analyse (Strengths/Weaknesses). <code>SWOT</code> = Synthese → Strategieentwicklung.'},
 ];
 
 // ═══════════════════════════════════════════════
@@ -1359,7 +1515,18 @@ const QUIZ=[
   {t:'ziele_strategie',q:'Wie viel % der Geschäftsmodellinnovationen sind Rekombinationen?',o:['10 %','50 %','~90 %','100 %'],c:2,e:'Laut Gassmann et al. (2013) sind ~90 % Rekombinationen bestehender Muster – „kreative Imitation".'},
   {t:'ziele_strategie',q:'Was ermöglicht die Digitalisierung für Geschäftsmodelle?',o:['Nur Kostensenkung','Neue Kunden-/Nutzereinbindung und neue Formen des Austauschs/der Zusammenarbeit','Nur interne Automatisierung','Ausschließlich Personalreduktion'],c:1,e:'Digitalisierung ist ein Enabler: neue Einbindungsformen und Zusammenarbeit eröffnen neue Geschäftsmodelle.'},
   // Marketing
-  {t:'marketing1',q:'Was ist Marketing?',o:['Nur Werbung','Marktorientierte Unternehmensführung auf Basis von Kundenbedürfnissen','Ausschließlich Preisfestlegung','Nur Produktdesign'],c:1,e:'Marketing richtet das Unternehmen an Markt, Kunden und Wettbewerb aus.'},
+  {t:'marketing1',q:'Was ist Marketing laut Drucker?',o:['Nur Werbung','Eine der zwei Hauptfunktionen des Unternehmens – neben Innovation – die Wert schafft','Ausschließlich Preisfestlegung','Nur Produktdesign'],c:1,e:'Drucker (1954): Marketing und Innovation schaffen Wert – alles andere sind Kosten.'},
+  {t:'marketing1',q:'Was sind psychografische Zielgrößen im Marketing?',o:['Umsatz und Marktanteil','Image, Bekanntheit, Präferenz, Zufriedenheit, Kundenbindung','Gewinn und Rendite','Nur Werbeausgaben'],c:1,e:'Psychografische Zielgrößen wirken auf Einstellungen und Verhalten; ökonomische auf direkte wirtschaftliche Ergebnisse.'},
+  {t:'marketing1',q:'Was ist der Unterschied zwischen Top-Down und Bottom-Up Marketingstrategie?',o:['Kein Unterschied','Top-Down: Segmentierung→Ziel→Positionierung (etabliert); Bottom-Up: Trial-and-Error, von ersten Kunden lernen (Start-up)','Top-Down ist billiger','Bottom-Up ist nur für Großunternehmen'],c:1,e:'Top-Down = systematisch; Bottom-Up = experimentell und iterativ.'},
+  {t:'marketing1',q:'Was unterscheidet qualitative von quantitativer Marktforschung?',o:['Kein Unterschied','Qualitativ: Tiefenverständnis/Warum, keine stat. Robustheit; Quantitativ: Zahlen, statistische Analysen','Qualitativ ist teurer','Quantitativ gilt nur für große Märkte'],c:1,e:'Qualitativ = Warum (Interviews, Fokusgruppen). Quantitativ = Wie viele/oft (Regression, Conjoint).'},
+  {t:'marketing1',q:'Nach welchen Kriterien kann ein Markt abgegrenzt werden?',o:['Nur nach Umsatz','Unternehmen, Produkte/DL, Käufer und Bedürfnisse','Nur geografisch','Nur nach Preis'],c:1,e:'Vier Kriterien: Unternehmen, Produkte/DL, Käufer, Bedürfnisse.'},
+  {t:'marketing1',q:'Was beschreibt die Ansoff-Matrix?',o:['Die 4 Ps','Vier Wachstumsstrategien: Marktdurchdringung, Produktentwicklung, Marktentwicklung, Diversifikation','Porters 5 Forces','Die SWOT-Analyse'],c:1,e:'Ansoff: Bisherige/Neue Produkte × Bisherige/Neue Märkte = 4 Wachstumsstrategien.'},
+  {t:'marketing1',q:'Was ist die Grundidee von Porters Five Forces?',o:['Bewertung einzelner Produkte','Analyse der 5 Wettbewerbskräfte zur Beurteilung der Branchenprofitabilität','Berechnung des Marktanteils','Analyse der Kostenstruktur'],c:1,e:'Porters 5 Forces: Rivalität, neue Mitbewerber, Substitution, Zulieferermacht, Kundenmacht.'},
+  {t:'marketing1',q:'Was ist der Unterschied zwischen SR- und SOR-Modell?',o:['Kein Unterschied','SR: Black Box (Inneres unbekannt); SOR: Organismus mit aktivierenden und kognitiven Prozessen berücksichtigt','SR ist für B2B, SOR für B2C','SOR ist veraltet'],c:1,e:'SR = Stimulus→Response. SOR = Stimulus→Organismus(Emotionen, Kognition, Einstellungen)→Response.'},
+  {t:'marketing1',q:'Wie entsteht laut SOR-Modell eine Einstellung?',o:['Direkt aus dem Stimulus','Aktivierung → Emotion → Motivation → Einstellung (subjektiv wahrgenommene Eignung zur Bedürfnisbefriedigung)','Nur aus Werbung','Durch Preisvergleich'],c:1,e:'Einstellung = Ergebnis aus Aktivierung, emotionalen und kognitiven Prozessen.'},
+  {t:'marketing1',q:'Was ist die Dachmarkenstrategie?',o:['Je Markt eine eigene Marke','Alle Märkte mit derselben Marke bearbeiten','Mehrere Marken für einen Markt','Nur für globale Konzerne'],c:1,e:'Dachmarkenstrategie: eine Marke für alle Märkte. Vorteil: Reichweite. Nachteil: neg. Ausstrahlungseffekte möglich.'},
+  {t:'marketing1',q:'Was ist die Mehrmarkenstrategie und ihr größtes Risiko?',o:['Eine Marke für alle','Ein Markt, mehrere Marken; Risiko: Kannibalisierung der eigenen Marken','Je Markt eine Marke; Risiko: Imagetransfer','Nur für B2B'],c:1,e:'Mehrmarkenstrategie: ein Markt, mehrere eigene Marken. Größtes Risiko: Kannibalisierung.'},
+  {t:'marketing1',q:'Was ist Markenbekanntheit?',o:['Der Umsatz einer Marke','Markenrecall (Marke aus dem Gedächtnis nennen) + Markenrecognition (Marke wiedererkennen)','Die Anzahl der Werbeanzeigen','Nur der Marktanteil'],c:1,e:'Markenbekanntheit = Recall (aktiv) + Recognition (passiv). Teil des Markenwissens neben dem Markenimage.'},
   {t:'marketing2',q:'Welche vier Bereiche gehören zum Marketing-Mix?',o:['Produktion, Personal, Finanzierung, Steuern','Produktpolitik, Preispolitik, Distributionspolitik, Kommunikationspolitik','Innovation, Nachhaltigkeit, Logistik, Controlling','Strategie, Organisation, Führung, Bilanzierung'],c:1,e:'Die klassischen 4 Ps sind Produkt, Preis, Place und Promotion.'},
   {t:'marketing2',q:'Was regelt die Distributionspolitik?',o:['Wie ein Angebot zum Kunden gelangt','Wie Mitarbeitende eingestellt werden','Wie ein Unternehmen besteuert wird','Wie Gewinne verteilt werden'],c:0,e:'Distributionspolitik gestaltet die Absatzwege und den Vertrieb.'},
   // Innovation
@@ -1515,6 +1682,23 @@ const QUIZ=[
   {t:'persona_vpc',q:'In welcher Reihenfolge füllt man den VPC aus?',o:['Erst Value Map (links), dann Kundenprofil (rechts)','Erst Kundenprofil (rechts), dann Value Map (links)','Beide gleichzeitig','Reihenfolge ist irrelevant'],c:1,e:'Erst das Kundenprofil ausfüllen (Jobs, Pains, Gains), dann die Value Map darauf ausrichten – so entsteht FIT.'},
   {t:'persona_vpc',q:'Wie viele VPCs sollte man pro Projekt erstellen?',o:['Immer genau eine','Eine pro Kundensegment – verschiedene Segmente haben unterschiedliche Bedürfnisse','Möglichst viele','Nur eine für alle Segmente zusammen'],c:1,e:'Für jedes Kundensegment eine eigene VPC erstellen, da verschiedene Segmente unterschiedliche Jobs, Pains und Gains haben.'},
   {t:'persona_vpc',q:'Was lässt Kund*innen „nachts nicht schlafen" – zu welchem VPC-Feld gehört das?',o:['Gains – es sind ihre Wünsche','Customer Jobs – es sind ihre Aufgaben','Pains – es sind ihre tiefen Sorgen und Bedenken','Products & Services'],c:2,e:'Tiefe Sorgen und Bedenken gehören zu den Pains – sie beschreiben was Kund*innen bekümmert oder abhält.'},
+
+  // ── PREISELASTIZITÄT & PAF ──
+  {t:'preiselastizitaet',q:'Wie lautet die Berechnungsformel der Preiselastizität?',o:['ε = Δp/p ÷ Δx/x','ε = Δx/x ÷ Δp/p','ε = Δp × Δx','ε = x / p'],c:1,e:'Preiselastizität = prozentuale Mengenänderung / prozentuale Preisänderung = (Δx/x) / (Δp/p).'},
+  {t:'preiselastizitaet',q:'Bei welchem ε-Wert führt eine Preissenkung zu sinkendem Umsatz?',o:['|ε| > 1','|ε| = 1','|ε| < 1','|ε| = ∞'],c:2,e:'Bei unelastischer Nachfrage (|ε| < 1) steigt die Menge bei Preissenkung kaum – der Umsatz sinkt.'},
+  {t:'preiselastizitaet',q:'Was ist der Prohibitivpreis?',o:['Der günstigste Marktpreis','Der Preis, bei dem keine Einheit mehr abgesetzt wird (ε = ∞)','Der Preis bei maximaler Menge','Der Gleichgewichtspreis'],c:1,e:'Der Prohibitivpreis liegt so hoch, dass die Nachfrage auf null sinkt – Punkt mit ε = ∞ auf der PAF.'},
+  {t:'preiselastizitaet',q:'Was ist das akquisitorische Potenzial bei der doppelt geknickten PAF?',o:['Der maximale Preis im Markt','Der Preisspielraum durch sachliche und persönliche Kundenbindung im monopolistischen Bereich','Ein staatlich festgelegter Höchstpreis','Der Break-even-Preis'],c:1,e:'Akquisitorisches Potenzial = Preisspielraum durch Markenloyalität, Qualitätsvorteile und persönliche Präferenzen.'},
+  {t:'preiselastizitaet',q:'Welche Bedingung muss beim Gewinnmaximum erfüllt sein?',o:['E = K (Erlös = Kosten)','K′ = E′ (Grenzkosten = Grenzerlös)','P = 0','x = maximale Menge'],c:1,e:'Gewinnmaximum: Grenzkosten = Grenzerlös (K′ = E′). Das ist das Cournot\'sche Prinzip.'},
+  {t:'preiselastizitaet',q:'Auf welchem Markttyp basiert die doppelt geknickte PAF?',o:['Vollkommenem Markt','Monopol','Unvollkommenem Markt mit polypolistischer/monopolistischer Konkurrenz','Staatlich reguliertem Markt'],c:2,e:'Gutenbergs doppelt geknickte PAF gilt für unvollkommene Märkte mit Produktdifferenzierung.'},
+  {t:'preiselastizitaet',q:'Wo liegt der maximale Umsatz auf einer linearen PAF?',o:['Am Prohibitivpreis','In der Mitte der PAF-Kurve, wo ε = 1','Bei der Sättigungsmenge','Immer im unelastischen Bereich'],c:1,e:'Bei einer linearen PAF: maximaler Umsatz genau in der Mitte der Kurve, wo |ε| = 1.'},
+
+  // ── STRATEGIE & ANALYSE ──
+  {t:'strategie_analyse',q:'Was analysiert die PESTLE-Analyse?',o:['Interne Stärken und Schwächen','Makroökonomische externe Einflussfaktoren (Political, Economic, Social, Technological, Legal, Environmental)','Nur rechtliche Rahmenbedingungen','Die Kostenstruktur eines Unternehmens'],c:1,e:'PESTLE = systematische externe Umfeldanalyse über sechs Dimensionen.'},
+  {t:'strategie_analyse',q:'Welche der fünf Kräfte nach Porter beschreibt die Bedrohung durch neue Wettbewerber?',o:['Rivalität bestehender Mitbewerber','Bedrohung durch Eintritt neuer Konkurrenten','Verhandlungsstärke der Zulieferer','Bedrohung durch Substitutionsprodukte'],c:1,e:'Eintrittsbarrieren (Kapital, Patente, Skalenerträge, Markenzugang) bestimmen diese Kraft.'},
+  {t:'strategie_analyse',q:'Was bedeutet „Competitive Parity" im VRIO-Framework?',o:['Nachhaltiger Wettbewerbsvorteil','Kein Vorteil und kein Nachteil – Ressource ist wertvoll, aber nicht selten','Dauerhafter Marktführer','Temporärer Vorteil'],c:1,e:'Competitive Parity: V=Ja, R=Nein → Ressource wertvoll, aber von Wettbewerbern ebenso besessen.'},
+  {t:'strategie_analyse',q:'Welche vier VRIO-Kriterien müssen erfüllt sein für einen nachhaltigen Wettbewerbsvorteil?',o:['Valuable, Reliable, Innovative, Organized','Valuable, Rare, (Costly to) Imitate, Organized','Viable, Relevant, Important, Optimal','Value, Risk, Impact, Opportunity'],c:1,e:'VRIO: wertvoll + selten + schwer imitierbar + org. genutzt → Sustained Competitive Advantage.'},
+  {t:'strategie_analyse',q:'Was ist die WT-Strategie in der SWOT-Analyse?',o:['Stärken nutzen, Chancen maximieren','Schwächen abbauen durch Chancen','Stärken nutzen, Risiken minimieren','Schwächen und Risiken gleichzeitig minimieren (Mini-Mini)'],c:3,e:'WT = Mini-Mini: Defensive Strategie – Schwächen und Bedrohungen gleichzeitig minimieren oder ausweichen.'},
+  {t:'strategie_analyse',q:'Welche Analysetools liefern die externe Perspektive für eine SWOT-Analyse?',o:['VRIO und Kernkompetenzanalyse','PESTLE und Porters Five Forces','Balanced Scorecard und VRIO','Benchmarking und Stakeholderanalyse'],c:1,e:'PESTLE (Makroumfeld) + Five Forces (Branche) → Opportunities & Threats in der SWOT-Analyse.'},
 ];
 
 // ═══════════════════════════════════════════════
@@ -1546,8 +1730,101 @@ const SR_POOL=[
   {q:'Was ist eine Geschäftsmodellinnovation?',opts:['Nur ein neues Produkt','Bewusste Veränderung/Schaffung eines Geschäftsmodells, das Kundenbedürfnisse besser befriedigt','Nur eine Marketingstrategie','Nur Kostensenkung'],correct:1,exp:'Geschäftsmodellinnovation verändert bewusst, wie Wert geschaffen, geliefert und erzielt wird.'},
   {q:'Was kennzeichnet einen Hidden Champion nach Simon?',opts:['Großkonzern mit hohem Bekanntheitsgrad','Top 3 weltweit, <5 Mrd. € Umsatz, Nischenfokus, geringe Endverbraucher-Bekanntheit','Börsennotierte AG','Immer ein Start-up'],correct:1,exp:'Hidden Champions sind Weltmarktführer in Nischen – oft Familienunternehmen im B2B-Bereich.'},
   {q:'Wie viel % der Geschäftsmodellinnovationen sind Rekombinationen bestehender Elemente?',opts:['10 %','50 %','~90 %','100 %'],correct:2,exp:'Laut Gassmann et al. (2013) sind ~90 % aller Geschäftsmodellinnovationen Rekombinationen – kreative Imitation.'},
-  {q:'Was unterscheidet Market-Based View und Resource-Based View?',opts:['Beide betrachten nur externe Faktoren','MBV: Outside-in (Marktposition); RBV: Inside-out (Ressourcen & Kompetenzen)','MBV für Start-ups, RBV für Konzerne','Kein Unterschied'],correct:1,exp:'MBV = externe Marktstruktur; RBV = interne Ressourcen und Kompetenzen als Quellen von Wettbewerbsvorteilen.'},
+  {q:'Was unterscheidet qualitative von quantitativer Marktforschung?',opts:['Kein Unterschied','Qualitativ: Tiefenverständnis/Warum (Interviews, Fokusgruppen); Quantitativ: Zahlen, Statistiken (Regression, Conjoint)','Qualitativ ist immer teurer','Quantitativ gilt nur für Großunternehmen'],correct:1,exp:'Qualitativ = Warum. Quantitativ = Wie viele/oft. Beide sind wichtige Marktforschungsinstrumente.'},
+  {q:'Was sind die vier Felder der Ansoff-Matrix?',opts:['Stärken, Schwächen, Chancen, Risiken','Marktdurchdringung, Produktentwicklung, Marktentwicklung, Diversifikation','Produkt, Preis, Place, Promotion','Kostenführerschaft, Differenzierung, Fokussierung, Diversifikation'],correct:1,exp:'Ansoff: Bisherige/Neue Produkte × Bisherige/Neue Märkte = 4 Wachstumsstrategien.'},
+  {q:'Was ist das SR-Modell des Käuferverhaltens?',opts:['Strategie-Ressource-Modell','Stimulus-Response-Modell: Inneres des Käufers unbekannt (Black Box)','Social-Responsibility-Modell','Segment-Reichweite-Modell'],correct:1,exp:'SR = Stimulus→Response. Das Innere des Käufers (Black Box) wird nicht betrachtet. Das SOR-Modell erweitert es um den Organismus.'},
+  {q:'Was ist die Dachmarkenstrategie?',opts:['Mehrere Marken für einen Markt','Alle Märkte mit einer einzigen Marke bearbeiten','Je Markt eine eigene Marke','Nur für Start-ups'],correct:1,exp:'Dachmarkenstrategie: eine Marke für alle Märkte. Vorteil: Reichweite. Nachteil: neg. Ausstrahlungseffekte.'},
+  {q:'Aus welchen Komponenten besteht Markenwissen?',opts:['Marktanteil und Umsatz','Markenbekanntheit (Recall + Recognition) und Markenimage (Assoziationen)','Werbeausgaben und Markenwert','Nur der Markenname'],correct:1,exp:'Markenwissen = Markenbekanntheit (aktiv erinnern + wiedererkennen) + Markenimage (Vorteilhaftigkeit, Stärke, Einzigartigkeit der Assoziationen).'},
 ];
+
+
+// ═══════════════════════════════════════════════
+// DISTRACTOR REWRITE — macht falsche MC-Antworten plausibler
+// ═══════════════════════════════════════════════
+function lowerFirst(s){return s?s.charAt(0).toLowerCase()+s.slice(1):s;}
+function capFirst(s){return s?s.charAt(0).toUpperCase()+s.slice(1):s;}
+
+function contextSuffix(q){
+  const l=q.toLowerCase();
+  if(l.includes('produktion')||l.includes('fertigung')||l.includes('kapazität')||l.includes('automatisierung')||l.includes('qualitätsmanagement')||l.includes('lean'))
+    return 'im Produktionsprozess';
+  if(l.includes('logistik')||l.includes('lieferkette')||l.includes('supply chain')||l.includes('lager')||l.includes('bullwhip'))
+    return 'in der logistischen Leistungserstellung';
+  if(l.includes('nachhaltigkeit')||l.includes('kreislauf')||l.includes('co₂')||l.includes('ökologisch')||l.includes('sozial'))
+    return 'im nachhaltigkeitsorientierten Leistungsprozess';
+  if(l.includes('marketing')||l.includes('marke')||l.includes('preis')||l.includes('kunden')||l.includes('segment')||l.includes('positionierung'))
+    return 'im markt- und kundenbezogenen Leistungsprozess';
+  if(l.includes('innovation')||l.includes('geschäftsmodell')||l.includes('canvas')||l.includes('persona')||l.includes('value proposition'))
+    return 'bei der Entwicklung von Leistungsangeboten';
+  if(l.includes('strategie')||l.includes('swot')||l.includes('five forces')||l.includes('portfolio'))
+    return 'bei strategischen Entscheidungen';
+  return 'im betrieblichen Leistungsprozess';
+}
+
+function plausibleDistractor(text,q,correctText,topic,idx){
+  let raw=String(text).trim();
+  if(!raw)return raw;
+  const lq=String(q).toLowerCase();
+  const lc=raw.toLowerCase();
+  const ctx=contextSuffix(q);
+  let base=raw
+    .replace(/^Nur\s+/,'')
+    .replace(/^Ausschließlich\s+/,'')
+    .replace(/^Kein\s+/,'')
+    .replace(/^Keine\s+/,'')
+    .replace(/^Nie\s+/,'')
+    .trim();
+
+  if(/^nur\s+/i.test(raw)||/^ausschließlich\s+/i.test(raw)){
+    return `Primär ${lowerFirst(base)}, während weitere Zielgrößen ${ctx} eher nachrangig berücksichtigt werden`;
+  }
+  if(/^kein\s+/i.test(raw)||/^keine\s+/i.test(raw)||/^nie\s+/i.test(raw)){
+    return `${capFirst(base)} als bewusst begrenzte Ausgestaltung ${ctx}, bei der andere Wirkungen kaum einbezogen werden`;
+  }
+  if(lc.includes(' vs. ')||lc.includes(' versus ')){
+    return `${raw.replace(/\s+vs\.\s+/i,' im Vergleich zu ').replace(/\s+versus\s+/i,' im Vergleich zu ')} als zentrale Abwägung ${ctx}`;
+  }
+  if(lq.includes('welche produktionsart')||lq.includes('produktionsart beschreibt')){
+    return `${raw} bei einer Fertigung, die auf wiederkehrende Abläufe und planbare Stückzahlen ausgerichtet ist`;
+  }
+  if(lq.includes('welche drei')||lq.includes('aus welchen komponenten')||lq.includes('elemente')||lq.includes('bestandteile')||lq.includes('teilbereiche')){
+    return `${raw} als naheliegende Kombination zentraler Bereiche ${ctx}`;
+  }
+  if(lq.includes('was ist kein')||lq.includes('welches')&&lq.includes('kein')){
+    return `${raw} als mögliche Zielgröße, die in angrenzenden Unternehmensbereichen ebenfalls relevant sein kann`;
+  }
+  if(lq.includes('welche aussage')||lq.includes('welche gruppe')){
+    return `${raw}, wenn der Begriff eher eng aus einer einzelnen Unternehmensperspektive interpretiert wird`;
+  }
+  if(lq.startsWith('was ist')||lq.startsWith('was bedeutet')||lq.startsWith('was beschreibt')||lq.startsWith('wofür')||lq.startsWith('worum')){
+    return `${raw} als Begriff für eine spezifische Steuerungs- oder Entscheidungslogik ${ctx}`;
+  }
+  if(raw.length<38){
+    return `${raw} unter Berücksichtigung von Kosten, Qualität, Zeit und Ressourcen ${ctx}`;
+  }
+  return `${raw}, wobei die Abgrenzung zu benachbarten Konzepten sorgfältig vorgenommen werden muss`;
+}
+
+function hardenMultipleChoiceDistractors(){
+  MODULES.forEach(m=>m.lessons.forEach(lesson=>lesson.steps.forEach(step=>{
+    if(step.type==='mcq' && Array.isArray(step.opts)){
+      const correctText=step.opts[step.correct];
+      step.opts=step.opts.map((opt,i)=>i===step.correct?opt:plausibleDistractor(opt,step.q,correctText,lesson.topic,i));
+    }
+  })));
+  QUIZ.forEach(item=>{
+    if(Array.isArray(item.o)){
+      const correctText=item.o[item.c];
+      item.o=item.o.map((opt,i)=>i===item.c?opt:plausibleDistractor(opt,item.q,correctText,item.t,i));
+    }
+  });
+  SR_POOL.forEach(item=>{
+    if(Array.isArray(item.opts)){
+      const correctText=item.opts[item.correct];
+      item.opts=item.opts.map((opt,i)=>i===item.correct?opt:plausibleDistractor(opt,item.q,correctText,'spaced_review',i));
+    }
+  });
+}
 
 // ═══════════════════════════════════════════════
 // STEP ENRICHMENT — runs once at init
@@ -1643,6 +1920,8 @@ const THINK_QS={
   ],
   marketing1:[
     {q:'Warum reicht es nicht, einfach das beste Produkt zu haben? Was zeigt das Konzept von Bedürfnis → Bedarf → Nachfrage?',hint:'Tipp: Kaufkraft und Marktwahrnehmung spielen eine Rolle.'},
+    {q:'Ein Start-up und ein Großkonzern betreten denselben Markt. Wie unterscheiden sich ihre Marketingstrategien – und warum?',hint:'Tipp: Top-Down vs. Bottom-Up. Daten, Ressourcen, Agilität.'},
+    {q:'Welche der drei Markenstrategien würdest du für einen Autohersteller wie VW wählen – und warum?',hint:'Tipp: VW, Audi, Porsche, Skoda – sind das Dach-, Einzel- oder Mehrmarken?'},
   ],
   marketing2:[
     {q:'Ein Luxusauto wird bei einem Discounter verkauft. Was passiert mit der Positionierung? Welches der 4 Ps ist verletzt?',hint:'Tipp: Wie wirkt Distributionspolitik auf die Markenwahrnehmung?'},
@@ -2368,6 +2647,7 @@ function loadTheme(){
 // ═══════════════════════════════════════════════
 load();
 loadTheme();
+hardenMultipleChoiceDistractors();
 enrichModules(); // inject active recall, think, spaced review
 renderHome();
 renderModules();
