@@ -1967,6 +1967,47 @@ function hardenMultipleChoiceDistractors(){
   });
 }
 
+
+// ═══════════════════════════════════════════════
+// ANSWER POSITION MIX — verteilt richtige Antworten
+// ═══════════════════════════════════════════════
+function moveCorrectAnswer(obj,optKey,correctKey,targetIndex){
+  if(!obj || !Array.isArray(obj[optKey]))return;
+  const opts=obj[optKey];
+  if(opts.length<2)return;
+  const current=obj[correctKey];
+  if(!Number.isInteger(current) || current<0 || current>=opts.length)return;
+  const target=((targetIndex%opts.length)+opts.length)%opts.length;
+  if(current===target)return;
+  const correctAnswer=opts[current];
+  opts.splice(current,1);
+  opts.splice(target,0,correctAnswer);
+  obj[correctKey]=target;
+}
+
+function diversifyCorrectAnswerPositions(){
+  const pattern=[0,2,3,1];
+  let n=0;
+  MODULES.forEach(m=>m.lessons.forEach(lesson=>lesson.steps.forEach(step=>{
+    if(step.type==='mcq' && Array.isArray(step.opts)){
+      moveCorrectAnswer(step,'opts','correct',pattern[n % pattern.length]);
+      n++;
+    }
+  })));
+  QUIZ.forEach(item=>{
+    if(Array.isArray(item.o)){
+      moveCorrectAnswer(item,'o','c',pattern[n % pattern.length]);
+      n++;
+    }
+  });
+  SR_POOL.forEach(item=>{
+    if(Array.isArray(item.opts)){
+      moveCorrectAnswer(item,'opts','correct',pattern[n % pattern.length]);
+      n++;
+    }
+  });
+}
+
 // ═══════════════════════════════════════════════
 // STEP ENRICHMENT — runs once at init
 // Automatically inserts recall + think steps after
@@ -2789,6 +2830,7 @@ function loadTheme(){
 load();
 loadTheme();
 hardenMultipleChoiceDistractors();
+diversifyCorrectAnswerPositions();
 enrichModules(); // inject active recall, think, spaced review
 renderHome();
 renderModules();
